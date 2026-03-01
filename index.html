@@ -277,6 +277,9 @@ const PATHS=[
   ['why','bankable','that\'s the thesis. ask about bankable to see how.'],
   ['roster','leeloo','leeloo is first on the roster. ask about leeloo.'],
   ['bankrclub','bankr','the club is the inner circle. ask about bankr.'],
+  ['clanker','drb','clanker deployed drb. ask about drb for that story.'],
+  ['apply','roster','want to see who\'s already in? check roster.'],
+  ['timeline','leeloo','leeloo is next. ask about leeloo.'],
 ];
 
 function gr(i){
@@ -304,7 +307,7 @@ function gr(i){
 // UI
 const cs=document.getElementById('cs'),ci=document.getElementById('in'),sn=document.getElementById('snd');
 // Keywords to highlight (all topic IDs + key terms, no easter eggs)
-const KWSET=new Set(['bankable','fees','apply','process','agent','token','chain','trade','leaderboard','leeloo','normies','roster','why','autonomous','bankr','deployer','josh','drb','clawd','clanker','zfi','openclaw','team','privy','ens','safety','compare','ethdenver','wallet','x402','game','help','ecosystem','eco','club']);
+const KWSET=new Set(['bankable','fees','apply','process','free','agent','token','chain','trade','leaderboard','leeloo','normies','roster','why','autonomous','bankr','deployer','josh','drb','clawd','clanker','zfi','openclaw','team','privy','ens','safety','compare','ethdenver','wallet','x402','game','help','ecosystem','eco','money','timeline','bankrclub']);
 function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 function highlight(s){
   return s.split(/(\s+)/).map(w=>{
