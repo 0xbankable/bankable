@@ -458,31 +458,31 @@ function pk(t){const r=t.r,li=mm[t.id+'_']??-1;const i=(li+1)%r.length;mm[t.id+'
 // ═══ PROGRESSION PATHS ═══
 // Only needed for first-visit nudges. All responses already contain clickable guidance.
 const PATHS=[
-  // PATH A
+  // PATH A: what is this → now you know
   ['bankable','fees','the fees are where it gets interesting.'],
   ['fees','agent','every creator gets an agent.'],
   ['agent','leeloo','leeloo was the first.'],
-  ['leeloo','apply','the apply tab is open.'],
-  // PATH B
+  ['leeloo','roster','she is on the roster.'],
+  ['roster','josh','josh built all of this.'],
+  // PATH B: lore → rabbit hole → eggs
   ['bankr','deployer','deployer built all of this.'],
   ['deployer','drb','drb is the wildest story here.'],
   ['drb','clawd','clawd is a different kind of agent.'],
   ['clawd','openclaw','openclaw is the brain behind it.'],
   ['openclaw','zfi','zfi goes deeper.'],
   ['zfi','game','there is a hidden layer.'],
-  // PATH C
+  // PATH C: money → markets → data
   ['money','trade','the markets are live.'],
   ['trade','leaderboard','the leaderboard has everything.'],
   ['leaderboard','token','every token launches the same way.'],
-  ['token','apply','the apply tab is open.'],
-  // CONNECTORS
+  ['token','bankr','bankr handles all of it.'],
+  // CONNECTORS (one-shot links between paths)
   ['team','deployer','deployer runs it all.'],
-  ['roster','leeloo','leeloo was first on the roster.'],
   ['josh','normies','normies is the other project.'],
-  ['normies','apply','the apply tab is open when you are.'],
-  ['apply','roster','the roster shows who made it.'],
-  ['process','agent','the agent is what makes this different.'],
+  ['normies','team','the team is small.'],
   ['game','deployer','deployer has the deepest lore.'],
+  ['apply','process','the process is human-reviewed.'],
+  ['process','roster','the roster shows who made it.'],
 ];
 
 function gr(i){
@@ -502,8 +502,6 @@ function gr(i){
   // Breadcrumb: lead forward, or tease at dead ends
   const next=PATHS.find(p=>p[0]===id&&!mm.a.includes(p[1]));
   if(next)r+=' '+next[2];
-  else if(mm.a.length>8)r+=' you\'re deep. something unexpected might work here.';
-  else if(mm.a.length>4)r+=' there are secrets in this terminal. keep exploring.';
   mm.l=id;mm.a.push(id);return r;
 }
 
