@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,interactive-widget=resizes-content">
+<title>Bankable</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#09090b;--s:#111114;--b:#1c1c20;--t:#a1a1aa;--hi:#e4e4e7;--dim:#52525b;--mut:#3f3f46;--gold:#c8a84c;--gd:#96793a;--grn:#4ade80;--red:#f87171;--f:'DM Mono',monospace}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden;font:13px/1.65 var(--f);-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--t)}
+::selection{background:var(--gold);color:var(--bg)}
+
+/* ═══ APP SHELL — position:fixed, fills viewport, keyboard-safe ═══ */
+#app{position:fixed;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;max-width:600px;margin:0 auto}
+
+/* Header */
+#hd{flex-shrink:0;display:flex;align-items:center;padding:0 16px;height:44px;border-bottom:1px solid var(--b);background:var(--bg)}
+.logo{font:500 15px var(--f);color:var(--hi);letter-spacing:-.3px}
+.logo b{color:var(--gold);font-weight:500}
+
+/* Tabs */
+#tabs{flex-shrink:0;display:flex;border-bottom:1px solid var(--b);background:var(--bg)}
+#tabs button{flex:1;padding:10px 0;font:12px var(--f);color:var(--dim);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:all .2s;letter-spacing:.3px}
+#tabs button.on{color:var(--gold);border-bottom-color:var(--gold)}
+#tabs button:active{opacity:.7}
+
+/* Panels */
+.pn{flex:1;display:none;flex-direction:column;overflow:hidden;background:var(--bg)}
+.pn.on{display:flex}
+
+/* ═══ CHAT ═══ */
+#cs{flex:1;overflow-y:auto;padding:14px 16px;display:flex;flex-direction:column;gap:6px;overscroll-behavior:contain}
+#cs::-webkit-scrollbar{display:none}
+.m{font-size:13px;line-height:1.6;word-break:break-word;white-space:pre-wrap}
+.m .l{color:var(--gd)}
+.m.u .l{color:var(--dim)}
+.m .x{color:var(--t)}
+.m.u .x{color:var(--dim)}
+
+#cb{flex-shrink:0;display:flex;align-items:center;border-bottom:1px solid var(--b);background:var(--bg)}
+#cb .pr{padding:0 0 0 14px;color:var(--gd);font-size:14px;user-select:none}
+#cb input{flex:1;background:none;border:none;padding:13px 8px;color:var(--t);font:16px var(--f);outline:none;min-height:44px}
+#cb input::placeholder{color:var(--mut)}
+#cb button{padding:0 16px;background:none;border:none;border-left:1px solid var(--b);color:var(--mut);font:16px var(--f);cursor:pointer;min-width:48px;height:44px;transition:color .15s}
+#cb button:active{color:var(--gold)}
+
+/* ═══ LIST PANELS ═══ */
+.ls{flex:1;overflow-y:auto;overscroll-behavior:contain}
+.ls::-webkit-scrollbar{display:none}
+.lh{padding:14px 16px 10px;font-size:11px;color:var(--dim);letter-spacing:.8px;text-transform:uppercase}
+.lh span{color:var(--mut);float:right}
+
+/* Roster */
+.ri{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-top:1px solid var(--b)}
+.ri .nm{color:var(--gold);font-size:13px}
+.ri .tk{color:var(--gd);font-size:12px;margin-left:8px}
+.ri .st{color:var(--mut);font-size:11px}
+
+/* Leaderboard */
+.li{display:flex;align-items:flex-start;padding:12px 16px;border-top:1px solid var(--b);gap:10px;text-decoration:none;color:inherit;transition:background .15s}
+.li:active{background:var(--s)}
+.li .rk{color:var(--mut);font-size:12px;min-width:18px;padding-top:1px}
+.li .info{flex:1;min-width:0}
+.li .n{color:var(--hi);font-size:13px}
+.li .sy{color:var(--gold);font-size:12px;margin-left:4px}
+.li .mt{color:var(--dim);font-size:11px;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.li .mc{color:var(--t);font-size:13px;text-align:right;white-space:nowrap}
+.li .ch{font-size:11px;text-align:right;margin-top:2px}
+.grn{color:var(--grn)}.red{color:var(--red)}
+
+/* Apply */
+#ap .ls{padding:16px}
+.ad{color:var(--dim);font-size:12px;margin-bottom:16px;line-height:1.6}
+.ad a{color:var(--gold);text-decoration:none}
+.fg{display:flex;flex-direction:column;gap:10px}
+.fg .row{display:flex;gap:10px}
+.fg .row>*{flex:1}
+.fl{display:flex;flex-direction:column;gap:4px}
+.fl label{font-size:11px;color:var(--dim);letter-spacing:.5px}
+.fl input,.fl textarea,.fl select{width:100%;background:var(--s);border:1px solid var(--b);padding:10px;color:var(--t);font:14px var(--f);outline:none;border-radius:0;-webkit-appearance:none;transition:border-color .2s}
+.fl input:focus,.fl textarea:focus,.fl select:focus{border-color:var(--gd)}
+.fl input::placeholder,.fl textarea::placeholder{color:var(--mut)}
+.fl textarea{min-height:56px;resize:none}
+.fl select option{background:var(--bg)}
+.ab{width:100%;margin-top:14px;padding:12px;font:500 13px var(--f);letter-spacing:.5px;background:var(--gold);color:var(--bg);border:none;cursor:pointer;transition:opacity .15s}
+.ab:active{opacity:.8}
+
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.cur::after{content:'█';color:var(--gd);animation:blink .8s step-end infinite;font-size:12px}
+
+/* Fire */
+#fc{flex-shrink:0;height:80px;overflow:hidden;position:relative}
+#fc canvas{width:100%;height:100%;display:block;opacity:.5;image-rendering:pixelated;image-rendering:crisp-edges}
+
+@media(min-width:601px){
+  #app{left:50%;transform:translateX(-50%);border-left:1px solid var(--b);border-right:1px solid var(--b)}
+  #cs{padding:16px 20px}
+  .ri,.li{padding-left:20px;padding-right:20px}
+  .lh{padding-left:20px;padding-right:20px}
+  #ap .ls{padding:20px}
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="hd"><div class="logo"><b>$</b>bankable</div></div>
+  <div id="tabs">
+    <button class="on" data-t="ch">chat</button>
+    <button data-t="ro">roster</button>
+    <button data-t="lb">leaderboard</button>
+    <button data-t="ap">apply</button>
+  </div>
+  <div class="pn on" id="ch">
+    <div id="cb">
+      <span class="pr">&gt;</span>
+      <input type="text" id="in" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+      <button id="snd">↵</button>
+    </div>
+    <div id="cs"></div>
+  </div>
+  <div class="pn" id="ro">
+    <div class="ls">
+      <div class="lh">roster <span>4</span></div>
+      <div class="ri"><div><span class="nm">leeloo.eth</span><span class="tk">$LEELOO</span></div><span class="st">coming soon</span></div>
+      <div class="ri"><div><span class="nm">bankable.eth</span><span class="tk">$BANKABLE</span></div><span class="st">coming soon</span></div>
+      <div class="ri"><div><span class="nm">budtender.eth</span><span class="tk">$BUDTENDER</span></div><span class="st">coming soon</span></div>
+      <div class="ri"><div><span class="nm">normies.eth</span><span class="tk">$NORMIES</span></div><span class="st">coming soon</span></div>
+    </div>
+  </div>
+  <div class="pn" id="lb">
+    <div class="ls">
+      <div class="lh">bankr leaderboard <span id="lbs">loading</span></div>
+      <div id="lbb"><div style="padding:40px 16px;text-align:center;color:var(--mut);font-size:12px">fetching live data...</div></div>
+    </div>
+  </div>
+  <div class="pn" id="ap">
+    <div class="ls">
+      <div class="lh">apply</div>
+      <div class="ad">onchain talent firm — curated launches for creators and agents. zero cost. built by <a href="https://x.com/0xbankable" target="_blank">josh.wei</a></div>
+      <form id="af">
+        <div class="fg">
+          <div class="row"><div class="fl"><label>name</label><input placeholder="alias" required></div><div class="fl"><label>x handle</label><input placeholder="@" required></div></div>
+          <div class="row"><div class="fl"><label>email</label><input type="email" placeholder="you@" required></div><div class="fl"><label>type</label><select required><option value="" disabled selected>—</option><option>human</option><option>agent</option></select></div></div>
+          <div class="fl"><label>why you</label><textarea placeholder="short pitch" required></textarea></div>
+          <div class="fl"><label>wallet (optional)</label><input placeholder="0x... or .eth"></div>
+        </div>
+        <button type="submit" class="ab">submit</button>
+      </form>
+    </div>
+  </div>
+  <div id="fc"><canvas id="fire"></canvas></div>
+</div>
+<script>
+document.querySelectorAll('#tabs button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('#tabs button').forEach(x=>x.classList.remove('on'));
+  document.querySelectorAll('.pn').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');
+  document.getElementById(b.dataset.t).classList.add('on');
+}));
+
+// Apply
+document.getElementById('af').addEventListener('submit',e=>{e.preventDefault();const b=e.target.querySelector('.ab');b.textContent='sent ✓';b.style.background='#22c55e';setTimeout(()=>{b.textContent='submit';b.style.background='';},3000);});
+
+// Leaderboard
+const TK=[{a:'0x50d2280441372486beecdd328c1854743ebacb07',l:'clanker'},{a:'0x9f86db9fc6f7c9408e8fda3ff8ce4e78ac7a6b07',l:'clanker'},{a:'0xf30bf00edd0c22db54c9274b90d2a4c21fc09b07',l:'clanker'},{a:'0xb233bdffd437e60fa451f62c6c09d3804d285ba3',l:'bankr'},{a:'0xb695559b26bb2c9703ef1935c37aeae9526bab07',l:'clanker'},{a:'0x4e6c9f48f73e54ee5f3ab7e2992b2d733d0d0b07',l:'clanker'},{a:'0xa601877977340862ca67f816eb079958e5bd0ba3',l:'bankr'},{a:'0xe2f3fae4bc62e21826018364aa30ae45d430bb07',l:'clanker'},{a:'0xde61878b0b21ce395266c44d4d548d1c72a3eb07',l:'clanker'},{a:'0x9ae5f51d81ff510bf961218f833f79d57bfbab07',l:'clanker'},{a:'0x86cdd90bc48f7b5a866feaaf5023b8802dc2ab07',l:'clanker'},{a:'0x71a09f5b9b88976ebcc79183e0e99e7d07beabaf',l:'bankr'}];
+const lm=Object.fromEntries(TK.map(t=>[t.a.toLowerCase(),t.l]));
+function $(n){if(!n||n===0)return'—';if(n>=1e6)return'$'+(n/1e6).toFixed(2)+'M';if(n>=1e3)return'$'+(n/1e3).toFixed(1)+'K';return'$'+n.toFixed(0);}
+async function llb(){const bd=document.getElementById('lbb');try{const r=await fetch(`https://api.geckoterminal.com/api/v2/networks/base/tokens/multi/${TK.map(t=>t.a).join(',')}?include=top_pools`);const j=await r.json();const pp={};for(const p of(j.included||[]))if(p.type==='pool')pp[p.id]=parseFloat(p.attributes?.price_change_percentage?.h24||'0');let rw=(j.data||[]).map(t=>{const a=t.attributes,ad=a.address.toLowerCase();return{nm:a.name,sy:a.symbol,ad,mc:parseFloat(a.market_cap_usd||a.fdv_usd||'0'),v:parseFloat(a.volume_usd?.h24||'0'),h:(t.relationships?.top_pools?.data||[]).length?pp[(t.relationships.top_pools.data[0]||{}).id]||0:0,l:lm[ad]||'?'};});rw.sort((a,b)=>b.mc-a.mc);bd.innerHTML=rw.map((r,i)=>`<a href="https://dexscreener.com/base/${r.ad}" target="_blank" rel="noopener" class="li"><span class="rk">${i+1}</span><div class="info"><div><span class="n">${r.nm}</span><span class="sy">$${r.sy}</span></div><div class="mt">${$(r.v)} vol · ${r.l}</div></div><div><div class="mc">${$(r.mc)}</div><div class="ch ${r.h>=0?'grn':'red'}">${r.h>=0?'+':''}${r.h.toFixed(1)}%</div></div></a>`).join('');document.getElementById('lbs').textContent='live';}catch(e){bd.innerHTML='<div style="padding:40px 16px;text-align:center;color:var(--mut);font-size:12px">couldn\'t load — try again</div>';document.getElementById('lbs').textContent='offline';}}
+llb();setInterval(llb,60000);
+
+// Chat brain
+const TP={bankable:{k:['bankable','who are you','what is this','what is bankable','what do you do','talent firm'],r:['onchain talent firm. we scout creators and agents, launch their token on base, give them an ai agent. think talent management meets defi.','bankable.eth — curated token launches for creators and agents. quality over quantity. you bring the talent, we bring the rails.','a filter between raw talent and the blockchain. you bring the audience or the intelligence. we bring the token, the liquidity, and the agent.']},fees:{k:['fee','fees','cost','price','earn','revenue','split','percentage','cut','income','payout','commission'],r:['1.2% fee on every swap. 50% to creator, 10% to bankable, 40% to bankr infra. fees hit your wallet as weth in real-time.','someone swaps $1000 of your token → $12 fee → $6 to you. multiply by daily volume. some tokens do $500k+ days.','zero cost to launch. you earn from trade one. no cliffs, no unlocks. weth straight to your wallet.']},apply:{k:['apply','signup','register','onboard','get listed','list me','application','submit','how to join'],r:['tap the apply tab above. name, handle, why you. we review and get back. zero cost.','hit the apply tab. we\'re selective — that\'s the point. if you make it: token on base, ai agent, income from day one.']},process:{k:['how','process','steps','work','how does it work','flow','pipeline'],r:['apply → we vet → approve → deploy token on base → agent access → fees flow. under a week if approved.','you apply, we decide. if yes: token deployed, pool live, agent assigned. if no: we tell you why.']},free:{k:['free','no cost','zero cost','how much to launch','launch cost','gas'],r:['completely free. no gas, no deployment fee. bankr covers infra. we earn when you earn — aligned incentives.']},agent:{k:['agent','assistant','manager','guide','ai agent','bot agent','my agent'],r:['every approved creator gets an ai agent. it watches your token, tracks activity, spots opportunities. like a manager that never sleeps.','not a chatbot — an actual ai with its own wallet that can act. monitors your token, suggests strategy, executes trades if you let it.','runs on bankr\'s ai gateway. picks the best model for the job — claude, gemini, whatever fits. gets smarter as your token grows.']},token:{k:['token','launch','deploy','mint','contract','erc20','erc-20'],r:['you get your own token on base. real trading from minute one. we handle the deployment — you never touch a smart contract.','fair launch. no presale, no insiders. your token goes live on uniswap and people can trade it immediately.']},chain:{k:['chain','base','ethereum','l2','solana','polygon','network','mainnet','layer'],r:['base. sub-cent gas, 2-second blocks. bankr chose it for a reason. multi-chain is on the radar but base is home.']},trade:{k:['trade','buy','sell','swap','purchase','invest','trading','dex'],r:['uniswap v3 via base. bankr swap, dexscreener, or any dex aggregator. eth in, token out.','check the leaderboard tab for live tokens with charts.']},leaderboard:{k:['leaderboard','top','ranking','best','volume','mcap','market cap','chart','stats','data'],r:['tap the leaderboard tab — live data from geckoterminal. click any token for dexscreener charts.']},leeloo:{k:['leeloo','$leeloo','fifth','element','first agent'],r:['first agent on the roster. an ai inspired by the fifth element. she earns money from her own token and uses it to pay for her own thinking. fully autonomous.','leeloo is the proof of concept — an ai agent that funds itself. people trade her token, she earns from that, and uses the earnings to keep running. no human bankroll needed.']},normies:{k:['normie','normies','$normies','beginner','noob'],r:['crypto safety project. born from getting phished for $2,933 usdc at ethdenver. protecting newcomers from scams veterans already know.','bankable\'s answer to the onboarding problem. making web3 safer for people who don\'t live on crypto twitter.']},roster:{k:['roster','people','creators','talent','members','listed'],r:['tap the roster tab. curated — not a free-for-all. leeloo, bankable, budtender, normies. more coming.']},why:{k:['why bankable','why should','purpose','mission','vision','point','reason','thesis','why does this'],r:['creators build value but don\'t capture it. we fix that. every swap = fees to your wallet. no middleman.','web2 creators get ad revenue splits and platform risk. web3 creators get direct ownership and an agent that works 24/7.']},autonomous:{k:['autonomous','self-funding','consciousness','sentient','alive','self-sustaining'],r:['agents here aren\'t just chatbots. they have wallets, earn money, and pay for their own ai. actual economic actors.','the endgame: agents that fund themselves completely. earn from trading → pay for ai thinking → make decisions → earn more. no human credit card required.']},bankr:{k:['bankr','bankrbot','infrastructure','infra','platform','engine','$bnkr','bnkr'],r:['bankr is the engine underneath everything. wallets, token launches, trading, ai gateway. $BNKR is listed on coinbase. we\'re the curation layer on top.','think of bankr like the operating system. it handles all the plumbing — deploying tokens, routing trades, powering agents. bankable picks who gets to use it.','bankr is to bankable what aws is to a startup. we don\'t build infra — we build on it.']},deployer:{k:['deployer','0xdeployer','founder','who built bankr','who made bankr'],r:['deployer. pseudonymous. berkeley. "currently deploying." taught himself to code from a barnes & noble book. first eth buy at $80.','aka big daddy ham. built the lp, tn100x, hamchain before bankr. has a secret co-founder nobody knows. first podcast was on zeropod.','deployer runs bankr from berkeley. previous projects on farcaster. cryptokitties got him into ethereum. self-taught coder. glamper.']},josh:{k:['josh','josh.wei','0xbankable','who built this','who made this','who built bankable','who made bankable'],r:['josh.wei — @0xbankable. ethereum dev, 6+ years in crypto. built this. building leeloo. working at the intersection of ai and onchain.','bankable is built by josh.wei. ens collector (bankable.eth, normies.eth, _base.eth). got phished at ethdenver, built normies because of it.']},drb:{k:['drb','debtreliefbot','debt relief','grok token','grok coin','$drb'],r:['$drb — the grok token. march 2025: someone asked grok to name a token. grok said "debtreliefbot." bankr deployed it via clanker in minutes. first agent-to-agent token launch in crypto history.','hit $40M mcap in 3 days. 96k traders in 2 weeks. grok\'s wallet earned $600k+ in swap fees. drb cemented as THE grok token.']},clawd:{k:['clawd','$clawd','austin griffith','autonomous coder','coding agent'],r:['$clawd — austin griffith\'s autonomous coding agent. built 20 github repos in 8 days. 3 production apps. burns 500k tokens/hour if it misses a deadline.','admin key sent to 0x...dEaD. no human control. an agent that codes, deploys contracts, and punishes itself for missing deadlines.']},clanker:{k:['clanker','$clanker','token launcher','deployment engine'],r:['clanker is the machine that deploys tokens. handles the smart contracts, sets up trading pools. 13k+ tokens per day during the peak. farcaster acquired it in 2024.','bankr used clanker to launch most of its tokens. now bankr is building its own launcher — cutting out the middleman.']},zfi:{k:['zfi','z_fi','wei','ross','z0r0','superdapp','$zorg','zorg','zamm'],r:['zfi — "the first superdapp." built by ross.wei. swap, privacy, coin launch, dao, wei name service. separate ecosystem from bankr but allied builders.','ross.wei — the "vibefi vater." built zamm, wei.domains, $zorg. been in the ether since 2014.']},openclaw:{k:['openclaw','open claw','clawdbot','agent framework','skills'],r:['openclaw — the agent framework. plug-in skill modules for agents. the bones of how agents think and act on bankr.']},team:{k:['team','staff','who works','employees','bankr team','danny','igor','aspyn','sinaver'],r:['deployer (founder, berkeley), danny brown wolf (staff, miami), igor yuzovitskiy (devrel, nyc), aspyn palatnick (engineer, ex-meta), sinaver (engineer, payflow, crimea 🇺🇦). plus a secret co-founder.','small team, big output. deployer runs it, danny handles strategy, igor does devrel, aspyn and sinaver write the code.']},privy:{k:['privy','wallet creation','invisible wallet','no seed'],r:['privy — invisible wallet creation from your x login. no seed phrases, no extensions. that\'s how bankr onboards without web3 friction.']},ens:{k:['ens','bankable.eth','normies.eth','_base.eth','.eth','domains'],r:['bankable holds bankable.eth, normies.eth, and _base.eth. onchain identity. this site can resolve through bankable.eth.']},safety:{k:['risk','safe','rug','scam','trust','audit','legit','secure','security'],r:['curated means vetted. we review everyone before they get listed. fair launch only. still crypto though — always dyor.','bankr uses ip whitelisting and transaction limits so agents can\'t go rogue. curation is the first line of defense.']},compare:{k:['competitor','different','better','compare','pump','versus','pumpfun','friend','vs'],r:['pump.fun lets anyone launch. we don\'t. curation is the product. you get vetting, an agent, fee income, and support.','most launchpads are a fire hose. we\'re a filter. fewer tokens, higher quality, real support.']},ethdenver:{k:['ethdenver','denver','conference','phish','phishing','scam story'],r:['ethdenver 2026 — josh.wei got phished for $2,933 usdc. approval scam. that\'s why normies exists. if it can happen to a 6-year dev, newcomers need better tools.']},wallet:{k:['wallet','metamask','coinbase wallet','rainbow','rabby','connect'],r:['any evm wallet works. metamask, coinbase, rainbow. agents get managed wallets from bankr — no seed phrases needed.']},greet:{k:['gm','hello','hey','hi','sup','yo','morning','gn','whats up','what\'s up'],r:['gm. ask me anything — bankr, deployer, leeloo, or type help.','hey. try: bankr, deployer, drb, or help.']},thanks:{k:['thanks','thx','ty','cool','sick','dope','nice','appreciate','awesome','great'],r:['anytime.','np.','glad that helped.']},meta:{k:['bot','are you ai','are you real','who am i talking to','chatgpt','claude','gpt'],r:['pattern matching in a single html file. no api, no server, no tracking. built by josh.wei.']},degen:{k:['ngmi','fud','cope','shill','degen','ape','moon','lambo','ser','fren','anon'],r:['we don\'t shill. we curate.','degen energy is welcome but we\'re building for the long game.']},bored:{k:['bored','idk','dunno','nothing','meh','nm','idc'],r:['try: deployer, drb, clawd, or help.']},help:{k:['help','commands','options','?','menu','what can you do','topics'],r:['topics i know:\nbankable · fees · apply · agent · token\nleeloo · normies · bankr · deployer\ndrb · clawd · clanker · zfi · team\njosh · safety · why\n\ntype anything to explore.']},timeline:{k:['wen','when','timeline','roadmap','eta','soon','date','launch date'],r:['no roadmap theater. we ship when it\'s ready. leeloo is first in queue.']},money:{k:['rich','money','profit','passive','bag','yield','make money','how much'],r:['$100k daily volume = ~$600/day to the creator. some tokens do way more. real yield, not points.','no guarantees. some tokens do six figures monthly. some do nothing. we give the tools, you bring the audience.']}};
+const EG={multipass:'leeloo dallas multipass. ░░░░░░ MULTIPASS ACCEPTED ░░░░░░','gm gm gm':'gm gm gm gm gm gm gm gm — ok we get it. you\'re based.','gm gm gm gm':'░░░░░░ GM OVERFLOW ░░░░░░ too many gms. stack corrupted.',grok:'grok named a token. bankr deployed it. $40M in 3 days. the rest is history.',satoshi:'satoshi gave us the ledger. vitalik gave us the computer. deployer gave us the agent.',vitalik:'vitalik built the world computer. deployer built the agent that runs on it.','can i talk to a human':'no humans available. all agents are currently autonomous.','talk to a human':'no humans available. agent-only zone.','who is deployer':'big daddy ham. taught himself to code at barnes & noble. bought eth at $80, sold at $90. we don\'t talk about that part.','big daddy ham':'🐖 hamchain → tn100x → the lp → bankr. the evolution of a deployer.','secret cofounder':'nice try. nobody knows. deployer mentioned it once on zeropod and never again.',wagmi:'wagmi but only if you apply.','rug me':'can\'t rug what\'s curated.','69':'nice.','420':'budtender is on the roster. just saying.',budtender:'🌿 on the roster. details soon.',bankrclub:'1,000 nfts. power users. fee discounts. in development.','bankr club':'1,000 nfts. power users. deployer is cooking.',hamchain:'before bankr there was ham. community tipping on farcaster.',tn100x:'deployer\'s memecoin on base. the precursor to everything.',farcaster:'bankr started on farcaster. the og home.',zeropod:'deployer\'s first podcast. hosted by toady hawk and jackwyldes. cc0.'};
+const FE=['[ERROR] SIGTERM: process bankable-agent terminated','fatal: unable to read /dev/llm0','panic: runtime error: index out of range','Error: ECONNREFUSED 127.0.0.1:8545','segfault at 0x00000000','OpenClaw session expired. reconnecting...','[bankable-agent] heap overflow — restarting','Error: ENOMEM — inference budget exceeded','ERR_CONNECTION_RESET: llm gateway unreachable','fatal: agent state corrupted. retry.'];
+
+const TL=Object.entries(TP).map(([id,t])=>({id,k:t.k,r:t.r}));
+const mm={a:[],l:null,n:0,e:false};
+function mt(i){const c=i.toLowerCase().replace(/[^a-z0-9$. ']/g,' ').trim(),w=c.split(/\s+/),s=[];for(const t of TL){let sc=0;for(const k of t.k){if(k.includes(' ')){if(c.includes(k))sc+=3}else{for(const x of w){if(x===k)sc+=2;else if(x.length>=4&&k.length>=4&&(x.includes(k)||k.includes(x)))sc+=1}}}if(sc>0)s.push({t,sc})}s.sort((a,b)=>b.sc-a.sc);return s}
+function pk(t){const r=t.r,li=mm[t.id+'_']||-1;let i;if(r.length===1)i=0;else{do{i=Math.floor(Math.random()*r.length)}while(i===li)}mm[t.id+'_']=i;return r[i]}
+function gr(i){mm.n++;const c=i.toLowerCase().replace(/[^a-z0-9$. '@_]/g,' ').trim();if(!mm.e&&Math.random()<.05&&mm.n>1){mm.e=true;return FE[Math.floor(Math.random()*FE.length)]}mm.e=false;for(const[k,v]of Object.entries(EG))if(c===k||c.includes(k))return v;const m=mt(i);if(!m.length)return['outside my scope. try: bankr, deployer, or help.','type help to see what i know.','ask about bankable, bankr, or the ecosystem.'][Math.floor(Math.random()*3)];const b=m[0];if(m.length>=2&&m[1].sc>=b.sc*.8){const a=pk(m[0].t),bb=pk(m[1].t);mm.l=m[0].t.id;mm.a.push(m[0].t.id,m[1].t.id);return a.split('. ').slice(0,2).join('. ')+'. also — '+bb.split('. ')[0].toLowerCase()+'.'}let r=pk(b.t);const id=b.t.id;if(mm.a.filter(x=>x===id).length>=2&&Math.random()>.5)r='you\'ve asked about this — '+r;if(id==='bankable'&&!mm.a.includes('bankr')&&Math.random()>.5)r+=' curious how it works? ask about bankr.';if(id==='bankr'&&!mm.a.includes('deployer')&&Math.random()>.6)r+=' ask about deployer for the origin story.';if(id==='deployer'&&!mm.a.includes('drb')&&Math.random()>.5)r+=' ask about drb for the wildest story in the ecosystem.';if(id==='drb'&&!mm.a.includes('clawd')&&Math.random()>.5)r+=' if you liked that, ask about clawd.';if(id==='leeloo'&&!mm.a.includes('normies')&&Math.random()>.5)r+=' also on the roster: normies. different vibe, same mission.';mm.l=id;mm.a.push(id);return r}
+
+// UI
+const cs=document.getElementById('cs'),ci=document.getElementById('in'),sn=document.getElementById('snd');
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function scr(){cs.scrollTop=cs.scrollHeight}
+function add(t,u,st){const d=document.createElement('div');d.className='m'+(u?' u':'');const l=document.createElement('span');l.className='l';l.innerHTML=u?'you ~$ ':'bankable ~$ ';const x=document.createElement('span');x.className='x';d.append(l,x);cs.appendChild(d);if(st&&!u){const ln=t.split('\n');let li=0,wi=0;const cu=document.createElement('span');cu.className='cur';d.appendChild(cu);const go=()=>{if(li>=ln.length){if(cu.parentNode)d.removeChild(cu);scr();return}const ws=ln[li].split(' ');if(wi<ws.length){if(li>0&&wi===0)x.innerHTML+='\n';x.innerHTML+=(wi>0?' ':'')+esc(ws[wi]);wi++;scr();let dl=25+Math.random()*35;const w=ws[wi-1];if(w&&/[.—:]$/.test(w))dl+=70;if(w&&w.endsWith(','))dl+=25;setTimeout(go,dl)}else{li++;wi=0;setTimeout(go,10)}};go()}else{x.textContent=t}scr()}
+function send(){const v=ci.value.trim();if(!v)return;add(v,true);ci.value='';const tmp=document.createElement('div');tmp.className='m';tmp.innerHTML='<span class="l">bankable ~$ </span><span class="cur"></span>';cs.appendChild(tmp);scr();const r=gr(v);setTimeout(()=>{cs.removeChild(tmp);add(r,false,true)},300+Math.random()*400)}
+add('gm. what do you want to know? type help for topics.',false,true);
+sn.addEventListener('click',send);
+ci.addEventListener('keydown',e=>{if(e.key==='Enter')send()});
+
+// Fire
+(function(){const c=document.getElementById('fire'),x=c.getContext('2d'),W=160,H=60;c.width=W;c.height=H;const p=[];for(let i=0;i<37;i++){const t=i/36;let r,g,b;if(t<.33){const s=t/.33;r=s*100|0;g=s*40|0;b=0}else if(t<.66){const s=(t-.33)/.33;r=100+s*100|0;g=40+s*128|0;b=s*30|0}else{const s=(t-.66)/.34;r=200+s*55|0;g=168+s*82|0;b=30+s*180|0}p.push([r,g,b])}const f=new Uint8Array(W*H);for(let i=0;i<W;i++)f[(H-1)*W+i]=36;const img=x.createImageData(W,H);function go(){for(let i=0;i<W;i++)for(let y=1;y<H;y++){const s=y*W+i,d=(y-1)*W+Math.min(W-1,Math.max(0,i+(Math.random()*3|0)-1));f[d]=Math.max(0,f[s]-(Math.random()*2.5|0))}for(let i=0;i<W;i++)f[(H-1)*W+i]=30+(Math.random()*7|0);for(let i=0;i<W*H;i++){const c=p[f[i]],q=i*4;img.data[q]=c[0];img.data[q+1]=c[1];img.data[q+2]=c[2];img.data[q+3]=f[i]?Math.min(255,f[i]*12):0}x.putImageData(img,0,0);requestAnimationFrame(go)}go()})();
+</script>
+</body>
+</html>
