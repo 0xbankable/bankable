@@ -369,11 +369,7 @@ game:{k:['game','play','easter egg','secret','hidden','puzzle','hack','cheat','c
 'leeloo has a password from her movie. deployer has a nickname. there is a classic cheat code hidden here.',
 'try typing: multipass, big daddy ham, konami, god mode, secret cofounder, 420, fire.',
 'there are over 30 hidden responses. some are jokes. some are lore. some unlock real info. keep exploring.']},
-greet:{k:['gm','hello','hey','hi','sup','yo','morning','gn','whats up','what\'s up','start'],r:[
-'type help or ask me anything.',
-'listening.',
-'ready.',
-'go ahead.']},
+greet:{k:['gm','hello','hey','hi','sup','yo','morning','gn','whats up','what\'s up','start'],r:['start here:\n\n  bankable  fees  money  apply\n  leeloo  normies  roster  team\n  bankr  agent  token  trade\n\ntype any word. more is hidden.']},
 thanks:{k:['thanks','thx','ty','appreciate'],r:['noted.','acknowledged.','np.']},
 meta:{k:['bot','are you ai','are you real','who am i talking to','chatgpt','claude','gpt','what are you'],r:[
 'pattern matching engine. single html file. no api. no server. no tracking.',
@@ -531,8 +527,8 @@ function bindKw(el){el.querySelectorAll('.kw').forEach(k=>k.addEventListener('cl
 // Send button glow
 ci.addEventListener('input',()=>{sn.classList.toggle('hot',ci.value.trim().length>0)});
 function send(){const v=ci.value.trim();if(!v)return;add(v,true);ci.value='';sn.classList.remove('hot');const tmp=document.createElement('div');tmp.className='m';tmp.innerHTML='<span class="l">bankable ~$ </span><span class="cur"></span>';cs.insertBefore(tmp,cs.firstChild);const r=gr(v);setTimeout(()=>{cs.removeChild(tmp);add(r,false,true)},300+Math.random()*400)}
-// Welcome
-add('hello. type help.',false,true);
+// Welcome — just hello. user types first.
+add('hello.',false,true);
 sn.addEventListener('click',send);
 ci.addEventListener('keydown',e=>{if(e.key==='Enter')send()});
 
