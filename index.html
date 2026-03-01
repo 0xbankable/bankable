@@ -388,7 +388,7 @@ bored:{k:['bored','idk','dunno','nothing','meh','nm','idc'],r:[
 'secrets exist here. keep trying.',
 'the rabbit hole is deep.',
 'try words you wouldn\'t expect.']},
-help:{k:['help','commands','options','?','menu','what can you do','topics'],r:['i respond to keywords. try bankable to start.']},
+help:{k:['help','commands','options','?','menu','what can you do','topics'],r:['start here:\n\n  bankable  fees  money  apply\n  leeloo  normies  roster  team\n  bankr  agent  token  trade\n\ntype any word. more is hidden.']},
 timeline:{k:['wen','when','timeline','roadmap','eta','soon','date','launch date'],r:[
 'no roadmap. first launch is coming.',
 'no dates. no promises. ships when ready.',
@@ -532,7 +532,7 @@ function bindKw(el){el.querySelectorAll('.kw').forEach(k=>k.addEventListener('cl
 ci.addEventListener('input',()=>{sn.classList.toggle('hot',ci.value.trim().length>0)});
 function send(){const v=ci.value.trim();if(!v)return;add(v,true);ci.value='';sn.classList.remove('hot');const tmp=document.createElement('div');tmp.className='m';tmp.innerHTML='<span class="l">bankable ~$ </span><span class="cur"></span>';cs.insertBefore(tmp,cs.firstChild);const r=gr(v);setTimeout(()=>{cs.removeChild(tmp);add(r,false,true)},300+Math.random()*400)}
 // Welcome
-add('hello.',false,true);
+add('hello. type help.',false,true);
 sn.addEventListener('click',send);
 ci.addEventListener('keydown',e=>{if(e.key==='Enter')send()});
 
