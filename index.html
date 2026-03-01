@@ -369,7 +369,7 @@ game:{k:['game','play','easter egg','secret','hidden','puzzle','hack','cheat','c
 'leeloo has a password from her movie. deployer has a nickname. there is a classic cheat code hidden here.',
 'try typing: multipass, big daddy ham, konami, god mode, secret cofounder, 420, fire.',
 'there are over 30 hidden responses. some are jokes. some are lore. some unlock real info. keep exploring.']},
-greet:{k:['gm','hello','hey','hi','sup','yo','morning','gn','whats up','what\'s up','start'],r:['type help to see what i know.','help will show you the way.','try help. or just start typing.','i know things. type help.']},
+greet:{k:['gm','hello','hey','hi','sup','yo','morning','gn','whats up','what\'s up','start'],r:['try help to see what i know.','help will show you the way.','start with help.','i know things. help has the list.']},
 thanks:{k:['thanks','thx','ty','appreciate'],r:['noted.','acknowledged.','np.']},
 meta:{k:['bot','are you ai','are you real','who am i talking to','chatgpt','claude','gpt','what are you'],r:[
 'pattern matching engine. single html file. no api. no server. no tracking.',
@@ -457,30 +457,30 @@ function pk(t){const r=t.r,li=mm[t.id+'_']??-1;const i=(li+1)%r.length;mm[t.id+'
 // Only needed for first-visit nudges. All responses already contain clickable guidance.
 const PATHS=[
   // PATH A: normie → understand → apply (5 steps, ends)
-  ['bankable','fees','ask me about fees.'],
-  ['fees','agent','now ask about the agent.'],
-  ['agent','leeloo','type leeloo.'],
-  ['leeloo','apply','ready? tap the apply tab.'],
+  ['bankable','fees','curious about fees?'],
+  ['fees','agent','every creator gets an agent.'],
+  ['agent','leeloo','leeloo is the first one live.'],
+  ['leeloo','apply','ready? the apply tab is open.'],
   // PATH B: lore → deep → game (7 steps, ends at eggs)
-  ['bankr','deployer','ask about deployer.'],
-  ['deployer','drb','type drb. trust me.'],
-  ['drb','clawd','now type clawd.'],
-  ['clawd','openclaw','go deeper. type openclaw.'],
-  ['openclaw','zfi','one more. type zfi.'],
+  ['bankr','deployer','deployer built all of this.'],
+  ['deployer','drb','drb is the wildest story here.'],
+  ['drb','clawd','clawd is a different kind of agent.'],
+  ['clawd','openclaw','openclaw is the brain behind it.'],
+  ['openclaw','zfi','zfi goes even deeper.'],
   ['zfi','game','you made it deep. type game.'],
   // PATH C: trader → markets → apply (4 steps, ends)
-  ['money','trade','type trade.'],
+  ['money','trade','trade is where the action is.'],
   ['trade','leaderboard','check the leaderboard tab.'],
-  ['leaderboard','token','type token.'],
-  ['token','apply','ready to launch? tap apply.'],
-  // CONNECTORS (one-shot, link paths together)
-  ['team','deployer','type deployer for the origin.'],
-  ['roster','leeloo','leeloo was first. type leeloo.'],
-  ['josh','normies','ask about normies.'],
+  ['leaderboard','token','every token launches the same way.'],
+  ['token','apply','ready to launch? apply tab is open.'],
+  // CONNECTORS
+  ['team','deployer','deployer runs it all.'],
+  ['roster','leeloo','leeloo was first.'],
+  ['josh','normies','normies is the other project.'],
   ['normies','apply','the apply tab is open when you are.'],
-  ['apply','roster','type roster to see who made it.'],
-  ['process','agent','type agent to see what you get.'],
-  ['game','deployer','the deployer has the deepest lore. type deployer.'],
+  ['apply','roster','roster shows who made it.'],
+  ['process','agent','the agent is what makes it different.'],
+  ['game','deployer','deployer has the deepest lore.'],
 ];
 
 function gr(i){
@@ -513,7 +513,7 @@ function gr(i){
 // UI
 const cs=document.getElementById('cs'),ci=document.getElementById('in'),sn=document.getElementById('snd');
 // Keywords to highlight (all topic IDs + key terms, no easter eggs)
-const KWSET=new Set(['bankable','fees','agent','leeloo','apply','bankr','deployer','drb','clawd','openclaw','zfi','money','trade','token','team','roster','josh','normies','game']);
+const KWSET=new Set(['bankable','fees','agent','leeloo','apply','bankr','deployer','drb','clawd','openclaw','zfi','money','trade','token','team','roster','josh','normies','game','help']);
 function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 function highlight(s){
   return s.split(/(\s+)/).map(w=>{
