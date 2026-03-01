@@ -456,27 +456,31 @@ function pk(t){const r=t.r,li=mm[t.id+'_']??-1;const i=(li+1)%r.length;mm[t.id+'
 // ═══ PROGRESSION PATHS ═══
 // Only needed for first-visit nudges. All responses already contain clickable guidance.
 const PATHS=[
+  // PATH A: normie → understand → apply (5 steps, ends)
   ['bankable','fees','ask me about fees.'],
   ['fees','agent','now ask about the agent.'],
   ['agent','leeloo','type leeloo.'],
-  ['leeloo','apply','ready? the apply tab is waiting.'],
+  ['leeloo','apply','ready? tap the apply tab.'],
+  // PATH B: lore → deep → game (7 steps, ends at eggs)
   ['bankr','deployer','ask about deployer.'],
   ['deployer','drb','type drb. trust me.'],
   ['drb','clawd','now type clawd.'],
   ['clawd','openclaw','go deeper. type openclaw.'],
   ['openclaw','zfi','one more. type zfi.'],
-  ['zfi','game','type game.'],
-  ['money','leaderboard','check the leaderboard tab.'],
-  ['trade','token','ask about token.'],
-  ['token','trade','type trade to see the markets.'],
+  ['zfi','game','you made it deep. type game.'],
+  // PATH C: trader → markets → apply (4 steps, ends)
+  ['money','trade','type trade.'],
+  ['trade','leaderboard','check the leaderboard tab.'],
+  ['leaderboard','token','type token.'],
+  ['token','apply','ready to launch? tap apply.'],
+  // CONNECTORS (one-shot, link paths together)
   ['team','deployer','type deployer for the origin.'],
   ['roster','leeloo','leeloo was first. type leeloo.'],
-  ['game','leeloo','start with leeloo.'],
   ['josh','normies','ask about normies.'],
   ['normies','apply','the apply tab is open when you are.'],
   ['apply','roster','type roster to see who made it.'],
-  ['process','apply','ready? tap the apply tab.'],
-  ['leaderboard','trade','type trade.'],
+  ['process','agent','type agent to see what you get.'],
+  ['game','deployer','the deployer has the deepest lore. type deployer.'],
 ];
 
 function gr(i){
