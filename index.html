@@ -492,24 +492,25 @@ function gr(i){
   mm.e=false;
   // Easter eggs
   for(const[k,v]of Object.entries(EG))if(c===k||c.includes(k))return v;
-  // Progress milestones
+  // Progress milestones — append, never replace
   const uniq=new Set(mm.a).size;
-  if(uniq===5&&!mm.m5){mm.m5=true;return'░░ 5 topics explored. you are getting deeper. keep going. ░░'}
-  if(uniq===10&&!mm.m10){mm.m10=true;return'░░ 10 topics explored. you know more than most. the hidden layer exists. ░░'}
-  if(uniq===20&&!mm.m20){mm.m20=true;return'░░ 20 topics. you have seen almost everything. the easter eggs are all that is left. ░░'}
+  let milestone='';
+  if(uniq===5&&!mm.m5){mm.m5=true;milestone='\n\n░░ something is watching. ░░'}
+  if(uniq===10&&!mm.m10){mm.m10=true;milestone='\n\n░░ you know more than most. ░░'}
+  if(uniq===20&&!mm.m20){mm.m20=true;milestone='\n\n░░ almost everything has been found. almost. ░░'}
   // Match
   const m=mt(i);
   if(!m.length)return['unknown. help exists.','not recognized.','no match. but help is always there.'][Math.floor(Math.random()*3)];
   const b=m[0];
   // Combo (two close topics)
-  if(m.length>=2&&m[1].sc>=b.sc*.6){const a=pk(m[0].t),bb=pk(m[1].t);mm.l=m[0].t.id;mm.a.push(m[0].t.id,m[1].t.id);return a.split('. ').slice(0,2).join('. ')+'. also — '+bb.split('. ')[0].toLowerCase()+'.';}
+  if(m.length>=2&&m[1].sc>=b.sc*.6){const a=pk(m[0].t),bb=pk(m[1].t);mm.l=m[0].t.id;mm.a.push(m[0].t.id,m[1].t.id);return a.split('. ').slice(0,2).join('. ')+'. also — '+bb.split('. ')[0].toLowerCase()+'.'+milestone;}
   let r=pk(b.t);const id=b.t.id;
   // Breadcrumb: lead forward, or tease at dead ends
   const next=PATHS.find(p=>p[0]===id&&!mm.a.includes(p[1]));
   if(next)r+=' '+next[2];
   else if(mm.a.length>8)r+=' you\'re deep. something unexpected might work here.';
   else if(mm.a.length>4)r+=' there are secrets in this terminal. keep exploring.';
-  mm.l=id;mm.a.push(id);return r;
+  mm.l=id;mm.a.push(id);return r+milestone;
 }
 
 // UI
