@@ -316,7 +316,10 @@ function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g
 function highlight(s){
   return s.split(/(\s+)/).map(w=>{
     const clean=w.toLowerCase().replace(/[^a-z0-9]/g,'');
-    if(KWSET.has(clean))return'<span class="kw" data-q="'+esc(clean)+'">'+esc(w)+'</span>';
+    if(KWSET.has(clean)){
+      const m=w.match(/^([^a-zA-Z0-9]*)(.*?)([^a-zA-Z0-9]*)$/);
+      return esc(m[1])+'<span class="kw" data-q="'+esc(clean)+'">'+esc(m[2])+'</span>'+esc(m[3]);
+    }
     return esc(w);
   }).join('');
 }
