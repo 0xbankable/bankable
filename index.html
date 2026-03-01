@@ -89,7 +89,8 @@ body{background:var(--bg);color:var(--t)}
 .fl input::placeholder,.fl textarea::placeholder{color:var(--mut)}
 .fl textarea{min-height:56px;resize:none}
 .fl select option{background:var(--bg)}
-.ab{width:100%;margin-top:14px;padding:12px;font:500 13px var(--f);letter-spacing:.5px;background:var(--gold);color:var(--bg);border:none;cursor:pointer;transition:opacity .15s}
+.ab{width:100%;margin-top:14px;padding:12px;font:600 13px var(--f);letter-spacing:.5px;background:#d4af37;color:#0a0a0a;border:none;cursor:pointer;transition:opacity .15s;border-radius:2px}
+.ab:hover{background:#e0c04a}
 .ab:active{opacity:.8}
 
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
@@ -145,7 +146,7 @@ body{background:var(--bg);color:var(--t)}
     <div class="ls">
       <div class="lh">apply</div>
       <div class="ad">onchain talent firm — curated launches for creators and agents. zero cost. built by <a href="https://x.com/0xbankable" target="_blank">josh.wei</a></div>
-      <form id="af" action="https://formspree.io/f/xpwzgkpe" method="POST">
+      <form id="af">
         <div class="fg">
           <div class="row"><div class="fl"><label>name</label><input name="name" placeholder="alias" required></div><div class="fl"><label>x handle</label><input name="handle" placeholder="@" required></div></div>
           <div class="row"><div class="fl"><label>email</label><input name="email" type="email" placeholder="you@" required></div><div class="fl"><label>type</label><select name="type" required><option value="" disabled selected>—</option><option>human</option><option>agent</option></select></div></div>
@@ -167,7 +168,7 @@ document.querySelectorAll('#tabs button').forEach(b=>b.addEventListener('click',
 }));
 
 // Apply
-document.getElementById('af').addEventListener('submit',e=>{e.preventDefault();const f=e.target;const b=f.querySelector('.ab');b.textContent='sending...';b.disabled=true;fetch(f.action,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}}).then(r=>{if(r.ok){b.textContent='sent ✓';b.style.background='#22c55e';f.reset()}else{b.textContent='error — try again';b.style.background='var(--red)'}b.disabled=false;setTimeout(()=>{b.textContent='submit';b.style.background=''},3000)}).catch(()=>{b.textContent='error — try again';b.style.background='var(--red)';b.disabled=false;setTimeout(()=>{b.textContent='submit';b.style.background=''},3000)})});
+document.getElementById('af').addEventListener('submit',e=>{e.preventDefault();const f=e.target;const name=f.querySelector('input[name="name"]').value;const handle=f.querySelector('input[name="handle"]').value;const email=f.querySelector('input[name="email"]').value;const type=f.querySelector('select[name="type"]').value;const pitch=f.querySelector('textarea[name="pitch"]').value;const wallet=f.querySelector('input[name="wallet"]').value||'n/a';const txt='bankable application\nname: '+name+'\nhandle: '+handle+'\nemail: '+email+'\ntype: '+type+'\npitch: '+pitch+'\nwallet: '+wallet;navigator.clipboard.writeText(txt).then(()=>{const b=f.querySelector('.ab');b.textContent='copied ✓ dm @0xbankable on x';b.style.background='#22c55e';setTimeout(()=>{b.textContent='submit';b.style.background=''},4000)}).catch(()=>{const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);const b=f.querySelector('.ab');b.textContent='copied ✓ dm @0xbankable on x';b.style.background='#22c55e';setTimeout(()=>{b.textContent='submit';b.style.background=''},4000)})});
 
 // Leaderboard
 const TK=[{a:'0x50d2280441372486beecdd328c1854743ebacb07',l:'clanker'},{a:'0x9f86db9fc6f7c9408e8fda3ff8ce4e78ac7a6b07',l:'clanker'},{a:'0xf30bf00edd0c22db54c9274b90d2a4c21fc09b07',l:'clanker'},{a:'0xb233bdffd437e60fa451f62c6c09d3804d285ba3',l:'bankr'},{a:'0xb695559b26bb2c9703ef1935c37aeae9526bab07',l:'clanker'},{a:'0x4e6c9f48f73e54ee5f3ab7e2992b2d733d0d0b07',l:'clanker'},{a:'0xa601877977340862ca67f816eb079958e5bd0ba3',l:'bankr'},{a:'0xe2f3fae4bc62e21826018364aa30ae45d430bb07',l:'clanker'},{a:'0xde61878b0b21ce395266c44d4d548d1c72a3eb07',l:'clanker'},{a:'0x9ae5f51d81ff510bf961218f833f79d57bfbab07',l:'clanker'},{a:'0x86cdd90bc48f7b5a866feaaf5023b8802dc2ab07',l:'clanker'},{a:'0x71a09f5b9b88976ebcc79183e0e99e7d07beabaf',l:'bankr'}];
@@ -500,7 +501,7 @@ function gr(i){
   if(!m.length)return['unknown. help exists.','not recognized.','no match. but help is always there.'][Math.floor(Math.random()*3)];
   const b=m[0];
   // Combo (two close topics)
-  if(m.length>=2&&m[1].sc>=b.sc*.8){const a=pk(m[0].t),bb=pk(m[1].t);mm.l=m[0].t.id;mm.a.push(m[0].t.id,m[1].t.id);return a.split('. ').slice(0,2).join('. ')+'. also — '+bb.split('. ')[0].toLowerCase()+'.';}
+  if(m.length>=2&&m[1].sc>=b.sc*.6){const a=pk(m[0].t),bb=pk(m[1].t);mm.l=m[0].t.id;mm.a.push(m[0].t.id,m[1].t.id);return a.split('. ').slice(0,2).join('. ')+'. also — '+bb.split('. ')[0].toLowerCase()+'.';}
   let r=pk(b.t);const id=b.t.id;
   // Breadcrumb: lead forward, or tease at dead ends
   const next=PATHS.find(p=>p[0]===id&&!mm.a.includes(p[1]));
