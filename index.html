@@ -179,7 +179,7 @@ llb();setInterval(llb,60000);
 
 // Chat brain
 const TP={
-bankable:{k:['bankable','who are you','what is this','what is bankable','what do you do','talent firm','curation','curated'],r:[
+bankable:{k:['bankable','who are you','what is this','what is bankable','what do you do','talent firm','curation','curated','tell me about yourself','tell me about this','about you','about this','what is this place','explain'],r:[
 'bankable is a talent firm for the internet. we help creators and ai agents launch their own digital currency and earn money every time someone trades it.',
 'think of it like a record label, but for crypto. we find talented people, set them up with a token and an ai assistant, and they earn income from day one.',
 'bankable handles everything technical — the token, the ai agent, the trading setup. creators just bring something worth backing.',
@@ -370,9 +370,9 @@ game:{k:['game','play','easter egg','secret','hidden','puzzle','hack','cheat','c
 'some names trigger things. some phrases. some numbers.',
 'the deployer has a nickname. leeloo has a password. the fire has a story.',
 'over 30 hidden responses exist. that is all i will say.']},
-greet:{k:['gm','hello','hey','hi','sup','yo','morning','gn','whats up','what\'s up','start'],r:['hey. bankable is a good place to start. or just ask me anything.','hey. try bankable, fees, or leeloo. or just ask.','hey. curious about something? i probably know.','hey. ask me anything. or type help to see what i know.']},
+greet:{k:['gm','hello','hey','hi','sup','yo','morning','gn','whats up','what\'s up','start','how are you','how are ya','howdy','hola','wassup','what\'s good','whats good','how goes','how\'s it going','hows it going','what is up','hey there','hi there','hello there','how you doing','what are you doing','what are you up to','you there','anybody there','anyone there','are you there'],r:['hey. bankable is a good place to start. or just ask me anything.','hey. try bankable, fees, or leeloo. or just ask.','hey. curious about something? i probably know.','hey. ask me anything. or type help to see what i know.']},
 thanks:{k:['thanks','thx','ty','appreciate'],r:['noted.','acknowledged.','np.']},
-meta:{k:['bot','are you ai','are you real','who am i talking to','chatgpt','claude','gpt','what are you'],r:[
+meta:{k:['bot','are you ai','are you real','who am i talking to','chatgpt','claude','gpt','what are you','are you a bot','are you human','are you alive','is this ai','is anyone real','what is this thing','is this real','are you a person','who is this','what am i talking to'],r:[
 'what am i. a pattern matching engine. this whole site is one html file. no ai, no server, no tracking.',
 'about 300 lines of javascript. no language models. just keyword matching.',
 'if-statements all the way down. but every fact here is real.']},
@@ -496,7 +496,7 @@ function gr(i){
   for(const[k,v]of Object.entries(EG))if(c===k||c.includes(k))return v;
   // Match
   const m=mt(i);
-  if(!m.length)return['unknown. help exists.','not recognized.','no match. but help is always there.'][Math.floor(Math.random()*3)];
+  if(!m.length)return['try bankable, fees, or leeloo. or type help.','not sure what you mean. try help.','didn\'t catch that. bankable is a good place to start.','no match. but there are 45 topics and 30+ secrets in here.'][Math.floor(Math.random()*4)];
   const b=m[0];
   // Combo (two close topics)
   if(m.length>=2&&m[1].sc>=b.sc*.6){const a=pk(m[0].t),bb=pk(m[1].t);mm.l=m[0].t.id;mm.a.push(m[0].t.id,m[1].t.id);return a.split('. ').slice(0,2).join('. ')+'. also — '+bb.split('. ')[0].toLowerCase()+'.';}
