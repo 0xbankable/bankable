@@ -525,8 +525,32 @@ ci.addEventListener('keyup',checkGlow);
 ci.addEventListener('change',checkGlow);
 ci.addEventListener('focus',()=>setTimeout(checkGlow,50));
 function send(){const v=ci.value.trim();if(!v)return;add(v,true);ci.value='';sn.classList.remove('hot');const tmp=document.createElement('div');tmp.className='m';tmp.innerHTML='<span class="l">bankable ~$ </span><span class="cur"></span>';cs.insertBefore(tmp,cs.firstChild);const r=gr(v);setTimeout(()=>{cs.removeChild(tmp);add(r,false,true)},300+Math.random()*400)}
-// Welcome — Matrix-style hello, starts immediately
+// Welcome — randomized boot sequence then Matrix hello
 (function(){
+const boots=[
+['openclaw gateway started','bankable-agent loaded // v0.0.1-alpha','base mainnet // session active'],
+['openclaw gateway: port 3000','bankr/claude-opus-4.6 loaded','bankable v0.0.1-alpha ready'],
+['connecting to base mainnet...','bankable-agent registered','memory: compacted'],
+['openclaw gateway started','loading bankr/claude-opus-4.6...','bankable v0.0.1-alpha online'],
+['base mainnet connected','openclaw gateway: port 3000','bankable-agent: listening'],
+['openclaw gateway started','bankable-agent loaded // v0.0.1-alpha','cron: scheduler active'],
+['base mainnet // gas: <$0.001','bankr/claude-opus-4.6 loaded','bankable v0.0.1-alpha ready'],
+['openclaw gateway: reconnected','bankable-agent loaded // v0.0.1-alpha','heartbeat: ok']
+];
+const boot=boots[Math.floor(Math.random()*boots.length)];
+let delay=300;
+boot.forEach((line,i)=>{
+setTimeout(()=>{
+const d=document.createElement('div');d.className='m';
+const l=document.createElement('span');l.className='l';l.innerHTML='';
+const x=document.createElement('span');x.className='x';x.style.color='var(--dim)';
+x.textContent='> '+line;
+d.append(l,x);cs.insertBefore(d,cs.firstChild);
+},delay);
+delay+=250+Math.random()*150;
+});
+// Hello types after boot + 1 second pause
+setTimeout(()=>{
 const d=document.createElement('div');d.className='m';
 const l=document.createElement('span');l.className='l';l.innerHTML='bankable ~$ ';
 const x=document.createElement('span');x.className='x';
@@ -535,7 +559,8 @@ d.append(l,x,cu);cs.insertBefore(d,cs.firstChild);
 const txt='hello.';let i=0;
 const go=()=>{if(i>=txt.length){if(cu.parentNode)d.removeChild(cu);return}
 x.textContent+=txt[i];i++;setTimeout(go,140+Math.random()*100)};
-setTimeout(go,300);
+setTimeout(go,200);
+},delay+1000);
 })();
 sn.addEventListener('click',send);
 ci.addEventListener('keydown',e=>{if(e.key==='Enter')send()});
