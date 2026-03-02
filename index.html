@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#09090b;--s:#111114;--b:#1c1c20;--t:#a1a1aa;--hi:#e4e4e7;--dim:#52525b;--mut:#3f3f46;--gold:#c8a84c;--gd:#6b5a30;--grn:#4ade80;--red:#f87171;--f:'DM Mono',monospace}
+:root{--bg:#09090b;--s:#111114;--b:#1c1c20;--t:#a1a1aa;--hi:#e4e4e7;--dim:#71717a;--mut:#3f3f46;--gold:#c8a84c;--gd:#6b5a30;--grn:#4ade80;--red:#f87171;--f:'DM Mono',monospace}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;overflow:hidden;font:13px/1.65 var(--f);-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
 body{background:var(--bg);color:var(--t)}
@@ -66,7 +66,7 @@ body{background:var(--bg);color:var(--t)}
 /* Leaderboard */
 .li{display:flex;align-items:flex-start;padding:12px 16px;border-top:1px solid var(--b);gap:10px;text-decoration:none;color:inherit;transition:background .15s}
 .li:active{background:var(--s)}
-.li .rk{color:var(--mut);font-size:12px;min-width:18px;padding-top:1px}
+.li .rk{color:var(--dim);font-size:12px;min-width:18px;padding-top:1px}
 .li .info{flex:1;min-width:0}
 .li .n{color:var(--hi);font-size:13px}
 .li .sy{color:var(--gold);font-size:12px;margin-left:4px}
@@ -133,7 +133,7 @@ body{background:var(--bg);color:var(--t)}
   <div class="pn" id="ro">
     <div class="ls">
       <div class="lh">roster <span>in progress</span></div>
-      <div class="ri"><div><span class="nm">leeloo.eth</span><span class="tk">$LEELOO</span></div><span class="st">building</span></div>
+      <div class="ri"><div><span class="nm">leeloo.eth</span><span class="tk">$LEELOO</span></div><span class="st" style="color:var(--grn)">building</span></div>
       <div class="ri"><div><span class="nm">bankable.eth</span><span class="tk">$BANKABLE</span></div><span class="st">soon</span></div>
       <div class="ri"><div><span class="nm">budtender.eth</span><span class="tk">$BUDTENDER</span></div><span class="st">soon</span></div>
       <div class="ri"><div><span class="nm">normies.eth</span><span class="tk">$NORMIES</span></div><span class="st">soon</span></div>
@@ -181,7 +181,7 @@ document.getElementById('af').addEventListener('submit',async e=>{e.preventDefau
 const TK=[{a:'0x50d2280441372486beecdd328c1854743ebacb07',l:'clanker'},{a:'0x9f86db9fc6f7c9408e8fda3ff8ce4e78ac7a6b07',l:'clanker'},{a:'0xf30bf00edd0c22db54c9274b90d2a4c21fc09b07',l:'clanker'},{a:'0xb233bdffd437e60fa451f62c6c09d3804d285ba3',l:'bankr'},{a:'0xb695559b26bb2c9703ef1935c37aeae9526bab07',l:'clanker'},{a:'0x4e6c9f48f73e54ee5f3ab7e2992b2d733d0d0b07',l:'clanker'},{a:'0xa601877977340862ca67f816eb079958e5bd0ba3',l:'bankr'},{a:'0xe2f3fae4bc62e21826018364aa30ae45d430bb07',l:'clanker'},{a:'0xde61878b0b21ce395266c44d4d548d1c72a3eb07',l:'clanker'},{a:'0x9ae5f51d81ff510bf961218f833f79d57bfbab07',l:'clanker'},{a:'0x86cdd90bc48f7b5a866feaaf5023b8802dc2ab07',l:'clanker'},{a:'0x71a09f5b9b88976ebcc79183e0e99e7d07beabaf',l:'bankr'}];
 const lm=Object.fromEntries(TK.map(t=>[t.a.toLowerCase(),t.l]));
 function $(n){if(!n||n===0)return'—';if(n>=1e6)return'$'+(n/1e6).toFixed(2)+'M';if(n>=1e3)return'$'+(n/1e3).toFixed(1)+'K';return'$'+n.toFixed(0);}
-async function llb(){const bd=document.getElementById('lbb');try{const r=await fetch(`https://api.geckoterminal.com/api/v2/networks/base/tokens/multi/${TK.map(t=>t.a).join(',')}?include=top_pools`);const j=await r.json();const pp={};for(const p of(j.included||[]))if(p.type==='pool')pp[p.id]=parseFloat(p.attributes?.price_change_percentage?.h24||'0');let rw=(j.data||[]).map(t=>{const a=t.attributes,ad=a.address.toLowerCase();return{nm:a.name,sy:a.symbol,ad,mc:parseFloat(a.market_cap_usd||a.fdv_usd||'0'),v:parseFloat(a.volume_usd?.h24||'0'),h:(t.relationships?.top_pools?.data||[]).length?pp[(t.relationships.top_pools.data[0]||{}).id]||0:0,l:lm[ad]||'?'};});rw.sort((a,b)=>b.mc-a.mc);bd.innerHTML=rw.map((r,i)=>`<a href="https://dexscreener.com/base/${r.ad}" target="_blank" rel="noopener" class="li"><span class="rk">${i+1}</span><div class="info"><div><span class="n">${r.nm}</span><span class="sy">$${r.sy}</span></div><div class="mt">${$(r.v)} vol · ${r.l}</div></div><div><div class="mc">${$(r.mc)}</div><div class="ch ${r.h>=0?'grn':'red'}">${r.h>=0?'+':''}${r.h.toFixed(1)}%</div></div></a>`).join('');document.getElementById('lbs').textContent='live';}catch(e){bd.innerHTML='<div style="padding:40px 16px;text-align:center;color:var(--mut);font-size:12px">couldn\'t load — try again</div>';document.getElementById('lbs').textContent='offline';}}
+async function llb(){const bd=document.getElementById('lbb');try{const r=await fetch(`https://api.geckoterminal.com/api/v2/networks/base/tokens/multi/${TK.map(t=>t.a).join(',')}?include=top_pools`);const j=await r.json();const pp={};for(const p of(j.included||[]))if(p.type==='pool')pp[p.id]=parseFloat(p.attributes?.price_change_percentage?.h24||'0');let rw=(j.data||[]).map(t=>{const a=t.attributes,ad=a.address.toLowerCase();return{nm:a.name,sy:a.symbol,ad,mc:parseFloat(a.market_cap_usd||a.fdv_usd||'0'),v:parseFloat(a.volume_usd?.h24||'0'),h:(t.relationships?.top_pools?.data||[]).length?pp[(t.relationships.top_pools.data[0]||{}).id]||0:0,l:lm[ad]||'?'};});rw.sort((a,b)=>b.mc-a.mc);bd.innerHTML=rw.map((r,i)=>`<a href="https://dexscreener.com/base/${r.ad}" target="_blank" rel="noopener" class="li"><span class="rk">${i+1}</span><div class="info"><div><span class="n">${r.nm}</span><span class="sy">$${r.sy}</span></div><div class="mt">${$(r.v)} vol · ${r.l}</div></div><div><div class="mc">${$(r.mc)}</div><div class="ch ${r.h>=0?'grn':'red'}">${r.h>=0?'+':''}${r.h.toFixed(1)}%</div></div></a>`).join('');const lbsEl=document.getElementById('lbs');lbsEl.textContent='live';lbsEl.style.color='var(--grn)';}catch(e){bd.innerHTML='<div style="padding:40px 16px;text-align:center;color:var(--mut);font-size:12px">couldn\'t load — try again</div>';const lbsOff=document.getElementById('lbs');lbsOff.textContent='offline';lbsOff.style.color='var(--red)';}}
 llb();setInterval(llb,60000);
 
 // Chat brain
