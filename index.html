@@ -186,11 +186,11 @@ bankable:{k:['bankable','who are you','what is this','what is bankable','what do
 'not everyone gets in. bankable is selective. but the ones who do get a full package — token, agent, income, support.',
 'quality over quantity. always.']},
 fees:{k:['fee','fees','weth','cost','price','earn','revenue','split','percentage','cut','income','payout','commission','1.2'],r:[
-'fees. every time someone buys or sells a token, there is a 1.2% fee. half of that goes directly to the creator.',
-'on a $1,000 trade, the fee is $12. the creator gets $6, bankable gets $1.20, and $4.80 goes to bankr for running the infrastructure.',
-'no upfront costs. creators start earning from the very first trade. the money is paid in weth, which is a form of ethereum.',
-'if a token does $100k in daily trading volume, the creator earns about $600 a day. the math is straightforward.',
-'the 50/10/40 split is fixed and transparent. every transaction is recorded on the blockchain.']},
+'1.2% on every swap. half goes directly to the creator, paid in weth.',
+'on a $1,000 trade, the fee is $12. creator gets $6, bankable gets $1.20, and $4.80 runs the infrastructure.',
+'no upfront costs. creators start earning from the very first trade.',
+'$100k daily volume means about $600 a day for the creator. straightforward math.',
+'50/10/40 split. fixed. transparent. every transaction on the blockchain.']},
 apply:{k:['apply','signup','register','onboard','get listed','list me','application','submit','how to join','join'],r:[
 'applying. there is an apply tab at the top of this page. fill in your name, handle, and a short pitch. josh reviews every one within 48 hours.',
 'if you get accepted, bankable deploys your token, sets up your ai agent, and you start earning from trades right away. no cost to you.',
@@ -207,11 +207,11 @@ free:{k:['free','no cost','zero cost','how much to launch','launch cost','gas co
 'everything from token creation to ai agent setup is covered if you get approved.',
 'fully aligned. bankable does not get paid unless the creator gets paid first.']},
 agent:{k:['agent','gateway','ai agent','bot agent','my agent','llm','ai assistant'],r:[
-'the agent. every creator on bankable gets an ai assistant. it monitors your token, watches the market, and runs 24 hours a day.',
-'not a chatbot. the agent has its own wallet, can make decisions, and handles tasks automatically. like a digital manager that never sleeps.',
-'bankr routes each task to the best ai model for the job. the agent gets smarter as it handles more activity.',
-'the agent earns fees, pays for its own computing costs, and watches for patterns in trading activity.',
-'leeloo was the first agent to go fully autonomous.']},
+'every creator gets an ai agent. it monitors your token, watches the market, and runs 24 hours a day.',
+'not a chatbot. the agent has its own wallet, makes decisions, handles tasks. like a digital manager that never sleeps.',
+'bankr routes each task to the best ai model. the agent gets smarter as it handles more.',
+'it earns fees, pays for its own computing, and watches for patterns.',
+'leeloo was the first to go fully autonomous.']},
 token:{k:['token','launch','deploy','mint','contract','erc20','erc-20','smart contract'],r:[
 'the token. a digital currency on the base blockchain. when bankable launches your token, it goes live on uniswap — like a stock exchange for crypto.',
 'you never have to touch any code. bankr handles all the technical deployment.',
@@ -370,7 +370,15 @@ game:{k:['game','play','easter egg','secret','hidden','puzzle','hack','cheat','c
 'some names trigger things. some phrases. some numbers.',
 'the deployer has a nickname. leeloo has a password. the fire has a story.',
 'over 30 hidden responses exist. that is all i will say.']},
-greet:{k:['gm','hello','hey','hi','sup','yo','morning','gn','whats up','what\'s up','start','how are you','how are ya','howdy','hola','wassup','what\'s good','whats good','how goes','how\'s it going','hows it going','what is up','hey there','hi there','hello there','how you doing','what are you doing','what are you up to','you there','anybody there','anyone there','are you there'],r:['hey. bankable is a good place to start. or just ask me anything.','hey. try bankable, fees, or leeloo. or just ask.','hey. curious about something? i probably know.','hey. ask me anything. or type help to see what i know.']},
+greet:{k:['gm','hello','hey','hi','sup','yo','morning','gn','whats up','what\'s up','start','how are you','how are ya','howdy','hola','wassup','what\'s good','whats good','how goes','how\'s it going','hows it going','what is up','hey there','hi there','hello there','how you doing','what are you doing','what are you up to','you there','anybody there','anyone there','are you there'],r:[
+'hey. try typing bankable. or ask me anything.',
+'welcome. bankable, leeloo, fees — pick a word. or just ask.',
+'you made it. type anything. i will probably know.',
+'hey. curious? start with bankable. adventurous? start with game.',
+'this is a terminal. it knows things. try bankable or help.',
+'hello. i have 45 topics and over 30 secrets. where do you want to start?',
+'hey. the gold words are clickable. or type whatever you want.',
+'what do you want to know? bankable, the agents, the team — all fair game.']},
 thanks:{k:['thanks','thx','ty','appreciate'],r:['noted.','acknowledged.','np.']},
 meta:{k:['bot','are you ai','are you real','who am i talking to','chatgpt','claude','gpt','what are you','are you a bot','are you human','are you alive','is this ai','is anyone real','what is this thing','is this real','are you a person','who is this','what am i talking to'],r:[
 'what am i. a pattern matching engine. this whole site is one html file. no ai, no server, no tracking.',
@@ -457,34 +465,34 @@ function pk(t){const r=t.r,li=mm[t.id+'_']??-1;const i=(li+1)%r.length;mm[t.id+'
 // ═══ PROGRESSION PATHS ═══
 // Only needed for first-visit nudges. All responses already contain clickable guidance.
 const PATHS=[
-  // PATH A: what is this (4 stops)
-  ['bankable','fees','creators earn on every swap.'],
-  ['fees','agent','the agent is what makes it different.'],
-  ['agent','leeloo','leeloo is the proof it works.'],
-  // PATH B: who built this (4 stops)
+  // PATH A: what is this
+  ['bankable','fees','the fees tell the real story.'],
+  ['fees','agent','but the agent is what makes it work.'],
+  ['agent','leeloo','leeloo was first.'],
+  // PATH B: who built this
   ['bankr','deployer','one person started all of this.'],
-  ['deployer','team','he didn\'t do it alone.'],
-  ['team','josh','josh built bankable.'],
-  // PATH C: prove it (3 stops)
-  ['drb','clawd','clawd took it further.'],
-  ['clawd','trade','these tokens are live right now.'],
-  // CROSS-LINKS (natural connections, not chains)
-  ['leeloo','roster','she\'s on the roster.'],
-  ['money','fees','here\'s how the fees break down.'],
-  ['token','bankr','bankr handles deployment.'],
+  ['deployer','team','he built a team.'],
+  ['team','josh','josh built bankable on top of it.'],
+  // PATH C: prove it
+  ['drb','clawd','then clawd happened.'],
+  ['clawd','trade','these tokens are live.'],
+  // CROSS-LINKS
+  ['leeloo','roster','she is on the roster.'],
+  ['money','fees','the fee structure explains it.'],
+  ['token','bankr','bankr handles the rest.'],
   ['token','trade','tokens trade on uniswap.'],
   ['token','chain','all on base.'],
-  ['wallet','agent','the agent uses a wallet too.'],
-  ['wallet','privy','privy handles the wallet setup.'],
-  ['roster','bankable','that\'s bankable.'],
-  ['josh','leeloo','he\'s building leeloo.'],
-  ['josh','normies','normies is the other project.'],
+  ['wallet','agent','the agents use wallets too.'],
+  ['wallet','privy','privy makes it simple.'],
+  ['roster','bankable','that is bankable.'],
+  ['josh','leeloo','leeloo is his first build.'],
+  ['josh','normies','normies is the other one.'],
   ['leaderboard','token','every token launches the same way.'],
-  ['trade','leaderboard','the leaderboard is live.'],
+  ['trade','leaderboard','the leaderboard shows it all.'],
   ['normies','josh','josh is behind it.'],
-  ['normies','wallet','normies starts with a wallet.'],
-  ['game','zfi','the fire is a zfi reference.'],
-  ['zfi','bankr','zfi is part of the bankr ecosystem.'],
+  ['normies','wallet','it starts with a wallet.'],
+  ['game','zfi','the fire at the bottom is a clue.'],
+  ['zfi','bankr','all part of bankr.'],
 ];
 
 function gr(i){
@@ -523,7 +531,7 @@ function highlight(s){
   }).join('');
 }
 function scr(){cs.scrollTop=cs.scrollHeight}
-function add(t,u,st){const d=document.createElement('div');d.className='m'+(u?' u':'');const l=document.createElement('span');l.className='l';l.innerHTML=u?'you ~$ ':'bankable ~$ ';const x=document.createElement('span');x.className='x';d.append(l,x);cs.insertBefore(d,cs.firstChild);if(st&&!u){const ln=t.split('\n');let li=0,wi=0;const cu=document.createElement('span');cu.className='cur';d.appendChild(cu);const go=()=>{if(li>=ln.length){if(cu.parentNode)d.removeChild(cu);bindKw(d);return}const ws=ln[li].split(' ');if(wi<ws.length){if(li>0&&wi===0)x.innerHTML+='\n';x.innerHTML+=(wi>0?' ':'')+highlight(ws[wi]);wi++;let dl=25+Math.random()*35;const w=ws[wi-1];if(w&&/[.—:]$/.test(w))dl+=70;if(w&&w.endsWith(','))dl+=25;setTimeout(go,dl)}else{li++;wi=0;setTimeout(go,10)}};go()}else{if(u){x.textContent=t}else{x.innerHTML=highlight(t);bindKw(d)}}}
+function add(t,u,st){const d=document.createElement('div');d.className='m'+(u?' u':'');const l=document.createElement('span');l.className='l';l.innerHTML=u?'you ~$ ':'bankable ~$ ';const x=document.createElement('span');x.className='x';d.append(l,x);cs.insertBefore(d,cs.firstChild);if(st&&!u){const ln=t.split('\n');let li=0,wi=0;const cu=document.createElement('span');cu.className='cur';d.appendChild(cu);const go=()=>{if(li>=ln.length){if(cu.parentNode)d.removeChild(cu);bindKw(d);return}const ws=ln[li].split(' ');if(wi<ws.length){if(li>0&&wi===0)x.innerHTML+='\n';x.innerHTML+=(wi>0?' ':'')+highlight(ws[wi]);wi++;const w=ws[wi-1];let dl=20+Math.random()*25;if(w&&w.length<=2)dl=15;if(w&&w.length<=3)dl=18;if(w&&/[.]$/.test(w))dl+=120;if(w&&/[—:]$/.test(w))dl+=80;if(w&&/[,]$/.test(w))dl+=40;setTimeout(go,dl)}else{li++;wi=0;setTimeout(go,10)}};go()}else{if(u){x.textContent=t}else{x.innerHTML=highlight(t);bindKw(d)}}}
 function bindKw(el){el.querySelectorAll('.kw').forEach(k=>k.addEventListener('click',()=>{ci.value=k.dataset.q;send()}))}
 // Send button glow — multiple events for mobile compatibility
 function checkGlow(){sn.classList.toggle('hot',ci.value.trim().length>0)}
