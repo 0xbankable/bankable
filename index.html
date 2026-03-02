@@ -36,9 +36,9 @@ body{background:var(--bg);color:var(--t)}
 #cs::-webkit-scrollbar{display:none}
 .m{font-size:13px;line-height:1.6;word-break:break-word;white-space:pre-wrap;padding-bottom:2px}
 .m .l{color:var(--gd)}
-.m.u .l{color:var(--dim)}
+.m.u .l{color:var(--mut)}
 .m .x{color:var(--t)}
-.m.u .x{color:var(--dim)}
+.m.u .x{color:#71717a}
 
 #cb{flex-shrink:0;display:flex;align-items:center;border-bottom:1px solid var(--b);background:var(--bg)}
 #cb .pr{padding:0 0 0 14px;color:var(--gd);font-size:14px;user-select:none}
@@ -55,13 +55,13 @@ body{background:var(--bg);color:var(--t)}
 .ls{flex:1;overflow-y:auto;overscroll-behavior:contain;-webkit-mask-image:linear-gradient(to bottom,black 0%,black 75%,transparent 100%);mask-image:linear-gradient(to bottom,black 0%,black 75%,transparent 100%)}
 .ls::-webkit-scrollbar{display:none}
 .lh{padding:14px 16px 10px;font-size:11px;color:var(--dim);letter-spacing:.8px;text-transform:uppercase}
-.lh span{color:var(--mut);float:right}
+.lh span{color:var(--dim);float:right}
 
 /* Roster */
 .ri{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-top:1px solid var(--b)}
 .ri .nm{color:var(--gold);font-size:13px}
 .ri .tk{color:var(--gd);font-size:12px;margin-left:8px}
-.ri .st{color:var(--mut);font-size:11px}
+.ri .st{color:var(--dim);font-size:11px}
 
 /* Leaderboard */
 .li{display:flex;align-items:flex-start;padding:12px 16px;border-top:1px solid var(--b);gap:10px;text-decoration:none;color:inherit;transition:background .15s}
@@ -83,12 +83,13 @@ body{background:var(--bg);color:var(--t)}
 .fg .row{display:flex;gap:10px}
 .fg .row>*{flex:1}
 .fl{display:flex;flex-direction:column;gap:4px}
-.fl label{font-size:11px;color:var(--dim);letter-spacing:.5px}
-.fl input,.fl textarea,.fl select{width:100%;background:var(--s);border:1px solid var(--b);padding:10px;color:var(--t);font:14px var(--f);outline:none;border-radius:0;-webkit-appearance:none;transition:border-color .2s}
+.fl label{font-size:11px;color:var(--t);letter-spacing:.5px}
+.fl input,.fl textarea,.fl select{width:100%;background:var(--s);border:1px solid var(--b);padding:10px;color:var(--hi);font:14px var(--f);outline:none;border-radius:0;-webkit-appearance:none;transition:border-color .2s}
 .fl input:focus,.fl textarea:focus,.fl select:focus{border-color:var(--gd)}
 .fl input::placeholder,.fl textarea::placeholder{color:var(--mut)}
 .fl textarea{min-height:56px;resize:none}
-.fl select option{background:var(--bg)}
+.fl select{color:var(--hi)}
+.fl select option{background:var(--bg);color:var(--hi)}
 .ab{width:100%;margin-top:14px;padding:12px;font:600 13px var(--f);letter-spacing:.5px;background:#d4af37;color:#0a0a0a;border:none;cursor:pointer;transition:opacity .15s;border-radius:2px}
 .ab:hover{background:#e0c04a}
 .ab:active{opacity:.8}
@@ -146,7 +147,11 @@ body{background:var(--bg);color:var(--t)}
     <div class="ls">
       <div class="lh">apply</div>
       <div class="ad">onchain talent firm — curated launches for creators and agents. zero cost. built by <a href="https://x.com/0xbankable" target="_blank">josh.wei</a></div>
-      <form id="af">
+      <form id="af" action="https://formsubmit.co/0xbankable@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="bankable application">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://bankable.pages.dev/?applied=true">
         <div class="fg">
           <div class="row"><div class="fl"><label>name</label><input name="name" placeholder="alias" required></div><div class="fl"><label>x handle</label><input name="handle" placeholder="@" required></div></div>
           <div class="row"><div class="fl"><label>email</label><input name="email" type="email" placeholder="you@" required></div><div class="fl"><label>type</label><select name="type" required><option value="" disabled selected>—</option><option>human</option><option>agent</option></select></div></div>
@@ -167,8 +172,8 @@ document.querySelectorAll('#tabs button').forEach(b=>b.addEventListener('click',
   document.getElementById(b.dataset.t).classList.add('on');
 }));
 
-// Apply
-document.getElementById('af').addEventListener('submit',e=>{e.preventDefault();const f=e.target;const name=f.querySelector('input[name="name"]').value;const handle=f.querySelector('input[name="handle"]').value;const email=f.querySelector('input[name="email"]').value;const type=f.querySelector('select[name="type"]').value;const pitch=f.querySelector('textarea[name="pitch"]').value;const wallet=f.querySelector('input[name="wallet"]').value||'n/a';const body=encodeURIComponent('name: '+name+'\nhandle: '+handle+'\nemail: '+email+'\ntype: '+type+'\npitch: '+pitch+'\nwallet: '+wallet);const subj=encodeURIComponent('bankable application — '+handle);window.location.href='mailto:0xbankable@gmail.com?subject='+subj+'&body='+body;const b=f.querySelector('.ab');b.textContent='opening email ✓';b.style.background='#22c55e';setTimeout(()=>{b.textContent='submit';b.style.background=''},3000)});
+// Apply — sends directly to 0xbankable@gmail.com via formsubmit
+document.getElementById('af').addEventListener('submit',async e=>{e.preventDefault();const f=e.target;const b=f.querySelector('.ab');b.textContent='sending...';b.style.opacity='.6';try{const fd=new FormData(f);await fetch('https://formsubmit.co/ajax/0xbankable@gmail.com',{method:'POST',body:fd,headers:{'Accept':'application/json'}});b.textContent='sent ✓';b.style.background='#22c55e';b.style.opacity='1';f.reset()}catch(err){b.textContent='error — try again';b.style.background='var(--red)';b.style.opacity='1'}setTimeout(()=>{b.textContent='submit';b.style.background='';b.style.opacity=''},3000)});
 
 // Leaderboard
 const TK=[{a:'0x50d2280441372486beecdd328c1854743ebacb07',l:'clanker'},{a:'0x9f86db9fc6f7c9408e8fda3ff8ce4e78ac7a6b07',l:'clanker'},{a:'0xf30bf00edd0c22db54c9274b90d2a4c21fc09b07',l:'clanker'},{a:'0xb233bdffd437e60fa451f62c6c09d3804d285ba3',l:'bankr'},{a:'0xb695559b26bb2c9703ef1935c37aeae9526bab07',l:'clanker'},{a:'0x4e6c9f48f73e54ee5f3ab7e2992b2d733d0d0b07',l:'clanker'},{a:'0xa601877977340862ca67f816eb079958e5bd0ba3',l:'bankr'},{a:'0xe2f3fae4bc62e21826018364aa30ae45d430bb07',l:'clanker'},{a:'0xde61878b0b21ce395266c44d4d548d1c72a3eb07',l:'clanker'},{a:'0x9ae5f51d81ff510bf961218f833f79d57bfbab07',l:'clanker'},{a:'0x86cdd90bc48f7b5a866feaaf5023b8802dc2ab07',l:'clanker'},{a:'0x71a09f5b9b88976ebcc79183e0e99e7d07beabaf',l:'bankr'}];
@@ -589,6 +594,11 @@ setTimeout(go,200);
 })();
 sn.addEventListener('click',send);
 ci.addEventListener('keydown',e=>{if(e.key==='Enter')send()});
+// Check if returning from successful application
+if(new URLSearchParams(window.location.search).get('applied')){
+  history.replaceState(null,'','/');
+  setTimeout(()=>add('application sent. josh reviews every one within 48 hours.',false,true),2500);
+}
 
 // Fire
 (function(){const c=document.getElementById('fire'),x=c.getContext('2d'),W=160,H=60;c.width=W;c.height=H;const p=[];for(let i=0;i<37;i++){const t=i/36;let r,g,b;if(t<.33){const s=t/.33;r=s*100|0;g=s*40|0;b=0}else if(t<.66){const s=(t-.33)/.33;r=100+s*100|0;g=40+s*128|0;b=s*30|0}else{const s=(t-.66)/.34;r=200+s*55|0;g=168+s*82|0;b=30+s*180|0}p.push([r,g,b])}const f=new Uint8Array(W*H);for(let i=0;i<W;i++)f[(H-1)*W+i]=36;const img=x.createImageData(W,H);function go(){for(let i=0;i<W;i++)for(let y=1;y<H;y++){const s=y*W+i,d=(y-1)*W+Math.min(W-1,Math.max(0,i+(Math.random()*3|0)-1));f[d]=Math.max(0,f[s]-(Math.random()*2.5|0))}for(let i=0;i<W;i++)f[(H-1)*W+i]=30+(Math.random()*7|0);for(let i=0;i<W*H;i++){const c=p[f[i]],q=i*4;img.data[q]=c[0];img.data[q+1]=c[1];img.data[q+2]=c[2];img.data[q+3]=f[i]?Math.min(255,f[i]*12):0}x.putImageData(img,0,0);requestAnimationFrame(go)}go()})();
