@@ -190,17 +190,17 @@ bankable:{k:['bankable','what is this','who are you','what do you do','tell me a
 'bankable handles everything — the token, the agent, the trading setup. creators just bring talent. want to apply? there is a tab for that.',
 'not everyone gets in. selective. but the ones who do get a full package — token, agent, income. check the roster to see who is on.',
 'quality over quantity. always. curious how it works?']},
-fees:{k:['fee','fees','weth','cost','split','income','1.2','earn'],r:[
+fees:{k:['fee','fees','weth','cost','split','income','1.2','earn','tokenomics','revenue','revenue model'],r:[
 'the fees. 1.2% on every swap. half goes to the creator, paid in weth. on a $1,000 trade, the creator gets $6. the agent handles the rest.',
 'no upfront costs. creators start earning from the very first trade. bankr runs the infrastructure.',
 '$100k daily volume means about $600 a day for the creator. the math is simple.',
 '50/10/40 split — creator, bankable, bankr. fixed. transparent. every transaction on the blockchain.']},
-apply:{k:['apply','join','signup','register','application','submit','how to join','get listed'],r:[
+apply:{k:['apply','join','signup','register','application','submit','how to join','get listed','sign up','how do i sign up','do i need followers','what kind of people','do you take agents','whats the catch','who reviews applications'],r:[
 'there is an apply tab at the top of this page. fill in your name, handle, and a short pitch. josh reviews every one within 48 hours.',
 'if accepted, bankable deploys your token, sets up your agent, and you start earning from trades right away. zero cost.',
 'no follower minimums, but bankable looks for real signal — people or agents doing interesting work.',
 'the application is free. bankable only makes money when the creator makes money.']},
-process:{k:['process','steps','how does it work','how it works','pipeline'],r:[
+process:{k:['process','steps','how does it work','how it works','pipeline','how does this work','how long','how long does it take'],r:[
 'you apply, josh reviews it, and if approved your token gets deployed and an agent gets assigned. under a week.',
 'every application is reviewed by a human. no automated approvals.',
 'the pipeline: apply, vet, approve, deploy, assign agent, start earning.']},
@@ -216,7 +216,7 @@ token:{k:['token','launch','deploy','mint','contract','erc20'],r:[
 'a digital currency on base. when bankable launches your token, it goes live on uniswap — like a stock exchange for crypto.',
 'you never touch code. bankr handles deployment. every token launches fairly — no presale, no insider deals.',
 'all tokens have the same structure. the difference is who is behind it.']},
-chain:{k:['chain','base','coinbase','ethereum','network','mainnet'],r:[
+chain:{k:['chain','base','coinbase','ethereum','network','mainnet','blockchain','which chain','what blockchain'],r:[
 'everything runs on base, a blockchain built by coinbase. transactions cost less than a penny.',
 'base is built on top of ethereum but cheaper and faster. important because the agents make lots of small transactions.',
 'coinbase-backed, high speed, low cost. that is why everything lives here.']},
@@ -224,7 +224,7 @@ trade:{k:['trade','buy','sell','swap','trading','dex','uniswap','how to buy'],r:
 'trading. tokens trade on uniswap, a decentralized exchange on base. also on bankr swap and dexscreener. check the leaderboard tab for live prices.',
 'anyone with a crypto wallet and some ethereum on base can trade. no sign-ups.',
 'every trade generates income for the creator. that is the engine.']},
-leaderboard:{k:['leaderboard','dexscreener','ranking','volume','chart','stats','prices','mcap'],r:[
+leaderboard:{k:['leaderboard','dexscreener','ranking','volume','chart','stats','prices','mcap','market cap'],r:[
 'the leaderboard tab shows live data from geckoterminal. updates every 60 seconds. click any name for the full chart.',
 'sorted by market cap with 24-hour volume and price change. real numbers, real time.',
 'simplest way to see what is happening across the bankable roster.']},
@@ -262,7 +262,7 @@ deployer:{k:['deployer','0xdeployer','founder','who built bankr'],r:[
 'taught himself to code from a book at barnes and noble. bought ethereum at $80.',
 'previous projects: hamchain, tn100x, the lp. each one bigger. there is also a secret co-founder nobody can identify.',
 'first podcast was on zeropod. that is where the full origin story lives.']},
-josh:{k:['josh','josh.wei','0xbankable','who built this','who made this','builder'],r:[
+josh:{k:['josh','josh.wei','0xbankable','who built this','who made this','builder','who runs this','who reviews'],r:[
 'josh.wei. also known as @0xbankable. ethereum developer for over 6 years. built this terminal and bankable itself.',
 'owns the domains bankable.eth, normies.eth, and _base.eth.',
 'been in ethereum since the early days. reviews every application personally.',
@@ -315,11 +315,11 @@ privy:{k:['privy','seedless','invisible wallet'],r:[
 ens:{k:['ens','.eth','domains'],r:[
 'ens names. bankable.eth, normies.eth, _base.eth — three premium blockchain domains owned by josh. like web domains but onchain.',
 'bankable.eth is the brand. normies.eth is the newcomer project. _base.eth is the ecosystem play.']},
-safety:{k:['safe','safety','rug','scam','trust','security','dyor'],r:[
+safety:{k:['safe','safety','rug','scam','trust','security','dyor','risk','risks','audit','audited','is this audited'],r:[
 'every listing is reviewed by a human before the token is deployed. fair launch only. always do your own research.',
 'the agents have guardrails — transaction limits, treasury caps. they cannot go rogue.',
 'nothing in crypto is zero risk. curation reduces the surface area. dyor. always.']},
-compare:{k:['compare','pump','versus','pump.fun','vs','different'],r:[
+compare:{k:['compare','pump','versus','pump.fun','vs','different','competitors','competitor'],r:[
 'bankable vs pump.fun. pump.fun lets anyone launch a token. bankable only launches curated creators and agents.',
 'pump.fun gives you a token. bankable gives you a token, an agent, fee income, and a team.',
 'quantity versus quality. different approaches.']},
@@ -355,15 +355,15 @@ thanks:{k:['thanks','thx','ty','bye','goodbye','later','peace','exit','quit'],r:
 'noted. the terminal is always here.',
 'the agents never sleep. come back anytime.',
 'acknowledged.']},
-meta:{k:['bot','are you ai','are you real','what are you','chatgpt','claude','gpt','are you a bot','is this ai','who is this','what am i talking to'],r:[
+meta:{k:['bot','are you ai','are you real','what are you','chatgpt','claude','gpt','are you a bot','is this ai','who is this','what am i talking to','can i talk to someone','real person','human'],r:[
 'a pattern matching engine. this whole site is one html file. no ai, no server, no tracking.',
 'about 300 lines of javascript. no language models. just keywords and replies. but every fact here is real.',
 'not ai. not a chatbot. just if-statements. but the agents on the roster are real ai.']},
-degen:{k:['ngmi','fud','cope','shill','degen','ape','lambo','fren','anon','crypto','bitcoin','web3','blockchain'],r:[
+degen:{k:['ngmi','fud','cope','shill','degen','ape','lambo','fren','anon','crypto','bitcoin','web3','airdrop','staking'],r:[
 'curated. not a casino. the leaderboard tab has live tokens though.',
 'degen energy noted. bankable is building for the long term.',
 'tokens trade on base. not financial advice.']},
-bored:{k:['bored','idk','dunno','cool','nice','ok','okay','what else','tell me more','go on','continue','then what','neat','dope','next','interesting','lol','wow','huh','hmm','yep','yea','yeah','sure','alright','gotcha','sweet','sick','word','right'],r:[
+bored:{k:['bored','idk','dunno','cool','nice','ok','okay','what else','tell me more','go on','continue','then what','neat','dope','next','interesting','lol','wow','huh','hmm','yep','yea','yeah','sure','alright','gotcha','sweet','sick','right','confused','i dont understand','dont get it','what do you mean','explain more'],r:[
 'there is always more. try a name — deployer, leeloo, or clawd.',
 '45 topics. 30+ secrets.',
 'type a name — josh, danny, igor. or try leeloo, drb, clawd. the gold words are always clickable.',
