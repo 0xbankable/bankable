@@ -477,7 +477,7 @@ function gr(i){
 
   // Topic match: best wins, no combos
   const m=mt(i);
-  if(!m.length)return['i don\'t know that one yet. try help.','no match. i\'m still learning.','that\'s not in my training data. try help.','hmm. i\'ll remember you asked that.'][Math.floor(Math.random()*4)];
+  if(!m.length)return['try bankable or help.','not in my training data. try leeloo or help.','no match. try bankable or game.','hmm. type help or try deployer.'][Math.floor(Math.random()*4)];
 
   let r=pk(m[0].t);
   return r;
