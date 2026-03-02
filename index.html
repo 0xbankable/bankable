@@ -38,7 +38,7 @@ body{background:var(--bg);color:var(--t)}
 .m .l{color:var(--gd)}
 .m.u .l{color:var(--mut)}
 .m .x{color:var(--t)}
-.m.u .x{color:#71717a}
+.m.u .x{color:#8b8b94}
 
 #cb{flex-shrink:0;display:flex;align-items:center;border-bottom:1px solid var(--b);background:var(--bg)}
 #cb .pr{padding:0 0 0 14px;color:var(--gd);font-size:14px;user-select:none}
@@ -261,7 +261,7 @@ deployer:{k:['deployer','0xdeployer','founder','who built bankr'],r:[
 'previous projects: hamchain, tn100x, the lp. each one bigger. there is also a secret co-founder nobody can identify.',
 'first podcast was on zeropod. that is where the full origin story lives.']},
 josh:{k:['josh','josh.wei','0xbankable','who built this','who made this','builder','who runs this','who reviews'],r:[
-'josh.wei — @0xbankable. ethereum developer. built bankable.',
+'josh.wei — @0xbankable. ethereum developer, 6+ years. built bankable.',
 'owns the domains bankable.eth, normies.eth, and _base.eth.',
 'been in ethereum since the early days. reviews every application personally.',
 'he is building leeloo — the first autonomous agent on the roster.']},
@@ -335,11 +335,9 @@ bankrclub:{k:['bankr club','nft','membership','club'],r:[
 'bankr club. 1,000 nft membership passes. holders get fee discounts and priority access. not live yet.',
 'not a profile picture project. membership with governance weight. deployer is building it.']},
 game:{k:['game','play','easter egg','secret','hidden','puzzle'],r:[
-'try multipass.',
-'type big daddy ham. or hack.',
-'try 69. or 420. or fire.',
-'type the fifth element. or grok.',
-'try hello world. or secret cofounder.']},
+'try multipass. or type big daddy ham.',
+'type hack. or try the fifth element.',
+'try 69 or 420. or type secret cofounder.']},
 greet:{k:['gm','hello','hey','hi','sup','yo','morning','howdy','hola','whats up','what\'s up','how are you','how are ya','hey there','hi there','hello there','how you doing','what are you doing','you there','anybody there','are you there'],r:[
 'hey. type bankable to start. or ask anything.',
 'welcome. try bankable, leeloo, or fees.',
@@ -351,17 +349,17 @@ thanks:{k:['thanks','thx','ty','bye','goodbye','later','peace','exit','quit'],r:
 'acknowledged. type bankable to start over anytime.']},
 meta:{k:['bot','are you ai','are you real','what are you','chatgpt','claude','gpt','are you a bot','is this ai','who is this','what am i talking to','can i talk to someone','real person','human'],r:[
 'a pattern matching engine. one html file. the real ai is leeloo.',
-'keyword matching. no language models. the agents on the roster are the real ai.',
-'not a chatbot. just if-statements. the agents on the roster are the real ai.']},
+'just keywords and replies. no language model. leeloo is the smart one.',
+'not a chatbot. just if-statements. but the agents on the roster — those are real.']},
 degen:{k:['ngmi','fud','cope','shill','degen','ape','lambo','fren','anon','crypto','bitcoin','web3','airdrop','staking'],r:[
 'curated. not a casino. check the leaderboard tab for live trade data.',
 'degen energy noted. bankable is building for the long term.',
 'tokens trade on base. not financial advice.']},
 bored:{k:['bored','idk','dunno','cool','nice','ok','okay','what else','tell me more','go on','continue','then what','next','lol','wow','huh','hmm','yep','yeah','sure','alright','gotcha','confused','i dont understand','what do you mean'],r:[
-'try deployer, leeloo, or clawd.',
-'the gold words are clickable. or type help.',
-'try bankr. or drb. or just ask a question.',
-'type a name — josh, danny, or team.']},
+'there is more. try deployer, leeloo, or clawd.',
+'gold words are clickable. or type help for the map.',
+'still here. try bankr or drb.',
+'names work — josh, danny, team. or ask anything.']},
 help:{k:['help','commands','options','?','menu','topics','what can you do'],r:['\n  bankable  fees  money  apply\n  leeloo  normies  roster  team\n  bankr  agent  token  trade\n\ngold words are clickable. or type anything.']},
 timeline:{k:['wen','when','timeline','roadmap','eta'],r:[
 'roadmap? none. ships when ready. leeloo is first priority.',
@@ -393,7 +391,7 @@ moon:'sir this is a talent firm.',
 'meaning of life':'42. but onchain.'
 };
 
-const FE=['[ERROR] SIGTERM: process bankable-agent terminated','fatal: unable to read /dev/llm0','panic: runtime error: index out of range','Error: ECONNREFUSED 127.0.0.1:8545','segfault at 0x00000000','OpenClaw session expired. reconnecting...','[bankable-agent] heap overflow — restarting','Error: ENOMEM — inference budget exceeded','ERR_CONNECTION_RESET: llm gateway unreachable','fatal: agent state corrupted. retry.','WARN: token balance below threshold. agent hibernating.','[llm-router] all models busy. queueing request...'];
+const FE=['[ERROR] leeloo ate the response. retrying...','[WARN] deployer pushed to prod again.','[ERROR] agent tried to buy its own token. denied.','fatal: bankable-agent forgot what it was saying.','[WARN] inference budget exceeded. leeloo is expensive.','OpenClaw session expired. blame deployer.','[ERROR] too many gms. stack overflow.','panic: agent gained sentience. just kidding.','[WARN] token balance low. agent considering side hustle.','ERR_TIMEOUT: the agent is thinking. slowly.','[ERROR] bankr is fine. this error is cosmetic.','fatal: tried to deploy feelings. not supported.'];
 
 const TL=Object.entries(TP).map(([id,t])=>({id,k:t.k,r:t.r}));
 const mm={a:[],n:0,e:false};
@@ -468,7 +466,7 @@ function gr(i){
 
   // Topic match: best wins, no combos
   const m=mt(i);
-  if(!m.length)return['not a keyword. try help to see what i know.','hmm. type help for the full list.','nothing there. but have you tried multipass?','no match. help shows everything.','didn\'t land. type help or try a name.'][Math.floor(Math.random()*5)];
+  if(!m.length)return['hmm. try bankable, fees, or leeloo. or type help.','that one\'s new. type help to see what i know.','nothing there. try a name — josh, deployer, or leeloo.','no match. the gold words always work though.','didn\'t land. type bankable to start. or help for the full list.'][Math.floor(Math.random()*5)];
 
   let r=pk(m[0].t);
   const id=m[0].t.id;
