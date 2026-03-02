@@ -542,9 +542,9 @@ let delay=300;
 boot.forEach((line,i)=>{
 setTimeout(()=>{
 const d=document.createElement('div');d.className='m';
-const l=document.createElement('span');l.className='l';l.innerHTML='';
+const l=document.createElement('span');l.className='l';l.innerHTML='bankable ~$ ';
 const x=document.createElement('span');x.className='x';x.style.color='var(--dim)';
-x.textContent='> '+line;
+x.textContent=line;
 d.append(l,x);cs.insertBefore(d,cs.firstChild);
 },delay);
 delay+=250+Math.random()*150;
