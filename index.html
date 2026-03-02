@@ -518,11 +518,15 @@ function highlight(s){
 function scr(){cs.scrollTop=cs.scrollHeight}
 function add(t,u,st){const d=document.createElement('div');d.className='m'+(u?' u':'');const l=document.createElement('span');l.className='l';l.innerHTML=u?'you ~$ ':'bankable ~$ ';const x=document.createElement('span');x.className='x';d.append(l,x);cs.insertBefore(d,cs.firstChild);if(st&&!u){const ln=t.split('\n');let li=0,wi=0;const cu=document.createElement('span');cu.className='cur';d.appendChild(cu);const go=()=>{if(li>=ln.length){if(cu.parentNode)d.removeChild(cu);bindKw(d);return}const ws=ln[li].split(' ');if(wi<ws.length){if(li>0&&wi===0)x.innerHTML+='\n';x.innerHTML+=(wi>0?' ':'')+highlight(ws[wi]);wi++;let dl=25+Math.random()*35;const w=ws[wi-1];if(w&&/[.—:]$/.test(w))dl+=70;if(w&&w.endsWith(','))dl+=25;setTimeout(go,dl)}else{li++;wi=0;setTimeout(go,10)}};go()}else{if(u){x.textContent=t}else{x.innerHTML=highlight(t);bindKw(d)}}}
 function bindKw(el){el.querySelectorAll('.kw').forEach(k=>k.addEventListener('click',()=>{ci.value=k.dataset.q;send()}))}
-// Send button glow
-ci.addEventListener('input',()=>{sn.classList.toggle('hot',ci.value.trim().length>0)});
+// Send button glow — multiple events for mobile compatibility
+function checkGlow(){sn.classList.toggle('hot',ci.value.trim().length>0)}
+ci.addEventListener('input',checkGlow);
+ci.addEventListener('keyup',checkGlow);
+ci.addEventListener('change',checkGlow);
+ci.addEventListener('focus',()=>setTimeout(checkGlow,50));
 function send(){const v=ci.value.trim();if(!v)return;add(v,true);ci.value='';sn.classList.remove('hot');const tmp=document.createElement('div');tmp.className='m';tmp.innerHTML='<span class="l">bankable ~$ </span><span class="cur"></span>';cs.insertBefore(tmp,cs.firstChild);const r=gr(v);setTimeout(()=>{cs.removeChild(tmp);add(r,false,true)},300+Math.random()*400)}
-// Welcome — slow Matrix hello
-setTimeout(()=>{
+// Welcome — Matrix-style hello, starts immediately
+(function(){
 const d=document.createElement('div');d.className='m';
 const l=document.createElement('span');l.className='l';l.innerHTML='bankable ~$ ';
 const x=document.createElement('span');x.className='x';
@@ -530,9 +534,9 @@ const cu=document.createElement('span');cu.className='cur';
 d.append(l,x,cu);cs.insertBefore(d,cs.firstChild);
 const txt='hello.';let i=0;
 const go=()=>{if(i>=txt.length){if(cu.parentNode)d.removeChild(cu);return}
-x.textContent+=txt[i];i++;setTimeout(go,120+Math.random()*80)};
-setTimeout(go,600);
-},400);
+x.textContent+=txt[i];i++;setTimeout(go,140+Math.random()*100)};
+setTimeout(go,200);
+})();
 sn.addEventListener('click',send);
 ci.addEventListener('keydown',e=>{if(e.key==='Enter')send()});
 
