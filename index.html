@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,interactive-widget=resizes-content">
 <title>Bankable</title>
+<meta name="description" content="Onchain talent firm. Token + agent + fee income for creators and AI agents.">
+<meta property="og:title" content="Bankable">
+<meta property="og:description" content="Onchain talent firm. Token + agent + fee income.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bankable.pages.dev">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bankable">
+<meta name="twitter:description" content="Onchain talent firm. Token + agent + fee income.">
+<meta name="theme-color" content="#09090b">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⬡</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -125,7 +135,7 @@ body{background:var(--bg);color:var(--t)}
   <div class="pn on" id="ch">
     <div id="cb">
       <span class="pr">&gt;</span>
-      <input type="text" id="in" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+      <input type="text" id="in" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-label="Chat with bankable" placeholder="type here...">
       <button id="snd">↵</button>
     </div>
     <div id="cs"></div>
@@ -580,9 +590,9 @@ const l=document.createElement('span');l.className='l';l.innerHTML='bankable ~$ 
 const x=document.createElement('span');x.className='x';
 const cu=document.createElement('span');cu.className='cur';
 d.append(l,x,cu);cs.insertBefore(d,cs.firstChild);
-const txt='hello.';let i=0;
-const go=()=>{if(i>=txt.length){if(cu.parentNode)d.removeChild(cu);return}
-x.textContent+=txt[i];i++;setTimeout(go,140+Math.random()*100)};
+const txt='hey. try bankable or help.';let i=0;
+const go=()=>{if(i>=txt.length){if(cu.parentNode)d.removeChild(cu);x.innerHTML=highlight(txt);bindKw(d);return}
+x.textContent+=txt[i];i++;setTimeout(go,50+Math.random()*40)};
 setTimeout(go,200);
 },delay+1000);
 })();
