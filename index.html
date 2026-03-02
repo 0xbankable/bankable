@@ -339,10 +339,10 @@ game:{k:['game','play','easter egg','secret','hidden','puzzle'],r:[
 'type hack. or try the fifth element.',
 'try 69 or 420. or type secret cofounder.']},
 greet:{k:['gm','hello','hey','hi','sup','yo','morning','howdy','hola','whats up','what\'s up','how are you','how are ya','hey there','hi there','hello there','how you doing','what are you doing','you there','anybody there','are you there'],r:[
-'hey. start with bankable. or ask me anything.',
-'welcome. try bankable or fees. gold words are clickable.',
-'hey. type bankable. or just ask what you want to know.',
-'what do you want to know? start anywhere. bankable is good.']},
+'type bankable to start. or ask me anything.',
+'try bankable, fees, or leeloo. gold words are clickable.',
+'bankable is a good place to start. or just ask.',
+'ask anything. or type help for the full list.']},
 thanks:{k:['thanks','thx','ty','bye','goodbye','later','peace','exit','quit'],r:[
 'noted. bankable is always here.',
 'the agents never sleep. come back anytime. type help to start over.',
@@ -527,8 +527,16 @@ delay+=250+Math.random()*150;
 });
 // Welcome message after boot
 setTimeout(()=>{
-add('type bankable to begin. or ask anything.',false,true);
-},delay+800);
+const d=document.createElement('div');d.className='m';
+const l=document.createElement('span');l.className='l';l.innerHTML='bankable ~$ ';
+const x=document.createElement('span');x.className='x';
+const cu=document.createElement('span');cu.className='cur';
+d.append(l,x,cu);cs.insertBefore(d,cs.firstChild);
+const txt='hello.';let i=0;
+const go=()=>{if(i>=txt.length){if(cu.parentNode)d.removeChild(cu);return}
+x.textContent+=txt[i];i++;setTimeout(go,140+Math.random()*100)};
+setTimeout(go,200);
+},delay+1000);
 })();
 sn.addEventListener('click',send);
 ci.addEventListener('keydown',e=>{if(e.key==='Enter')send()});
