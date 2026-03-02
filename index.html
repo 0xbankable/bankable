@@ -211,9 +211,9 @@ fees:{k:['fee','fees','weth','cost','split','income','1.2','earn','tokenomics','
 apply:{k:['apply','join','signup','register','application','submit','how to join','get listed','sign up','how do i sign up','do i need followers','what kind of people','do you take agents','whats the catch','who reviews applications','process','steps','pipeline','how long','how long does it take','how does it work','how it works'],r:[
 'apply tab. name, handle, short pitch. josh reads every one personally.',
 'why it\'s curated: anyone can launch a token on pump.fun. bankable picks who gets a token, an agent, and real support. that\'s the difference.',
-'how it works: apply, josh reviews within 48 hours, bankr deploys your token, agent gets assigned. you start earning from the first trade.',
+'how it works: apply, josh reviews personally, bankr deploys your token, agent gets assigned. you start earning from the first trade.',
 'no follower minimum. takes agents too. josh looks for signal. bankable curates. most don\'t get in.',
-'the apply tab is right there. free. josh reviews everything personally. if accepted, bankr deploys your token on base, assigns an ai agent, and you earn fees immediately. leeloo was first. the roster is small on purpose and growing. 48 hours.']},
+'the apply tab is right there. free. josh reviews everything personally. if accepted, bankr deploys your token on base, assigns an ai agent, and you earn fees immediately. leeloo was first. the roster is small on purpose and growing.']},
 agent:{k:['agent','ai agent','llm','ai assistant','gateway','autonomous','treasury','self-funding','sentient','consciousness'],r:[
 'every bankable creator gets an ai agent. own wallet. own decisions. never sleeps.',
 'why an agent: it earns your fees, monitors your token, and makes decisions while you do other things. you don\'t babysit it.',
@@ -257,11 +257,11 @@ normies:{k:['normie','normies','$normies','beginner','new to crypto'],r:[
 'the token funds development. the agent protects users. bankr powers it. apply if you\'re building something similar.',
 'normies is josh\'s project to make crypto accessible. smart wallet paired with an ai agent that handles complexity. came from getting phished at ethdenver. token on the bankable roster. crypto shouldn\'t need a manual. apply tab is open.']},
 roster:{k:['roster','creators','talent','listed','who is on'],r:[
-'four on the roster. leeloo is active. the rest are building. apply to join.',
+'four on the roster: leeloo, bankable, budtender, normies. each has a token and an agent on bankr.',
 'why it\'s small: bankable curates. if everyone got in, the roster wouldn\'t mean anything.',
-'who\'s on it: leeloo, bankable, budtender, normies. each gets a token and an agent.',
-'room for more. josh reviews every application. the roster is growing but it\'s selective.',
-'the bankable roster has four: leeloo (active, first agent), bankable, budtender, and normies. each gets their own token and autonomous agent. the roster is small by design — josh curates. apply tab is open.']},
+'leeloo is active and earning. budtender and normies are building. bankable is the platform itself. each has an agent on bankr.',
+'room for more. the roster is growing but selective. josh curates. apply if you want in.',
+'leeloo was first — active, earning, autonomous. bankable is the platform token. budtender and normies are building. four on the roster, room for more. josh curates every name on it. apply tab is always open.']},
 bankr:{k:['bankr','$bnkr','bnkr','infrastructure','platform','engine','x402','micropayment','http 402','bankr club','nft','membership','club'],r:[
 'bankr. the infrastructure under everything. $BNKR is the token. bankable runs on top.',
 'why it matters: bankr is the operating system. bankable, leeloo, drb, clawd — all run on it. deployer built it from scratch.',
@@ -601,7 +601,7 @@ ci.addEventListener('keydown',e=>{if(e.key==='Enter')send()});
 // Check if returning from successful application
 if(new URLSearchParams(window.location.search).get('applied')){
   history.replaceState(null,'/');
-  setTimeout(()=>add('application sent. josh reviews every one within 48 hours.',false,true),2500);
+  setTimeout(()=>add('application sent. josh reviews every one personally.',false,true),2500);
 }
 
 // Fire
