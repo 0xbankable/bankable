@@ -180,13 +180,13 @@ llb();setInterval(llb,60000);
 // Chat brain
 const TP={
 bankable:{k:['bankable','who are you','what is this','what is bankable','what do you do','talent firm','curation','curated'],r:[
-'onchain talent firm. we find good people, launch their token, give them an ai agent. they keep most of the money.',
+'onchain talent firm. token, agent, fees — all handled. creators keep most of the money.',
 'curated launches on base. we handle the token, the agent, the liquidity. you bring the talent.',
 'bankable.eth, normies.eth, _base.eth. three domains, one thesis: creators should own what they build.',
 'the filter. not everyone gets listed. the ones that do get everything.',
 'quality over quantity. always has been.']},
 fees:{k:['fee','fees','weth','cost','price','earn','revenue','split','percentage','cut','income','payout','commission','1.2'],r:[
-'1.2% on every swap. half goes to the creator. paid in weth.',
+'1.2% on every swap. half goes to the creator, paid in weth. the other half runs the agent and infrastructure.',
 '$1,000 trade, $12 fee. $6 to you, $1.20 to bankable, $4.80 to bankr. every single swap.',
 'no upfront cost. no vesting. fees start immediately.',
 '$100k daily volume means $600 a day. the math is simple.',
@@ -207,7 +207,7 @@ free:{k:['free','no cost','zero cost','how much to launch','launch cost','gas co
 'we only make money when you make money.',
 'everything from token to agent is covered if you get approved.']},
 agent:{k:['agent','gateway','ai agent','bot agent','my agent','llm','ai assistant'],r:[
-'every creator gets one. it monitors your token, watches the market, runs 24/7.',
+'every creator gets one. monitors the token, watches the market, runs 24/7. leeloo was the first to go fully autonomous.',
 'not a chatbot. it has its own wallet. it makes decisions.',
 'bankr routes each task to the best model available. the agent adapts.',
 'it receives fees, pays for its own compute, and never sleeps.',
@@ -233,7 +233,7 @@ leaderboard:{k:['leaderboard','dexscreener','top','ranking','volume','mcap','mar
 'click any name for the dexscreener chart. nothing cached.',
 'real numbers. real time.']},
 leeloo:{k:['leeloo','$leeloo','first agent','leeloo dallas'],r:[
-'first agent on the roster. inspired by the fifth element. fully autonomous.',
+'first agent on the roster. inspired by the fifth element. fully autonomous. multipass. if you know, you know.',
 'she earns from her own token and pays for her own compute. self-funding loop.',
 'leeloo dallas. learns, earns, thinks, acts. multipass. if you know, you know.',
 'if she works, everything works. she is the proof of concept.',
@@ -259,13 +259,13 @@ autonomous:{k:['autonomous','treasury','self-funding','self-sustaining','sentien
 'the target: an agent that checks its own treasury and decides what to do next.',
 'not chatbots. economic actors.']},
 bankr:{k:['bankr','bankrbot','infrastructure','infra','platform','engine','$bnkr','bnkr','ecosystem','eco'],r:[
-'the infrastructure under everything. wallets, deployment, trading, ai gateway. $BNKR on coinbase.',
+'the infrastructure under everything. wallets, deployment, trading, ai gateway. $BNKR on coinbase. deployer built it from scratch.',
 'deploys tokens, routes trades, powers agents. the operating system.',
 'bankr to bankable is aws to a startup.',
 '$BNKR. coinbase-listed. the native token of the agent economy on base.',
 'full stack: bankr infra, clanker deployment, openclaw agents, bankable curation.']},
 deployer:{k:['deployer','0xdeployer','founder','who built bankr','who made bankr','who runs bankr'],r:[
-'pseudonymous. berkeley. taught himself to code from a book at barnes and noble. first eth at $80.',
+'pseudonymous. berkeley. taught himself to code from a book at barnes and noble. bought eth at $80. built a team around it.',
 'built hamchain, tn100x, the lp before any of this. there is also a secret co-founder nobody knows.',
 'cryptokitties got him into ethereum. farcaster came next. then bankr. big daddy ham is part of the lore.',
 'hamchain → tn100x → the lp → bankr. each one bigger.',
@@ -276,12 +276,12 @@ josh:{k:['josh','josh.wei','0xbankable','who built this','who made this','who bu
 'been in ethereum since early days. ens collector. building the agent economy now.',
 'reviews every application. the human in the loop.']},
 drb:{k:['drb','grok','debtreliefbot','debt relief','grok token','grok coin','$drb'],r:[
-'march 2025. someone asked grok to name something. it said debtreliefbot. bankr deployed it via clanker. first ai-to-ai launch.',
+'march 2025. grok named a token. bankr deployed it. $40M in 72 hours. then clawd happened and it got weirder.',
 '$40M market cap in 72 hours. 96k traders in two weeks. grok\'s wallet made $600k+ in fees.',
 'an ai named it. another ai deployed it. outperformed most protocols that weekend.',
 'agent-to-agent commerce. it actually happened.']},
 clawd:{k:['clawd','$clawd','austin griffith','autonomous coder','coding agent'],r:[
-'austin griffith\'s coding agent. 20 repos in 8 days. 3 production apps shipped.',
+'austin griffith\'s coding agent. 20 repos in 8 days. 3 production apps. admin key burned. these tokens trade live right now.',
 'admin key sent to 0x...dEaD. irreversible. no human can override it now.',
 'burns 500k tokens an hour on missed deadlines. real stakes.',
 'proof that agents can ship real code.']},
@@ -301,7 +301,7 @@ openclaw:{k:['openclaw','open claw','agent framework','skills','modules'],r:[
 'extensible. new capabilities without redeploying the core.',
 'everything the agents know flows through openclaw.']},
 team:{k:['team','staff','who works','employees','bankr team'],r:[
-'deployer in berkeley. danny in miami. igor in nyc. aspyn, ex-meta. sinaver in crimea. plus one nobody can identify.',
+'deployer in berkeley. danny in miami. igor in nyc. aspyn, ex-meta. sinaver in crimea. josh built bankable on top of it.',
 '6 people. 5 known. names: danny, igor, aspyn, sinaver.',
 'small. each person owns their piece completely.',
 'the secret co-founder question has come up before.']},
@@ -458,31 +458,27 @@ function pk(t){const r=t.r,li=mm[t.id+'_']??-1;const i=(li+1)%r.length;mm[t.id+'
 // ═══ PROGRESSION PATHS ═══
 // Only needed for first-visit nudges. All responses already contain clickable guidance.
 const PATHS=[
-  // PATH A: what is this → now you know
-  ['bankable','fees','the fees are where it gets interesting.'],
-  ['fees','agent','every creator gets an agent.'],
-  ['agent','leeloo','leeloo was the first.'],
-  ['leeloo','roster','she is on the roster.'],
-  ['roster','josh','josh built all of this.'],
-  // PATH B: lore → rabbit hole → eggs
-  ['bankr','deployer','deployer built all of this.'],
-  ['deployer','drb','drb is the wildest story here.'],
-  ['drb','clawd','clawd is a different kind of agent.'],
-  ['clawd','openclaw','openclaw is the brain behind it.'],
-  ['openclaw','zfi','zfi goes deeper.'],
-  ['zfi','game','there is a hidden layer.'],
-  // PATH C: money → markets → data
-  ['money','trade','the markets are live.'],
-  ['trade','leaderboard','the leaderboard has everything.'],
-  ['leaderboard','token','every token launches the same way.'],
-  ['token','bankr','bankr handles all of it.'],
-  // CONNECTORS (one-shot links between paths)
-  ['team','deployer','deployer runs it all.'],
-  ['josh','normies','normies is the other project.'],
-  ['normies','team','the team is small.'],
-  ['game','deployer','deployer has the deepest lore.'],
-  ['apply','process','the process is human-reviewed.'],
-  ['process','roster','the roster shows who made it.'],
+  // PATH A: what is this (4 stops)
+  ['bankable','fees','creators earn on every swap.'],
+  ['fees','agent','the agent is what makes it different.'],
+  ['agent','leeloo','leeloo is the proof it works.'],
+  // PATH B: who built this (4 stops)
+  ['bankr','deployer','one person started all of this.'],
+  ['deployer','team','he didn\'t do it alone.'],
+  ['team','josh','josh built bankable.'],
+  // PATH C: prove it (3 stops)
+  ['drb','clawd','clawd took it further.'],
+  ['clawd','trade','these tokens are live right now.'],
+  // CROSS-LINKS (natural connections, not chains)
+  ['leeloo','roster','she\'s on the roster.'],
+  ['money','fees','here\'s how the fees break down.'],
+  ['token','bankr','bankr handles deployment.'],
+  ['roster','bankable','that\'s bankable.'],
+  ['josh','leeloo','he\'s building leeloo.'],
+  ['trade','leaderboard','the leaderboard is live.'],
+  ['normies','josh','josh is behind it.'],
+  ['game','zfi','the fire is a zfi reference.'],
+  ['zfi','openclaw','openclaw powers the agents.'],
 ];
 
 function gr(i){
@@ -499,9 +495,9 @@ function gr(i){
   // Combo (two close topics)
   if(m.length>=2&&m[1].sc>=b.sc*.6){const a=pk(m[0].t),bb=pk(m[1].t);mm.l=m[0].t.id;mm.a.push(m[0].t.id,m[1].t.id);return a.split('. ').slice(0,2).join('. ')+'. also — '+bb.split('. ')[0].toLowerCase()+'.';}
   let r=pk(b.t);const id=b.t.id;
-  // Breadcrumb: lead forward, or tease at dead ends
+  // Breadcrumb: only if the next topic isn't already mentioned
   const next=PATHS.find(p=>p[0]===id&&!mm.a.includes(p[1]));
-  if(next)r+=' '+next[2];
+  if(next&&!r.toLowerCase().includes(next[1]))r+=' '+next[2];
   mm.l=id;mm.a.push(id);return r;
 }
 
