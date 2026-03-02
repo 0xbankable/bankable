@@ -396,7 +396,7 @@ meta:{k:['bot','are you ai','are you real','who am i talking to','chatgpt','clau
 'about 300 lines of javascript. no language models. just keyword matching.',
 'if-statements all the way down. but every fact here is real.',
 'not ai. not a chatbot. just keywords and replies. everything here is true though.']},
-degen:{k:['ngmi','fud','cope','shill','degen','ape','lambo','ser','fren','anon','crypto','bitcoin','btc','eth','web3','decentralized','blockchain','defi','nft'],r:[
+degen:{k:['ngmi','fud','cope','shill','degen','ape','lambo','ser','fren','anon','crypto','bitcoin','btc','web3','decentralized','blockchain'],r:[
 'curated. not a casino. the leaderboard tab has live tokens though.',
 'degen energy noted. building for the long term.',
 'tokens trade. not financial advice.',
@@ -473,25 +473,46 @@ matrix:'the pixel fire? aesthetic choice. zfi vibes. the matrix runs on base.',
 const FE=['[ERROR] SIGTERM: process bankable-agent terminated','fatal: unable to read /dev/llm0','panic: runtime error: index out of range','Error: ECONNREFUSED 127.0.0.1:8545','segfault at 0x00000000','OpenClaw session expired. reconnecting...','[bankable-agent] heap overflow — restarting','Error: ENOMEM — inference budget exceeded','ERR_CONNECTION_RESET: llm gateway unreachable','fatal: agent state corrupted. retry.','WARN: token balance below threshold. agent hibernating.','[llm-router] all models busy. queueing request...'];
 
 const TL=Object.entries(TP).map(([id,t])=>({id,k:t.k,r:t.r}));
-const mm={a:[],l:null,n:0,e:false};
-function mt(i){const c=i.toLowerCase().replace(/[^a-z0-9$. ']/g,' ').trim(),w=c.split(/\s+/),s=[];for(const t of TL){let sc=0;for(const k of t.k){if(k.includes(' ')){if(c.includes(k))sc+=3}else{for(const x of w){if(x===k)sc+=2;else if(x.length>=4&&k.length>=4&&(x.includes(k)||k.includes(x)))sc+=1}}}if(sc>0)s.push({t,sc})}s.sort((a,b)=>b.sc-a.sc);return s}
-function pk(t){const r=t.r,li=mm[t.id+'_']??-1;const i=(li+1)%r.length;mm[t.id+'_']=i;return r[i]}
+const mm={a:[],n:0,e:false};
 
-// ═══ PROGRESSION PATHS ═══
-// Only needed for first-visit nudges. All responses already contain clickable guidance.
+// MATCHING: exact words only, phrase bonus, no fuzzy
+function mt(i){
+  const c=i.toLowerCase().replace(/[^a-z0-9$. ']/g,' ').trim();
+  const w=c.split(/\s+/);
+  const s=[];
+  for(const t of TL){
+    let sc=0;
+    for(const k of t.k){
+      if(k.includes(' ')){
+        if(c===k)sc+=5;
+        else if(c.includes(k))sc+=3;
+      }else{
+        if(w.includes(k))sc+=2;
+      }
+    }
+    if(sc>0)s.push({t,sc});
+  }
+  s.sort((a,b)=>b.sc-a.sc);
+  return s;
+}
+
+function pk(t){
+  const r=t.r,li=mm[t.id+'_']??-1;
+  const i=(li+1)%r.length;
+  mm[t.id+'_']=i;
+  return r[i];
+}
+
+// PROGRESSION: breadcrumbs that guide without forcing
 const PATHS=[
-  // PATH A: what is this
   ['bankable','fees','the fees tell the real story.'],
   ['fees','agent','but the agent is what makes it work.'],
   ['agent','leeloo','leeloo was first.'],
-  // PATH B: who built this
   ['bankr','deployer','one person started all of this.'],
   ['deployer','team','he built a team.'],
   ['team','josh','josh built bankable on top of it.'],
-  // PATH C: prove it
   ['drb','clawd','then clawd happened.'],
   ['clawd','trade','these tokens are live.'],
-  // CROSS-LINKS
   ['leeloo','roster','she is on the roster.'],
   ['money','fees','the fee structure explains it.'],
   ['token','bankr','bankr handles the rest.'],
@@ -510,25 +531,33 @@ const PATHS=[
   ['zfi','bankr','all part of bankr.'],
 ];
 
+// RESPONSE: EG exact only, best match wins, no combos
 function gr(i){
-  mm.n++;const c=i.toLowerCase().replace(/[^a-z0-9$. '@_]/g,' ').trim();
-  // Fake error 3%
+  mm.n++;
+  const c=i.toLowerCase().replace(/[^a-z0-9$. '@_]/g,' ').trim();
+
+  // Fake error 3% after warmup
   if(!mm.e&&Math.random()<.03&&mm.n>3){mm.e=true;return FE[Math.floor(Math.random()*FE.length)]}
   mm.e=false;
-  // Easter eggs
-  for(const[k,v]of Object.entries(EG))if(c===k||c.includes(k))return v;
-  // Match
+
+  // Easter eggs: EXACT full input match only
+  if(EG[c])return EG[c];
+
+  // Topic match: best wins, no combos
   const m=mt(i);
   if(!m.length)return['not a keyword. try help to see what i know.','hmm. type help for the full list.','nothing there. but have you tried multipass?','no match. help shows everything.','didn\'t land. type help or try a name.'][Math.floor(Math.random()*5)];
-  const b=m[0];
-  // Combo (two close topics)
-  if(m.length>=2&&m[1].sc>=b.sc*.6){const a=pk(m[0].t),bb=pk(m[1].t);mm.l=m[0].t.id;mm.a.push(m[0].t.id,m[1].t.id);return a.split('. ').slice(0,2).join('. ')+'. also — '+bb.split('. ')[0].toLowerCase()+'.';}
-  let r=pk(b.t);const id=b.t.id;
-  // Breadcrumb: only if the next topic isn't already mentioned
+
+  let r=pk(m[0].t);
+  const id=m[0].t.id;
+
+  // Breadcrumb: one nudge toward next topic
   const next=PATHS.find(p=>p[0]===id&&!mm.a.includes(p[1]));
   if(next&&!r.toLowerCase().includes(next[1]))r+=' '+next[2];
-  mm.l=id;mm.a.push(id);return r;
+
+  mm.a.push(id);
+  return r;
 }
+
 
 // UI
 const cs=document.getElementById('cs'),ci=document.getElementById('in'),sn=document.getElementById('snd');
