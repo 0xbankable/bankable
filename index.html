@@ -436,7 +436,7 @@ const mm={a:[],n:0,e:false};
 
 // MATCHING: exact words only, phrase bonus, no fuzzy
 function mt(i){
-  const c=i.toLowerCase().replace(/[^a-z0-9$. ']/g,' ').trim();
+  const c=i.toLowerCase().replace(/[^a-z0-9$. '\-]/g,' ').trim();
   const w=c.split(/\s+/);
   const s=[];
   for(const t of TL){
@@ -493,7 +493,7 @@ const PATHS=[
 // RESPONSE: EG exact only, best match wins, no combos
 function gr(i){
   mm.n++;
-  const c=i.toLowerCase().replace(/[^a-z0-9$. '@_]/g,' ').trim();
+  const c=i.toLowerCase().replace(/[^a-z0-9$. '@_\-]/g,' ').trim();
 
   // Fake error 3% after warmup
   if(!mm.e&&Math.random()<.03&&mm.n>3){mm.e=true;return FE[Math.floor(Math.random()*FE.length)]}
