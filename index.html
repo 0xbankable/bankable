@@ -366,10 +366,12 @@ bankrclub:{k:['bankr club','bankrclub','nft','nfts','membership','member','pass'
 'limited to 1,000. not live yet. deployer hinted at it on zeropod.',
 'the inner circle.']},
 game:{k:['game','play','easter egg','secret','hidden','puzzle','hack','cheat','code'],r:[
-'there are hidden responses scattered through this terminal. most people never find them.',
-'some names trigger things. some phrases. some numbers.',
-'the deployer has a nickname. leeloo has a password. the fire has a story.',
-'over 30 hidden responses exist. that is all i will say.']},
+'there are over 30 hidden responses in this terminal. try typing multipass.',
+'the deployer has a nickname. type big daddy ham.',
+'some numbers work. try 69 or 420.',
+'type god mode. or sudo. or hack. see what happens.',
+'the fire at the bottom has a story. type fire.',
+'try typing gm gm gm. or wagmi. or based. the terminal has opinions.']},
 greet:{k:['gm','hello','hey','hi','sup','yo','morning','gn','whats up','what\'s up','start','how are you','how are ya','howdy','hola','wassup','what\'s good','whats good','how goes','how\'s it going','hows it going','what is up','hey there','hi there','hello there','how you doing','what are you doing','what are you up to','you there','anybody there','anyone there','are you there'],r:[
 'hey. try typing bankable. or ask me anything.',
 'welcome. bankable, leeloo, fees — pick a word. or just ask.',
@@ -388,11 +390,13 @@ degen:{k:['ngmi','fud','cope','shill','degen','ape','lambo','ser','fren','anon']
 'curated. not a casino. the leaderboard tab has live tokens though.',
 'degen energy noted. building for the long term.',
 'tokens trade. not financial advice.']},
-bored:{k:['bored','idk','dunno','nothing','meh','nm','idc'],r:[
-'there is always more.',
-'secrets exist here.',
-'the rabbit hole goes deep.',
-'unexpected words sometimes work.']},
+bored:{k:['bored','idk','dunno','nothing','meh','nm','idc','cool','nice','interesting','wow','ok','okay','what else','tell me more','more','go on','continue','and','then what','so','neat','dope','sick','fire','lit','word'],r:[
+'there is always more. try a name. or a number. or something unexpected.',
+'45 topics. 30+ secrets. you have barely scratched the surface.',
+'type a name — deployer, leeloo, clawd. or go deeper with game.',
+'the gold words in every response are clickable. follow them.',
+'try bankr. or drb. or just type help to see the map.',
+'keep going. the best stuff is hidden.']},
 help:{k:['help','commands','options','?','menu','what can you do','topics'],r:['\n  bankable  fees  money  apply\n  leeloo  normies  roster  team\n  bankr  agent  token  trade\n\nmore is hidden.']},
 timeline:{k:['wen','when','timeline','roadmap','eta','soon','date','launch date'],r:[
 'roadmap. there is none.',
@@ -447,7 +451,7 @@ matrix:'the pixel fire? aesthetic choice. zfi vibes. the matrix runs on base.',
 'konami':'up up down down left right left right b a start. you know the code.',
 'the deployer':'the man, the myth, the ham. berkeley. barnes & noble. $80 eth. the rest writes itself.',
 'why fire':'because bankr is fire. zfi is fire. ethereum is fire. and dark terminals look cool with flames.',
-'josh':'josh.wei. @0xbankable. 6 years deep. still building.',
+'josh wei':'the builder. 6 years in ethereum. ens collector. agent architect.',
 'bankable.eth':'the name says it all. onchain identity for an onchain talent firm.',
 'moon':'sir this is a talent firm.',
 'alpha':'you\'re looking at it. the alpha is the terminal you\'re typing in right now.',
@@ -504,7 +508,7 @@ function gr(i){
   for(const[k,v]of Object.entries(EG))if(c===k||c.includes(k))return v;
   // Match
   const m=mt(i);
-  if(!m.length)return['try bankable, fees, or leeloo. or type help.','not sure what you mean. try help.','didn\'t catch that. bankable is a good place to start.','no match. but there are 45 topics and 30+ secrets in here.'][Math.floor(Math.random()*4)];
+  if(!m.length)return['not a keyword. but try bankable, leeloo, or game.','hmm. type help to see the map. or just try a name.','nothing there. but have you tried multipass?','no match. try bankr, deployer, or help.','didn\'t land. type game if you want to find secrets.'][Math.floor(Math.random()*5)];
   const b=m[0];
   // Combo (two close topics)
   if(m.length>=2&&m[1].sc>=b.sc*.6){const a=pk(m[0].t),bb=pk(m[1].t);mm.l=m[0].t.id;mm.a.push(m[0].t.id,m[1].t.id);return a.split('. ').slice(0,2).join('. ')+'. also — '+bb.split('. ')[0].toLowerCase()+'.';}
