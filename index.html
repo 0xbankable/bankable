@@ -525,18 +525,10 @@ d.append(l,x);cs.insertBefore(d,cs.firstChild);
 },delay);
 delay+=250+Math.random()*150;
 });
-// Hello types after boot + 1 second pause
+// Welcome message after boot
 setTimeout(()=>{
-const d=document.createElement('div');d.className='m';
-const l=document.createElement('span');l.className='l';l.innerHTML='bankable ~$ ';
-const x=document.createElement('span');x.className='x';
-const cu=document.createElement('span');cu.className='cur';
-d.append(l,x,cu);cs.insertBefore(d,cs.firstChild);
-const txt='hello.';let i=0;
-const go=()=>{if(i>=txt.length){if(cu.parentNode)d.removeChild(cu);return}
-x.textContent+=txt[i];i++;setTimeout(go,140+Math.random()*100)};
-setTimeout(go,200);
-},delay+1000);
+add('type bankable to begin. or ask anything.',false,true);
+},delay+800);
 })();
 sn.addEventListener('click',send);
 ci.addEventListener('keydown',e=>{if(e.key==='Enter')send()});
