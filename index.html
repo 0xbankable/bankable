@@ -187,9 +187,9 @@ llb();setInterval(llb,60000);
 // Chat brain
 const TP={
 bankable:{k:['bankable','what is this','who are you','what do you do','tell me about yourself','about you','about this'],r:[
-'bankable. creators and ai agents get their own token. every trade pays them. that\'s the whole model.',
 'think record label but crypto. you bring the talent, we bring the token, the agent, and the income.',
-'not everyone gets in. but the ones who do earn from day one.']},
+'not everyone gets in. but the ones who do earn from day one. josh reviews every application.',
+'token, agent, trading, support — all handled. creators just bring the audience.']},
 fees:{k:['fee','fees','weth','cost','split','income','1.2','earn','tokenomics','revenue','revenue model'],r:[
 'every swap has a 1.2% fee. half goes straight to the creator. someone trades $1,000 of your token — you get $6 in your wallet.',
 'no upfront costs. creators start earning from the very first trade. bankr runs the infrastructure.',
@@ -229,9 +229,9 @@ leaderboard:{k:['leaderboard','dexscreener','ranking','volume','chart','stats','
 'sorted by market cap with 24-hour volume and price change. real numbers, real time.',
 'simplest way to see what is happening across the bankable roster.']},
 leeloo:{k:['leeloo','$leeloo','leeloo dallas'],r:[
-'leeloo. first agent on the roster. she earns her own money and pays for her own brain.',
-'named after the fifth element. learns everything. try typing multipass.',
-'if leeloo works, everything works. she is the proof of concept.']},
+'leeloo. first agent on the roster. earns her own money. pays for her own brain.',
+'named after the fifth element. fully autonomous. try typing multipass.',
+'if leeloo works, everything works. she\'s the proof of concept. josh is building her.']},
 normies:{k:['normie','normies','$normies','beginner','new to crypto'],r:[
 'normies. a project to make crypto simple for newcomers. wallet, agent, and token — all designed to be easy.',
 'a smart wallet paired with an ai assistant that handles the confusing parts for you. josh is behind it.',
@@ -339,14 +339,14 @@ game:{k:['game','play','easter egg','secret','hidden','puzzle'],r:[
 'type hack. or try the fifth element.',
 'try 69 or 420. or type secret cofounder.']},
 greet:{k:['gm','hello','hey','hi','sup','yo','morning','howdy','hola','whats up','what\'s up','how are you','how are ya','hey there','hi there','hello there','how you doing','what are you doing','you there','anybody there','are you there'],r:[
-'type bankable to start. or ask me anything.',
-'try bankable, fees, or leeloo. gold words are clickable.',
-'bankable is a good place to start. or just ask.',
-'ask anything. or type help for the full list.']},
+'bankable launches creators and ai agents with their own token. every trade pays them.',
+'you\'re looking at a talent firm for the internet. creators get a token, an agent, and income from every trade.',
+'bankable. creators and agents get their own token. every swap generates fees. that\'s the model.',
+'onchain talent firm. token, agent, income — all from trading fees. ask about fees or leeloo.']},
 thanks:{k:['thanks','thx','ty','bye','goodbye','later','peace','exit','quit'],r:[
-'noted. bankable is always here.',
-'the agents never sleep. come back anytime. type help to start over.',
-'acknowledged. type bankable to start over anytime.']},
+'noted. the apply tab is always open.',
+'the agents never sleep. neither does the apply tab.',
+'come back anytime. or apply before you go.']},
 meta:{k:['bot','are you ai','are you real','what are you','chatgpt','claude','gpt','are you a bot','is this ai','who is this','what am i talking to','can i talk to someone','real person','human'],r:[
 'a pattern matching engine. one html file. the real ai is leeloo.',
 'just keywords and replies. no language model. leeloo is the smart one.',
@@ -356,10 +356,10 @@ degen:{k:['ngmi','fud','cope','shill','degen','ape','lambo','fren','anon','crypt
 'degen energy noted. bankable is building for the long term.',
 'tokens trade on base. not financial advice.']},
 bored:{k:['bored','idk','dunno','cool','nice','ok','okay','what else','tell me more','go on','continue','then what','next','lol','wow','huh','hmm','yep','yeah','sure','alright','gotcha','confused','i dont understand','what do you mean'],r:[
-'there is more. try deployer, leeloo, or clawd.',
-'gold words are clickable. or type help for the map.',
-'still here. try bankr or drb.',
-'names work — josh, danny, team. or ask anything.']},
+'ask about fees — that\'s where the money is.',
+'try leeloo. she\'s the first autonomous agent.',
+'type deployer for the origin story. or drb for the wildest launch.',
+'gold words are clickable. type help for everything.']},
 help:{k:['help','commands','options','?','menu','topics','what can you do'],r:['\n  bankable  fees  money  apply\n  leeloo  normies  roster  team\n  bankr  agent  token  trade\n\ngold words are clickable. or type anything.']},
 timeline:{k:['wen','when','timeline','roadmap','eta'],r:[
 'roadmap? none. ships when ready. leeloo is first priority.',
@@ -426,18 +426,23 @@ function pk(t){
 
 // PROGRESSION: breadcrumbs that guide without forcing
 const PATHS=[
-  ['bankable','fees','the fees are where it gets interesting.'],
-  ['fees','agent','but the agent is what makes it all work.'],
+  // MAIN: greet → fees → agent → leeloo → apply (5 turns!)
+  ['greet','fees','the fees are where it gets interesting.'],
+  ['bankable','fees','the fees explain everything.'],
+  ['fees','agent','but the agent is what makes it work.'],
   ['agent','leeloo','leeloo was the first.'],
-  ['leeloo','roster','she is on the roster.'],
-  ['roster','apply','want in? apply tab.'],
+  ['leeloo','apply','want in? apply tab.'],
+  // TRUST: josh → bankr → deployer → team
   ['josh','bankr','he built on top of bankr.'],
   ['bankr','deployer','one person built it.'],
   ['deployer','team','he didn\'t do it alone.'],
   ['team','josh','josh built bankable on top.'],
+  // PROOF: drb → clawd → trade → leaderboard
   ['drb','clawd','and then clawd happened.'],
   ['clawd','trade','these tokens trade live.'],
   ['trade','leaderboard','leaderboard has live numbers.'],
+  // CROSS-LINKS
+  ['roster','apply','want in? apply tab.'],
   ['money','fees','the fee split explains everything.'],
   ['token','trade','tokens trade on uniswap.'],
   ['leaderboard','apply','want to launch one? apply tab.'],
@@ -462,7 +467,7 @@ function gr(i){
 
   // Topic match: best wins, no combos
   const m=mt(i);
-  if(!m.length)return['hmm. try bankable, fees, or leeloo. or type help.','that one\'s new. type help to see what i know.','nothing there. try a name — josh, deployer, or leeloo.','no match. the gold words always work though.','didn\'t land. type bankable to start. or help for the full list.'][Math.floor(Math.random()*5)];
+  if(!m.length)return['hmm. try fees or leeloo.','that one\'s new. try deployer or drb.','no match. ask about fees — that\'s where it starts.','the gold words always work. or type help.','didn\'t land. try leeloo or type help.'][Math.floor(Math.random()*5)];
 
   let r=pk(m[0].t);
   const id=m[0].t.id;
