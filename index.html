@@ -508,7 +508,7 @@ function gr(i){
   for(const[k,v]of Object.entries(EG))if(c===k||c.includes(k))return v;
   // Match
   const m=mt(i);
-  if(!m.length)return['not a keyword. but try bankable, leeloo, or game.','hmm. type help to see the map. or just try a name.','nothing there. but have you tried multipass?','no match. try bankr, deployer, or help.','didn\'t land. type game if you want to find secrets.'][Math.floor(Math.random()*5)];
+  if(!m.length)return['not a keyword. try help to see what i know.','hmm. type help for the full list.','nothing there. but have you tried multipass?','no match. help shows everything.','didn\'t land. type help or try a name.'][Math.floor(Math.random()*5)];
   const b=m[0];
   // Combo (two close topics)
   if(m.length>=2&&m[1].sc>=b.sc*.6){const a=pk(m[0].t),bb=pk(m[1].t);mm.l=m[0].t.id;mm.a.push(m[0].t.id,m[1].t.id);return a.split('. ').slice(0,2).join('. ')+'. also — '+bb.split('. ')[0].toLowerCase()+'.';}
