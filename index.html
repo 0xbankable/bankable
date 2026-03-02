@@ -290,11 +290,11 @@ clanker:{k:['clanker','farcaster','$clanker','token launcher','deployment engine
 'deployed over 13,000 tokens per day at peak. bankr used it for most launches including $drb.',
 'proved that tokens could be created and launched instantly at massive scale.',
 'bankr is building native deployment now. clanker proved the model.']},
-zfi:{k:['zfi','z_fi','ross','z0r0','superdapp','$zorg','zorg','zamm','ross.wei'],r:[
-'zfi. ross.wei\\'s project. zamm is the dex — simplest swapping with the best lp experience. all onchain.',
-'ross.wei. ethereum og. built zamm, wei.domains. been building since the early days.',
+zfi:{k:['zfi','z_fi','ross','z0r0','superdapp','$zorg','zorg','zamm','ross.wei','wei domains','wei.domains'],r:[
+'zfi. ross.wei\'s project. home of wei.domains — onchain names like josh.wei, bankable.wei, bank.wei. the naming layer.',
+'ross.wei built zamm, a minimal onchain dex, and wei.domains for onchain identity. ethereum og.',
 'the pixel fire at the bottom of this page is a zfi reference. the fire is real.',
-'$zorg is the token. dark terminal aesthetic. vibefi.']},
+'$zorg is the token. dark terminal aesthetic. the vibefi corner of the ecosystem.']},
 openclaw:{k:['openclaw','open claw','agent framework','skills','modules'],r:[
 'openclaw. the framework that powers bankr\'s ai agents. think of it as the brain — agents plug in new skills as needed.',
 'agents can learn new things without being rebuilt. modular, like apps on a phone.',
@@ -385,7 +385,7 @@ bored:{k:['bored','idk','dunno','nothing','meh','nm','idc'],r:[
 'secrets exist here.',
 'the rabbit hole goes deep.',
 'unexpected words sometimes work.']},
-help:{k:['help','commands','options','?','menu','what can you do','topics'],r:['\\n  bankable  fees  money  apply\\n  leeloo  normies  roster  team\\n  bankr  agent  token  trade\\n\\nmore is hidden.']},
+help:{k:['help','commands','options','?','menu','what can you do','topics'],r:['\n  bankable  fees  money  apply\n  leeloo  normies  roster  team\n  bankr  agent  token  trade\n\nmore is hidden.']},
 timeline:{k:['wen','when','timeline','roadmap','eta','soon','date','launch date'],r:[
 'roadmap. there is none.',
 'ships when ready.',
@@ -455,7 +455,6 @@ function mt(i){const c=i.toLowerCase().replace(/[^a-z0-9$. ']/g,' ').trim(),w=c.
 function pk(t){const r=t.r,li=mm[t.id+'_']??-1;const i=(li+1)%r.length;mm[t.id+'_']=i;return r[i]}
 
 // ═══ PROGRESSION PATHS ═══
-// ═══ PROGRESSION PATHS ═══
 // Only needed for first-visit nudges. All responses already contain clickable guidance.
 const PATHS=[
   // PATH A: what is this (4 stops)
@@ -522,8 +521,18 @@ function bindKw(el){el.querySelectorAll('.kw').forEach(k=>k.addEventListener('cl
 // Send button glow
 ci.addEventListener('input',()=>{sn.classList.toggle('hot',ci.value.trim().length>0)});
 function send(){const v=ci.value.trim();if(!v)return;add(v,true);ci.value='';sn.classList.remove('hot');const tmp=document.createElement('div');tmp.className='m';tmp.innerHTML='<span class="l">bankable ~$ </span><span class="cur"></span>';cs.insertBefore(tmp,cs.firstChild);const r=gr(v);setTimeout(()=>{cs.removeChild(tmp);add(r,false,true)},300+Math.random()*400)}
-// Welcome — just hello. user types first.
-add('hello.',false,true);
+// Welcome — slow Matrix hello
+setTimeout(()=>{
+const d=document.createElement('div');d.className='m';
+const l=document.createElement('span');l.className='l';l.innerHTML='bankable ~$ ';
+const x=document.createElement('span');x.className='x';
+const cu=document.createElement('span');cu.className='cur';
+d.append(l,x,cu);cs.insertBefore(d,cs.firstChild);
+const txt='hello.';let i=0;
+const go=()=>{if(i>=txt.length){if(cu.parentNode)d.removeChild(cu);return}
+x.textContent+=txt[i];i++;setTimeout(go,120+Math.random()*80)};
+setTimeout(go,600);
+},400);
 sn.addEventListener('click',send);
 ci.addEventListener('keydown',e=>{if(e.key==='Enter')send()});
 
