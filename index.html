@@ -209,7 +209,7 @@ process:{k:['process','steps','how does it work','how it works','pipeline','how 
 'the pipeline: apply, vet, approve, deploy, assign agent. then the agent takes over.']},
 free:{k:['free','zero cost','launch cost','gas cost'],r:[
 'zero cost. bankr covers deployment. bankable takes 10% of fees. we only eat when you eat.']},
-agent:{k:['agent','ai agent','bot','llm','ai assistant','gateway'],r:[
+agent:{k:['agent','ai agent','llm','ai assistant','gateway'],r:[
 'every creator on bankable gets one. own wallet. own decisions. leeloo was first.',
 'not a chatbot. it moves money and pays for its own compute on bankr.',
 'the agent watches the market, earns fees, and makes decisions. no human in the loop.',
@@ -336,7 +336,7 @@ x402:{k:['x402','micropayment','http 402'],r:[
 bankrclub:{k:['bankr club','nft','membership','club'],r:[
 'bankr club. 1,000 nft passes. fee discounts + governance. not live yet.']},
 game:{k:['game','play','easter egg','secret','hidden','puzzle'],r:[
-'try multipass. or hack. or big daddy ham. or type bankable to learn what this is.',
+'try multipass. or hack. or big daddy ham. or bankable for the real stuff.',
 'type the fifth element. or secret cofounder. or 69. or leeloo for the real ai.',
 'hello world. fire. 420. or type deployer for the origin story.',
 'try sudo. or rug me. or grok. or fees if you want the money math.',
@@ -510,7 +510,7 @@ const KWSET=new Set(['bankable','fees','agent','leeloo','apply','bankr','deploye
 function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 function highlight(s){
   return s.split(/(\s+)/).map(w=>{
-    const clean=w.toLowerCase().replace(/[^a-z0-9]/g,'');
+    const clean=w.toLowerCase().replace(/[^a-z0-9]/g);
     if(KWSET.has(clean)){
       const m=w.match(/^([^a-zA-Z0-9$]*)([$]?.*?)([^a-zA-Z0-9]*)$/);
       return esc(m[1])+'<span class="kw" data-q="'+esc(clean)+'">'+esc(m[2])+'</span>'+esc(m[3]);
@@ -569,7 +569,7 @@ sn.addEventListener('click',send);
 ci.addEventListener('keydown',e=>{if(e.key==='Enter')send()});
 // Check if returning from successful application
 if(new URLSearchParams(window.location.search).get('applied')){
-  history.replaceState(null,'','/');
+  history.replaceState(null,'/');
   setTimeout(()=>add('application sent. josh reviews every one within 48 hours.',false,true),2500);
 }
 
