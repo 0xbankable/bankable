@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,interactive-widget=resizes-content">
 <title>Bankable</title>
+<meta name="description" content="Onchain talent firm. Token + agent + fee income for creators and AI agents.">
+<meta property="og:title" content="Bankable">
+<meta property="og:description" content="Onchain talent firm. Token + agent + fee income.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bankable.pages.dev">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bankable">
+<meta name="twitter:description" content="Onchain talent firm. Token + agent + fee income.">
+<meta name="theme-color" content="#09090b">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⬡</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -125,7 +135,7 @@ body{background:var(--bg);color:var(--t)}
   <div class="pn on" id="ch">
     <div id="cb">
       <span class="pr">&gt;</span>
-      <input type="text" id="in" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+      <input type="text" id="in" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-label="Chat with bankable" placeholder="type here...">
       <button id="snd">↵</button>
     </div>
     <div id="cs"></div>
@@ -197,7 +207,7 @@ fees:{k:['fee','fees','weth','cost','split','income','1.2','earn','tokenomics','
 apply:{k:['apply','join','signup','register','application','submit','how to join','get listed','sign up','how do i sign up','do i need followers','what kind of people','do you take agents','whats the catch','who reviews applications','process','steps','pipeline','how long','how long does it take','how does it work','how it works'],r:[
 'apply tab. name, handle, short pitch. josh reads every one. 48 hours.',
 'zero cost. bankr deploys your token. agent assigned. you start earning from the first trade.',
-'no follower minimum. creators and agents. josh looks for signal. bankable curates.']},
+'no follower minimum. creators and agents. josh looks for signal. bankable curates. it\'s safe — every launch is reviewed.']},
 agent:{k:['agent','ai agent','llm','ai assistant','gateway','autonomous','treasury','self-funding','sentient','consciousness'],r:[
 'every bankable creator gets one. own wallet. own decisions. leeloo was first.',
 'it earns your fees, monitors your token, makes decisions. leeloo was first. bankr powers it.',
@@ -211,7 +221,7 @@ chain:{k:['chain','base','coinbase','ethereum','network','mainnet','blockchain',
 'agents make lots of small transactions. bankr runs everything on base. bankable chose it for speed.',
 'base is the network. bankr is the infrastructure. bankable is the curation layer. apply to join.']},
 trade:{k:['trade','buy','sell','swap','trading','dex','uniswap','how to buy'],r:[
-'tokens trade on uniswap and bankr swap. leaderboard has live prices.',
+'tokens trade on uniswap and bankr swap. check the leaderboard for live prices.',
 'every trade pays the creator. every swap. want your own token? apply.',
 'anyone with a wallet can trade bankable tokens on base. no sign-ups.']},
 leaderboard:{k:['leaderboard','dexscreener','ranking','volume','chart','stats','prices','mcap','market cap'],r:[
@@ -520,9 +530,9 @@ const l=document.createElement('span');l.className='l';l.innerHTML='bankable ~$ 
 const x=document.createElement('span');x.className='x';
 const cu=document.createElement('span');cu.className='cur';
 d.append(l,x,cu);cs.insertBefore(d,cs.firstChild);
-const txt='hello.';let i=0;
-const go=()=>{if(i>=txt.length){if(cu.parentNode)d.removeChild(cu);return}
-x.textContent+=txt[i];i++;setTimeout(go,140+Math.random()*100)};
+const txt='hey. try bankable or help.';let i=0;
+const go=()=>{if(i>=txt.length){if(cu.parentNode)d.removeChild(cu);x.innerHTML=highlight(txt);bindKw(d);return}
+x.textContent+=txt[i];i++;setTimeout(go,50+Math.random()*40)};
 setTimeout(go,200);
 },delay+1000);
 })();
