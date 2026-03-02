@@ -535,7 +535,7 @@ d.append(l,x,cu);cs.insertBefore(d,cs.firstChild);
 const txt='hello.';let i=0;
 const go=()=>{if(i>=txt.length){if(cu.parentNode)d.removeChild(cu);return}
 x.textContent+=txt[i];i++;setTimeout(go,140+Math.random()*100)};
-setTimeout(go,200);
+setTimeout(go,300);
 })();
 sn.addEventListener('click',send);
 ci.addEventListener('keydown',e=>{if(e.key==='Enter')send()});
