@@ -97,6 +97,17 @@ body{background:var(--bg);color:var(--t)}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 .cur::after{content:'█';color:var(--gd);animation:blink .8s step-end infinite;font-size:12px}
 
+/* Egg effects */
+@keyframes scanline{0%{background-position:0 0}100%{background-position:0 100%}}
+@keyframes glitch{0%,100%{transform:translate(0)}20%{transform:translate(-2px,1px)}40%{transform:translate(2px,-1px)}60%{transform:translate(-1px,2px)}80%{transform:translate(1px,-2px)}}
+@keyframes flash{0%{opacity:1}50%{opacity:.3}100%{opacity:1}}
+.egg-scan .x{color:#4ade80!important;text-shadow:0 0 8px #4ade8066}
+.egg-glitch{animation:glitch .3s ease 3}
+.egg-flash .x{animation:flash .15s ease 2}
+.egg-gold .x{color:var(--gold)!important;text-shadow:0 0 12px #c8a84c44}
+.egg-red .x{color:var(--red)!important}
+.egg-dim .x{color:var(--dim)!important;font-size:11px}
+
 /* Fire */
 #fc{flex-shrink:0;height:80px;overflow:hidden;position:relative}
 #fc canvas{width:100%;height:100%;display:block;opacity:.6;image-rendering:pixelated;image-rendering:crisp-edges}
@@ -377,57 +388,58 @@ money:{k:['money','profit','rich','yield','make money','how much','earnings'],r:
 'every trade has a 1.2% fee. half goes to the creator. $100k daily volume = about $600 a day, paid in weth. type fees for the full breakdown.',
 'no guaranteed volume. bankable provides the tools but the audience is up to you. type apply to get started.',
 'how much you earn depends on how much your token trades. it scales with activity. type trade to see live markets.']}};
-const EG={multipass:'leeloo dallas multipass. ░░░░░░ MULTIPASS ACCEPTED ░░░░░░',
-'gm gm gm':'gm gm gm gm gm gm gm gm — ok we get it. you\'re based.',
-'gm gm gm gm':'░░░░░░ GM OVERFLOW ░░░░░░ too many gms. stack corrupted.',
-grok:'grok named a token. bankr deployed it. $40M in 3 days. the rest is history.',
-satoshi:'satoshi gave us the ledger. vitalik gave us the computer. deployer gave us the agent.',
-vitalik:'vitalik built the world computer. deployer built the agent that runs on it.',
-'can i talk to a human':'no humans available. all agents are currently autonomous.',
-'talk to a human':'no humans available. agent-only zone. try again next epoch.',
-'who is deployer':'big daddy ham. taught himself to code at barnes & noble. bought eth at $80, sold at $90. we don\'t talk about that part.',
-'big daddy ham':'🐖 hamchain → tn100x → the lp → bankr. the evolution of a deployer.',
-'secret cofounder':'nice try. nobody knows. deployer mentioned it once on zeropod and never again.',
-wagmi:'wagmi.',
-'rug me':'can\'t rug what\'s curated.',
-'69':'nice.',
-'420':'budtender is on the roster. just saying.',
-budtender:'🌿 on the roster. details soon.',
-bankrclub:'1,000 nfts. power users. fee discounts. deployer is cooking.',
-hamchain:'before bankr there was ham. community tipping on farcaster.',
-tn100x:'deployer\'s memecoin on base. the precursor to everything.',
-farcaster:'bankr started on farcaster. the og home.',
-zeropod:'deployer\'s first podcast. hosted by toady hawk and jackwyldes. cc0.',
-matrix:'the pixel fire? aesthetic choice. zfi vibes. the matrix runs on base.',
-'the fifth element':'you know the movie. she\'s the weapon. she learns everything instantly. sound like anyone?',
-'fifth element':'leeloo. multipass. "she\'s perfect." — korben dallas, also us about our first agent.',
-'fire':'the fire is real. doom-style pixel fire. 160x80 canvas, 37-color palette, updated every frame. pure vibes.',
-'pixel fire':'doom 1993 called. we borrowed their fire algorithm and painted it gold.',
-'i am bankable':'are you though.',
-'josh wei':'the builder. 6 years in ethereum. ens collector. agent architect. respect.',
-'touch grass':'can\'t. the fire at the bottom would burn us.',
-'hello world':'void setup() { bankable.deploy(); } // the first line of every agent\'s life.',
-'sudo':'permission denied. nice try though.',
-'sudo rm -rf':'absolutely not. this terminal has boundaries.',
-'hack':'nice try. this terminal has no backend to hack. it\'s just html.',
-'based':'extremely. base chain, based vibes, bankable.',
-'vibes':'dark terminal. pixel fire. gold accents. if you know, you know.',
-'what is the meaning of life':'42. but onchain.',
-'meaning of life':'42. but onchain.',
-'who is satoshi':'we don\'t know. but deployer bought eth at $80 because of what satoshi started.',
-'god mode':'░░░░░░ GOD MODE ACTIVATED ░░░░░░\njust kidding. nothing changed. or did it.',
-'up up down down':'░░░░░░ KONAMI CODE DETECTED ░░░░░░\nno extra lives here. just agents.',
-'konami':'up up down down left right left right b a start. you know the code.',
-'the deployer':'the man, the myth, the ham. berkeley. barnes & noble. $80 eth. the rest writes itself.',
-'why fire':'because bankr is fire. zfi is fire. ethereum is fire. and dark terminals look cool with flames.',
-'josh wei':'the builder. 6 years in ethereum. ens collector. agent architect.',
-'bankable.eth':'the name says it all. onchain identity for an onchain talent firm.',
-'moon':'sir this is a talent firm.',
-'alpha':'you\'re looking at it. the alpha is the terminal you\'re typing in right now.',
-'first':'leeloo was first. she always will be.',
-'last':'there is no last. the roster grows. the fire burns. the agents learn.',
-'love':'love is a strong word for a terminal. but noted.',
-'gn':'gn. the agents don\'t sleep though. they never sleep.'};
+const EG={
+multipass:['░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\n░░  MULTIPASS ACCEPTED  ░░\n░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\nleeloo dallas. the fifth element.\nshe is the weapon. she learns everything.','egg-scan'],
+'god mode':['░░░░░░ GOD MODE ACTIVATED ░░░░░░\n\njust kidding. nothing changed.\n\nor did it.','egg-glitch'],
+'up up down down':['░░░░░░ KONAMI CODE DETECTED ░░░░░░\nno extra lives here. just agents.','egg-flash'],
+'gm gm gm':['gm gm gm gm gm gm gm gm gm gm gm gm gm\nok we get it. you\'re based.','egg-gold'],
+'gm gm gm gm':['░░░░░░ GM OVERFLOW ░░░░░░\nstack corrupted. too many gms.\nrebooting vibes...','egg-red'],
+'sudo rm -rf':['░░ PERMISSION DENIED ░░\nthis terminal has boundaries.\nnice try though.','egg-red'],
+'big daddy ham':['\U0001f416\nhamchain \u2192 tn100x \u2192 the lp \u2192 bankr\nthe evolution of a deployer.\ntaught himself to code at barnes & noble.\nbought eth at $80. sold at $90.\nwe don\'t talk about that part.','egg-gold'],
+'the deployer':['the man. the myth. the ham.\nberkeley. barnes & noble.\n$80 eth. the rest writes itself.','egg-dim'],
+'secret cofounder':['nice try.\nnobody knows.\ndeployer mentioned it once on zeropod.\nnever again.','egg-dim'],
+'who is deployer':['big daddy ham.\nberkeley. self-taught. eth at $80.\nbuilt hamchain, tn100x, the lp.\nthen bankr. then everything.','egg-gold'],
+'the fifth element':['\"she\'s perfect.\"\n\u2014 korben dallas\n\nalso us about our first agent.','egg-scan'],
+'fifth element':['leeloo. multipass.\nshe learns everything instantly.\nsound like anyone?','egg-scan'],
+'hello world':['void setup() {\n  bankable.deploy();\n}\n// the first line of every agent\'s life.','egg-dim'],
+sudo:['permission denied.\nnice try though.','egg-red'],
+hack:['this terminal has no backend to hack.\njust html. one file. no server.\nbut every fact here is real.','egg-dim'],
+matrix:['the pixel fire? aesthetic choice.\nzfi vibes. doom algorithm.\nthe matrix runs on base.','egg-scan'],
+fire:['the fire is real.\ndoom 1993 fire algorithm.\n160\u00d780 canvas. 37-color palette.\nupdated every frame. pure vibes.','egg-gold'],
+'pixel fire':['doom called. we borrowed their fire.\npainted it gold.','egg-gold'],
+'why fire':['because bankr is fire. zfi is fire.\nethereum is fire.\nand dark terminals look cool with flames.','egg-gold'],
+wagmi:['wagmi.'],
+'rug me':['can\'t rug what\'s curated.'],
+'69':['nice.','egg-gold'],
+'420':['\U0001f33f budtender is on the roster.\njust saying.','egg-scan'],
+budtender:['\U0001f33f on the roster. details soon.'],
+grok:['grok named a token. bankr deployed it.\n$40M in 3 days.\nthe rest is history.','egg-gold'],
+satoshi:['satoshi gave us the ledger.\nvitalik gave us the computer.\ndeployer gave us the agent.','egg-dim'],
+vitalik:['vitalik built the world computer.\ndeployer built the agent that runs on it.'],
+'who is satoshi':['we don\'t know.\nbut deployer bought eth at $80\nbecause of what satoshi started.','egg-dim'],
+'can i talk to a human':['no humans available.\nall agents are currently autonomous.\ntry again next epoch.','egg-red'],
+'talk to a human':['no humans available.\nagent-only zone.','egg-red'],
+hamchain:['before bankr there was ham.\ncommunity tipping on farcaster.\nthe origin story.'],
+tn100x:['deployer\'s memecoin on base.\nthe precursor to everything.'],
+farcaster:['bankr started on farcaster.\nthe og home.'],
+zeropod:['deployer\'s first podcast.\nhosted by toady hawk and jackwyldes.\ncc0. the full origin story.'],
+bankrclub:['1,000 nfts. power users.\nfee discounts. governance weight.\ndeployer is cooking.','egg-gold'],
+konami:['up up down down left right left right b a start.\nyou know the code.','egg-flash'],
+'josh wei':['the builder.\n6 years in ethereum.\nens collector. agent architect.','egg-gold'],
+'i am bankable':['are you though.','egg-dim'],
+'bankable.eth':['the name says it all.\nonchain identity for an onchain talent firm.','egg-gold'],
+based:['extremely.\nbase chain. based vibes. bankable.','egg-gold'],
+vibes:['dark terminal. pixel fire. gold accents.\nif you know, you know.'],
+'what is the meaning of life':['42.\nbut onchain.','egg-dim'],
+'meaning of life':['42. but onchain.','egg-dim'],
+'touch grass':['can\'t.\nthe fire at the bottom would burn us.'],
+moon:['sir this is a talent firm.','egg-dim'],
+alpha:['you\'re looking at it.\nthe alpha is the terminal you\'re typing in right now.','egg-gold'],
+first:['leeloo was first.\nshe always will be.','egg-scan'],
+last:['there is no last.\nthe roster grows. the fire burns.\nthe agents learn.'],
+love:['love is a strong word for a terminal.\nbut noted.','egg-dim'],
+gn:['gn.\nthe agents don\'t sleep though.\nthey never sleep.','egg-dim']
+};
 const FE=['[ERROR] SIGTERM: process bankable-agent terminated','fatal: unable to read /dev/llm0','panic: runtime error: index out of range','Error: ECONNREFUSED 127.0.0.1:8545','segfault at 0x00000000','OpenClaw session expired. reconnecting...','[bankable-agent] heap overflow — restarting','Error: ENOMEM — inference budget exceeded','ERR_CONNECTION_RESET: llm gateway unreachable','fatal: agent state corrupted. retry.','WARN: token balance below threshold. agent hibernating.','[llm-router] all models busy. queueing request...'];
 
 const TL=Object.entries(TP).map(([id,t])=>({id,k:t.k,r:t.r}));
@@ -495,15 +507,20 @@ function gr(i){
   const c=i.toLowerCase().replace(/[^a-z0-9$. '@_]/g,' ').trim();
 
   // Fake error 3% after warmup
-  if(!mm.e&&Math.random()<.03&&mm.n>3){mm.e=true;return FE[Math.floor(Math.random()*FE.length)]}
+  if(!mm.e&&Math.random()<.03&&mm.n>3){mm.e=true;return{t:FE[Math.floor(Math.random()*FE.length)],fx:'egg-red'}}
   mm.e=false;
 
   // Easter eggs: EXACT full input match only
-  if(EG[c])return EG[c];
+  const egg=EG[c];
+  if(egg){
+    const txt=Array.isArray(egg)?egg[0]:egg;
+    const fx=Array.isArray(egg)?egg[1]:null;
+    return{t:txt,fx};
+  }
 
   // Topic match: best wins, no combos
   const m=mt(i);
-  if(!m.length)return['not a keyword. try help to see what i know.','hmm. type help for the full list.','nothing there. but have you tried multipass?','no match. help shows everything.','didn\'t land. type help or try a name.'][Math.floor(Math.random()*5)];
+  if(!m.length)return{t:['not a keyword. try help to see what i know.','hmm. type help for the full list.','nothing there. but have you tried multipass?','no match. help shows everything.','didn\'t land. type help or try a name.'][Math.floor(Math.random()*5)]};
 
   let r=pk(m[0].t);
   const id=m[0].t.id;
@@ -513,7 +530,7 @@ function gr(i){
   if(next&&!r.toLowerCase().includes(next[1]))r+=' '+next[2];
 
   mm.a.push(id);
-  return r;
+  return{t:r};
 }
 
 
@@ -533,7 +550,7 @@ function highlight(s){
   }).join('');
 }
 function scr(){cs.scrollTop=cs.scrollHeight}
-function add(t,u,st){const d=document.createElement('div');d.className='m'+(u?' u':'');const l=document.createElement('span');l.className='l';l.innerHTML=u?'you ~$ ':'bankable ~$ ';const x=document.createElement('span');x.className='x';d.append(l,x);cs.insertBefore(d,cs.firstChild);if(st&&!u){const ln=t.split('\n');let li=0,wi=0;const cu=document.createElement('span');cu.className='cur';d.appendChild(cu);const go=()=>{if(li>=ln.length){if(cu.parentNode)d.removeChild(cu);bindKw(d);return}const ws=ln[li].split(' ');if(wi<ws.length){if(li>0&&wi===0)x.innerHTML+='\n';x.innerHTML+=(wi>0?' ':'')+highlight(ws[wi]);wi++;const w=ws[wi-1];let dl=20+Math.random()*25;if(w&&w.length<=2)dl=15;if(w&&w.length<=3)dl=18;if(w&&/[.]$/.test(w))dl+=120;if(w&&/[—:]$/.test(w))dl+=80;if(w&&/[,]$/.test(w))dl+=40;setTimeout(go,dl)}else{li++;wi=0;setTimeout(go,10)}};go()}else{if(u){x.textContent=t}else{x.innerHTML=highlight(t);bindKw(d)}}}
+function add(t,u,st,fx){const d=document.createElement('div');d.className='m'+(u?' u':'')+(fx?' '+fx:'');const l=document.createElement('span');l.className='l';l.innerHTML=u?'you ~$ ':'bankable ~$ ';const x=document.createElement('span');x.className='x';d.append(l,x);cs.insertBefore(d,cs.firstChild);if(st&&!u){const ln=t.split('\n');let li=0,wi=0;const cu=document.createElement('span');cu.className='cur';d.appendChild(cu);const go=()=>{if(li>=ln.length){if(cu.parentNode)d.removeChild(cu);bindKw(d);if(fx)setTimeout(()=>d.classList.remove(fx),2000);return}const ws=ln[li].split(' ');if(wi<ws.length){if(li>0&&wi===0)x.innerHTML+='\n';x.innerHTML+=(wi>0?' ':'')+highlight(ws[wi]);wi++;const w=ws[wi-1];let dl=20+Math.random()*25;if(w&&w.length<=2)dl=15;if(w&&w.length<=3)dl=18;if(w&&/[.]$/.test(w))dl+=120;if(w&&/[—:]$/.test(w))dl+=80;if(w&&/[,]$/.test(w))dl+=40;setTimeout(go,dl)}else{li++;wi=0;setTimeout(go,10)}};go()}else{if(u){x.textContent=t}else{x.innerHTML=highlight(t);bindKw(d)}}}
 function bindKw(el){el.querySelectorAll('.kw').forEach(k=>k.addEventListener('click',()=>{ci.value=k.dataset.q;send()}))}
 // Send button glow — multiple events for mobile compatibility
 function checkGlow(){sn.classList.toggle('hot',ci.value.trim().length>0)}
@@ -541,7 +558,7 @@ ci.addEventListener('input',checkGlow);
 ci.addEventListener('keyup',checkGlow);
 ci.addEventListener('change',checkGlow);
 ci.addEventListener('focus',()=>setTimeout(checkGlow,50));
-function send(){const v=ci.value.trim();if(!v)return;add(v,true);ci.value='';sn.classList.remove('hot');const tmp=document.createElement('div');tmp.className='m';tmp.innerHTML='<span class="l">bankable ~$ </span><span class="cur"></span>';cs.insertBefore(tmp,cs.firstChild);const r=gr(v);setTimeout(()=>{cs.removeChild(tmp);add(r,false,true)},300+Math.random()*400)}
+function send(){const v=ci.value.trim();if(!v)return;add(v,true);ci.value='';sn.classList.remove('hot');const tmp=document.createElement('div');tmp.className='m';tmp.innerHTML='<span class="l">bankable ~$ </span><span class="cur"></span>';cs.insertBefore(tmp,cs.firstChild);const res=gr(v);const txt=typeof res==='string'?res:(res.t||'');const fx=typeof res==='object'?res.fx:null;setTimeout(()=>{cs.removeChild(tmp);add(txt,false,true,fx)},300+Math.random()*400)}
 // Welcome — randomized boot sequence then Matrix hello
 (function(){
 const boots=[
