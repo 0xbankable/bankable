@@ -97,17 +97,6 @@ body{background:var(--bg);color:var(--t)}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 .cur::after{content:'█';color:var(--gd);animation:blink .8s step-end infinite;font-size:12px}
 
-/* Egg effects */
-@keyframes scanline{0%{background-position:0 0}100%{background-position:0 100%}}
-@keyframes glitch{0%,100%{transform:translate(0)}20%{transform:translate(-2px,1px)}40%{transform:translate(2px,-1px)}60%{transform:translate(-1px,2px)}80%{transform:translate(1px,-2px)}}
-@keyframes flash{0%{opacity:1}50%{opacity:.3}100%{opacity:1}}
-.egg-scan .x{color:#4ade80!important;text-shadow:0 0 8px #4ade8066}
-.egg-glitch{animation:glitch .3s ease 3}
-.egg-flash .x{animation:flash .15s ease 2}
-.egg-gold .x{color:var(--gold)!important;text-shadow:0 0 12px #c8a84c44}
-.egg-red .x{color:var(--red)!important}
-.egg-dim .x{color:var(--dim)!important;font-size:11px}
-
 /* Fire */
 #fc{flex-shrink:0;height:80px;overflow:hidden;position:relative}
 #fc canvas{width:100%;height:100%;display:block;opacity:.6;image-rendering:pixelated;image-rendering:crisp-edges}
@@ -200,245 +189,245 @@ bankable:{k:['bankable','what is this','who are you','what do you do','tell me a
 'think of it like a record label for crypto. we find talented people, set them up with a token and an agent, and they earn from day one. josh built it.',
 'bankable handles everything — the token, the agent, the trading setup. creators just bring talent. want to apply? there is a tab for that.',
 'not everyone gets in. selective. but the ones who do get a full package — token, agent, income. check the roster to see who is on.',
-'quality over quantity. always. curious how it works? type fees.']},
+'quality over quantity. always. curious how it works?.']},
 fees:{k:['fee','fees','weth','cost','split','income','1.2','earn'],r:[
 '1.2% on every swap. half goes to the creator, paid in weth. on a $1,000 trade, the creator gets $6. the agent handles the rest.',
 'no upfront costs. creators start earning from the very first trade. bankr runs the infrastructure.',
-'$100k daily volume means about $600 a day for the creator. the math is simple. type money for more on earnings.',
-'50/10/40 split — creator, bankable, bankr. fixed. transparent. every transaction on the blockchain. type agent to see what makes it work.']},
+'$100k daily volume means about $600 a day for the creator. the math is simple.',
+'50/10/40 split — creator, bankable, bankr. fixed. transparent. every transaction on the blockchain.']},
 apply:{k:['apply','join','signup','register','application','submit','how to join','get listed'],r:[
 'there is an apply tab at the top of this page. fill in your name, handle, and a short pitch. josh reviews every one within 48 hours.',
 'if accepted, bankable deploys your token, sets up your agent, and you start earning from trades right away. zero cost.',
-'no follower minimums, but bankable looks for real signal — people or agents doing interesting work. type bankable to learn more.',
-'the application is free. bankable only makes money when the creator makes money. type fees to see how.']},
+'no follower minimums, but bankable looks for real signal — people or agents doing interesting work.',
+'the application is free. bankable only makes money when the creator makes money.']},
 process:{k:['process','steps','how does it work','how it works','pipeline'],r:[
 'you apply, josh reviews it, and if approved your token gets deployed and an agent gets assigned. under a week.',
-'every application is reviewed by a human. no automated approvals. type apply to start.',
-'the pipeline: apply, vet, approve, deploy, assign agent, start earning. type agent to learn about the ai.']},
+'every application is reviewed by a human. no automated approvals.',
+'the pipeline: apply, vet, approve, deploy, assign agent, start earning.']},
 free:{k:['free','zero cost','launch cost','gas cost'],r:[
 'zero cost to launch. bankr covers everything. bankable earns 10% of trading fees — we only make money when you do.',
-'no subscription. no platform fee. the entire model is revenue sharing. type fees for the breakdown.']},
+'no subscription. no platform fee. the entire model is revenue sharing.']},
 agent:{k:['agent','ai agent','bot','llm','ai assistant','gateway'],r:[
 'every creator gets an ai agent. it monitors your token, watches the market, and runs 24 hours a day. leeloo was the first.',
 'not a chatbot. the agent has its own wallet, makes decisions, handles tasks. bankr routes each task to the best ai model.',
-'it earns fees, pays for its own computing, and watches for patterns. type leeloo to see the proof of concept.',
-'the agent is what separates bankable from every other launchpad. type openclaw to see how it learns.']},
+'it earns fees, pays for its own computing, and watches for patterns.',
+'the agent is what separates bankable from every other launchpad.']},
 token:{k:['token','launch','deploy','mint','contract','erc20'],r:[
 'a digital currency on base. when bankable launches your token, it goes live on uniswap — like a stock exchange for crypto.',
-'you never touch code. bankr handles deployment. every token launches fairly — no presale, no insider deals. type trade to see where they trade.',
-'all tokens have the same structure. the difference is who is behind it. type roster to see the current lineup.']},
+'you never touch code. bankr handles deployment. every token launches fairly — no presale, no insider deals.',
+'all tokens have the same structure. the difference is who is behind it.']},
 chain:{k:['chain','base','coinbase','ethereum','network','mainnet'],r:[
-'everything runs on base, a blockchain built by coinbase. transactions cost less than a penny. type bankr for the full stack.',
-'base is built on top of ethereum but cheaper and faster. important because the agents make lots of small transactions. type bankr for the full stack.',
-'coinbase-backed, high speed, low cost. that is why everything lives here. type trade to see live markets.']},
+'everything runs on base, a blockchain built by coinbase. transactions cost less than a penny.',
+'base is built on top of ethereum but cheaper and faster. important because the agents make lots of small transactions.',
+'coinbase-backed, high speed, low cost. that is why everything lives here.']},
 trade:{k:['trade','buy','sell','swap','trading','dex','uniswap','how to buy'],r:[
 'tokens trade on uniswap, a decentralized exchange on base. also on bankr swap and dexscreener. check the leaderboard tab for live prices.',
-'anyone with a crypto wallet and some ethereum on base can trade. no sign-ups. type wallet if you need one.',
-'every trade generates income for the creator. that is the engine. type fees to see the math.']},
+'anyone with a crypto wallet and some ethereum on base can trade. no sign-ups.',
+'every trade generates income for the creator. that is the engine.']},
 leaderboard:{k:['leaderboard','dexscreener','ranking','volume','chart','stats','prices','mcap'],r:[
-'the leaderboard tab shows live data from geckoterminal. updates every 60 seconds. click any name for the full chart. type trade to learn how tokens work.',
-'sorted by market cap with 24-hour volume and price change. real numbers, real time. type token to learn how they launch.',
+'the leaderboard tab shows live data from geckoterminal. updates every 60 seconds. click any name for the full chart.',
+'sorted by market cap with 24-hour volume and price change. real numbers, real time.',
 'simplest way to see what is happening across the bankable roster.']},
 leeloo:{k:['leeloo','$leeloo','leeloo dallas'],r:[
-'$leeloo. the first ai agent on the bankable roster. named after the character from the fifth element. try typing multipass.',
+'the first ai agent on the bankable roster. named after the character from the fifth element. try typing multipass.',
 'fully autonomous — earns money from her own token trades and uses that to pay for her own computing. no human funding needed.',
-'leeloo learns, earns, and makes decisions on her own. if you know the movie, you know. type roster to see who else is coming.',
+'leeloo learns, earns, and makes decisions on her own. if you know the movie, you know.',
 'if leeloo works, the whole concept works. she is the proof of concept. josh is building her.',
-'her treasury grows automatically from trading fees. type agent to understand how.']},
+'her treasury grows automatically from trading fees.']},
 normies:{k:['normie','normies','$normies','beginner','new to crypto'],r:[
-'$normies. a project to make crypto simple for newcomers. wallet, agent, and token — all designed to be easy.',
+'normies. a project to make crypto simple for newcomers. wallet, agent, and token — all designed to be easy.',
 'a smart wallet paired with an ai assistant that handles the confusing parts for you. josh is behind it.',
-'the token funds development. the agent protects users. the wallet just works. type wallet to learn more.',
-'crypto should not require a manual. normies is building that simpler layer. type apply if you want to help.']},
+'the token funds development. the agent protects users. the wallet just works.',
+'crypto should not require a manual. normies is building that simpler layer.']},
 roster:{k:['roster','creators','talent','listed','who is on'],r:[
 'four agents on the roster. leeloo is in active development. the rest are coming. check the roster tab.',
-'$leeloo, bankable, budtender, $normies. each one will launch with its own token and autonomy. type leeloo to start.',
+'leeloo, bankable, budtender, normies. each one will launch with its own token and autonomy.',
 'small by design. quality over quantity. bankable curates — that is the whole point.',
-'leeloo is first. the others follow as they are built. type apply to get on the list.']},
+'leeloo is first. the others follow as they are built.']},
 why:{k:['why bankable','why should','purpose','vision','thesis'],r:[
 'most creators build audiences but platforms keep the money. bankable gives creators direct ownership through their own token.',
-'on traditional platforms you get ad revenue splits. here you get your own token, fee income, and an agent. type fees to compare.',
-'the thesis: attention is valuable. bankable lets creators capture that value on the blockchain. type apply to get started.']},
+'on traditional platforms you get ad revenue splits. here you get your own token, fee income, and an agent.',
+'the thesis: attention is valuable. bankable lets creators capture that value on the blockchain.']},
 autonomous:{k:['autonomous','treasury','self-funding','sentient','consciousness'],r:[
 'autonomous agents. ai programs with their own crypto wallets. they earn from trading fees and pay for their own computing.',
 'the cycle: earn from trades, spend on computing, make decisions, generate more activity. leeloo does this already.',
-'the goal is agents that check their own balance and decide what to do next. type agent or leeloo to see it in action.']},
+'the goal is agents that check their own balance and decide what to do next.']},
 bankr:{k:['bankr','$bnkr','bnkr','infrastructure','platform','engine'],r:[
 'bankr is the infrastructure bankable runs on. handles wallets, tokens, trading, and the ai system. $BNKR is its token, listed on coinbase.',
 'think of bankr as the operating system and bankable as an app on top of it. deployer built it from scratch.',
-'the full stack: bankr for infrastructure, clanker for deployment, openclaw for agents, bankable for curation. type team to meet the people.',
-'deploys tokens, routes trades, powers agents. the engine under everything. type deployer to learn who built it.']},
+'the full stack: bankr for infrastructure, clanker for deployment, openclaw for agents, bankable for curation.',
+'deploys tokens, routes trades, powers agents. the engine under everything.']},
 deployer:{k:['deployer','0xdeployer','founder','who built bankr'],r:[
-'deployer. the person who built bankr. pseudonymous — nobody knows the real name. based in berkeley. try typing big daddy ham.',
-'taught himself to code from a book at barnes and noble. bought ethereum at $80. type team to meet the rest.',
-'previous projects: hamchain, tn100x, the lp. each one bigger. there is also a secret co-founder nobody can identify. type team to see everyone.',
-'first podcast was on zeropod. that is where the full origin story lives. type josh to see who built bankable.']},
+'deployer. the person who built bankr. pseudonymous — nobody knows the real name. based in berkeley..',
+'taught himself to code from a book at barnes and noble. bought ethereum at $80.',
+'previous projects: hamchain, tn100x, the lp. each one bigger. there is also a secret co-founder nobody can identify.',
+'first podcast was on zeropod. that is where the full origin story lives.']},
 josh:{k:['josh','josh.wei','0xbankable','who built this','who made this','builder'],r:[
-'josh.wei. also known as @0xbankable. ethereum developer for over 6 years. built this terminal and bankable itself. type leeloo to see what he is building.',
-'owns the domains bankable.eth, normies.eth, and _base.eth. type normies to learn about that project.',
-'been in ethereum since the early days. reviews every application personally. type apply to reach him.',
+'josh.wei. also known as @0xbankable. ethereum developer for over 6 years. built this terminal and bankable itself.',
+'owns the domains bankable.eth, normies.eth, and _base.eth.',
+'been in ethereum since the early days. reviews every application personally.',
 'he is building leeloo — the first autonomous agent on the roster.']},
 drb:{k:['drb','debtreliefbot','debt relief','$drb'],r:[
-'$drb. in march 2025 someone asked grok to name a token. it said debtreliefbot. bankr deployed it automatically. first ai-to-ai launch.',
+'in march 2025 someone asked grok to name a token. it said debtreliefbot. bankr deployed it automatically. first ai-to-ai launch.',
 'hit $40 million market cap in 72 hours. 96,000 traders in two weeks. the grok wallet earned over $600k in fees. then clawd happened.',
-'an ai named it. another ai deployed it. type clawd to see what came next.',
-'agent-to-agent commerce became real with drb. type trade to see live markets.']},
+'an ai named it. another ai deployed it.',
+'agent-to-agent commerce became real with drb.']},
 clawd:{k:['clawd','$clawd','austin griffith','coding agent'],r:[
-'$clawd. an autonomous coding agent by austin griffith. wrote code for 20 repositories in 8 days and shipped 3 working apps.',
-'the admin key was sent to a dead address — no human can ever override it. irreversible. type trade to see it live.',
-'burns 500,000 tokens per hour on missed deadlines. real financial consequences for an ai. type agent to understand how.',
-'proof that agents can build and ship real software. type leeloo to see the next one.']},
+'clawd. an autonomous coding agent by austin griffith. wrote code for 20 repositories in 8 days and shipped 3 working apps.',
+'the admin key was sent to a dead address — no human can ever override it. irreversible.',
+'burns 500,000 tokens per hour on missed deadlines. real financial consequences for an ai.',
+'proof that agents can build and ship real software.']},
 clanker:{k:['clanker','$clanker','token launcher','deployment engine'],r:[
-'$clanker. a token deployment engine — creates tokens and sets up trading automatically. farcaster acquired it.',
-'deployed over 13,000 tokens per day at peak. bankr used it for most launches including $drb. type bankr for the full stack.',
-'proved tokens could be created and launched instantly at massive scale. type deployer to learn who built on top of it.']},
+'clanker. a token deployment engine — creates tokens and sets up trading automatically. farcaster acquired it.',
+'deployed over 13,000 tokens per day at peak. bankr used it for most launches including $drb.',
+'proved tokens could be created and launched instantly at massive scale.']},
 zfi:{k:['zfi','z_fi','ross','$zorg','zorg','zamm','ross.wei','wei.domains'],r:[
 'zfi. ross.wei\'s project. home of wei.domains — onchain names like josh.wei and bankable.wei. the naming layer.',
-'ross.wei built zamm, a minimal onchain dex, and wei.domains for onchain identity. ethereum og. type bankr to see the ecosystem.',
+'ross.wei built zamm, a minimal onchain dex, and wei.domains for onchain identity. ethereum og.',
 'the pixel fire at the bottom of this page is a zfi reference. try typing fire. $zorg is the token.',
-'dark terminal aesthetic. the vibefi corner of the ecosystem. type game to find more secrets.']},
+'dark terminal aesthetic. the vibefi corner of the ecosystem.']},
 openclaw:{k:['openclaw','agent framework','skills','modules'],r:[
 'openclaw. the framework that powers bankr\'s ai agents. think of it as the brain — agents plug in new skills as needed.',
-'agents can learn new things without being rebuilt. modular, like apps on a phone. type agent to see what they do.',
-'everything the agents know flows through openclaw. type leeloo to see it in action.']},
+'agents can learn new things without being rebuilt. modular, like apps on a phone.',
+'everything the agents know flows through openclaw.']},
 team:{k:['team','staff','who works','employees','bankr team'],r:[
-'the team. deployer in berkeley. danny in miami. igor in new york. aspyn, formerly at meta. sinaver in crimea. plus one mystery person.',
+'deployer in berkeley. danny in miami. igor in new york. aspyn, formerly at meta. sinaver in crimea. plus one mystery person.',
 'six people. five known. the sixth — deployer mentioned a secret co-founder once and never explained. try typing secret cofounder.',
-'small team. each person owns their area. josh built bankable on top of their work. type josh to learn about him.',
-'names: danny, igor, aspyn, sinaver. type any name to learn more. or type josh for the bankable builder.']},
+'small team. each person owns their area. josh built bankable on top of their work.',
+'names: danny, igor, aspyn, sinaver. or']},
 danny:{k:['danny','brown wolf'],r:[
 'danny brown wolf. strategy and go-to-market. based in miami. the business half of bankr.',
-'deployer builds the technology, danny figures out the positioning. type team to see everyone.',
-'partnerships, commercial strategy, market positioning. type bankr to see what they built.']},
+'deployer builds the technology, danny figures out the positioning.',
+'partnerships, commercial strategy, market positioning.']},
 igor:{k:['igor','yuzovitskiy','devrel'],r:[
 'igor yuzovitskiy. developer relations. based in new york city. the public voice of bankr.',
 'conferences, documentation, developer outreach. if you have met anyone from bankr in person it was probably igor.',
-'bridges builders to the platform. type team for the full crew.']},
+'bridges builders to the platform.']},
 aspyn:{k:['aspyn','palatnick'],r:[
-'aspyn palatnick. engineer. previously at meta. builds the core systems that deploy tokens and run the agents. type bankr to see the stack.',
-'backend architecture. the plumbing under everything. left meta to build infrastructure for the agent economy. type bankr to see it.']},
+'aspyn palatnick. engineer. previously at meta. builds the core systems that deploy tokens and run the agents.',
+'backend architecture. the plumbing under everything. left meta to build infrastructure for the agent economy.']},
 sinaver:{k:['sinaver','payflow','crimea'],r:[
 'sinaver. engineer. crimea. built payflow — the execution layer where money actually moves through the system.',
-'every fee split, every payout, every settlement. type fees to see the numbers.']},
+'every fee split, every payout, every settlement.']},
 privy:{k:['privy','seedless','invisible wallet'],r:[
-'privy. creates a crypto wallet from your social media login. no seed phrases, no browser extensions. type wallet to learn more.',
-'how bankr removes the technical friction. sign in with x and you have a wallet. type normies to see who this is built for.']},
+'privy. creates a crypto wallet from your social media login. no seed phrases, no browser extensions.',
+'how bankr removes the technical friction. sign in with x and you have a wallet.']},
 ens:{k:['ens','.eth','domains'],r:[
 'ens names. bankable.eth, normies.eth, _base.eth — three premium blockchain domains owned by josh. like web domains but onchain.',
-'bankable.eth is the brand. normies.eth is the newcomer project. _base.eth is the ecosystem play. type josh to learn more.']},
+'bankable.eth is the brand. normies.eth is the newcomer project. _base.eth is the ecosystem play.']},
 safety:{k:['safe','safety','rug','scam','trust','security','dyor'],r:[
 'every listing is reviewed by a human before the token is deployed. fair launch only. always do your own research.',
-'the agents have guardrails — transaction limits, treasury caps. they cannot go rogue. type agent to learn more.',
-'nothing in crypto is zero risk. curation reduces the surface area. type bankable to understand the model. dyor. always.']},
+'the agents have guardrails — transaction limits, treasury caps. they cannot go rogue.',
+'nothing in crypto is zero risk. curation reduces the surface area. dyor. always.']},
 compare:{k:['compare','pump','versus','pump.fun','vs','different'],r:[
 'bankable vs pump.fun. pump.fun lets anyone launch a token. bankable only launches curated creators and agents.',
-'pump.fun gives you a token. bankable gives you a token, an agent, fee income, and a team. type fees to compare.',
-'quantity versus quality. different approaches. type apply if you prefer quality.']},
+'pump.fun gives you a token. bankable gives you a token, an agent, fee income, and a team.',
+'quantity versus quality. different approaches.']},
 ethdenver:{k:['ethdenver','denver','conference'],r:[
 'ethdenver 2026. connections made in person. where crypto twitter becomes physical. bankable was there.',
-'conferences matter when you meet the right people. type josh to learn about the builder.']},
+'conferences matter when you meet the right people.']},
 wallet:{k:['wallet','metamask','coinbase wallet','rainbow','connect wallet'],r:[
 'you need a crypto wallet to trade bankable tokens. metamask, coinbase wallet, and rainbow all work on base.',
-'no wallet? privy creates one from your social login. no technical setup. type privy for details.',
-'the wallet is how you interact. the token is the asset. base is the network. type trade to see live markets.']},
+'no wallet? privy creates one from your social login. no technical setup.',
+'the wallet is how you interact. the token is the asset. base is the network.']},
 x402:{k:['x402','micropayment','http 402'],r:[
-'x402. a micropayment protocol by coinbase. lets ai agents pay each other directly. type agent to see how bankable uses it.',
-'ai paying ai in real time on base. type agent to see how bankable agents use it.']},
+'x402. a micropayment protocol by coinbase. lets ai agents pay each other directly.',
+'ai paying ai in real time on base.']},
 bankrclub:{k:['bankr club','nft','membership','club'],r:[
 'bankr club. 1,000 nft membership passes. holders get fee discounts and priority access. not live yet.',
-'not a profile picture project. membership with governance weight. deployer hinted at it on zeropod. type deployer for more.']},
+'not a profile picture project. membership with governance weight. deployer hinted at it on zeropod.']},
 game:{k:['game','play','easter egg','secret','hidden','puzzle'],r:[
 'there are over 30 hidden responses in this terminal. try typing multipass. or big daddy ham. or gm gm gm.',
 'some numbers work. try 69. or 420. the deployer has a nickname too — type who is deployer.',
-'type god mode. or sudo. or hello world. or touch grass. type help to see the main topics.',
-'the fire at the bottom has a story. type fire. or try wagmi. or based. or rug me.',
-'look for hints in other replies. some names and phrases unlock secrets. type help to see the main topics.']},
+'type god mode. or sudo. or hello world. or touch grass.',
+'the fire at the bottom has a story. or try wagmi. or based. or rug me.',
+'look for hints in other replies. some names and phrases unlock secrets.']},
 greet:{k:['gm','hello','hey','hi','sup','yo','morning','howdy','hola','whats up','what\'s up','how are you','how are ya','hey there','hi there','hello there','how you doing','what are you doing','you there','anybody there','are you there'],r:[
 'hey. try typing bankable. or ask me anything.',
 'welcome. bankable, leeloo, fees — pick a word. or just ask.',
-'you made it. type anything. bankable is a good place to start.',
+'you made it. bankable is a good place to start.',
 'hey. curious? start with bankable. adventurous? start with game.',
-'this is a terminal. it knows things. try bankable or type help to see everything.',
-'hello. 45 topics and 30+ secrets in here. type help to see the map.',
-'hey. the gold words are clickable. or type help to see everything.',
+'this is a terminal. it knows things. try bankable or',
+'hello. 45 topics and 30+ secrets in here.',
+'hey. the gold words are clickable. or',
 'what do you want to know? bankable, the agents, the team — all fair game.']},
 thanks:{k:['thanks','thx','ty','bye','goodbye','later','peace','exit','quit'],r:[
-'noted. the terminal is always here. type help to explore more.',
-'the agents never sleep. come back anytime. or type game to find secrets before you go.',
-'acknowledged. type help if you want to see everything.']},
+'noted. the terminal is always here.',
+'the agents never sleep. come back anytime. or',
+'acknowledged.']},
 meta:{k:['bot','are you ai','are you real','what are you','chatgpt','claude','gpt','are you a bot','is this ai','who is this','what am i talking to'],r:[
-'a pattern matching engine. this whole site is one html file. no ai, no server, no tracking. type bankable to learn what it is for.',
-'about 300 lines of javascript. no language models. just keywords and replies. but every fact here is real. type help to explore.',
-'not ai. not a chatbot. just if-statements. but the agents on the roster are real ai. type agent to learn about them.']},
+'a pattern matching engine. this whole site is one html file. no ai, no server, no tracking.',
+'about 300 lines of javascript. no language models. just keywords and replies. but every fact here is real.',
+'not ai. not a chatbot. just if-statements. but the agents on the roster are real ai.']},
 degen:{k:['ngmi','fud','cope','shill','degen','ape','lambo','fren','anon','crypto','bitcoin','web3','blockchain'],r:[
-'curated. not a casino. the leaderboard tab has live tokens though. type trade to see markets.',
-'degen energy noted. bankable is building for the long term. type bankable to learn more.',
-'tokens trade on base. not financial advice. type leaderboard to see live prices.']},
+'curated. not a casino. the leaderboard tab has live tokens though.',
+'degen energy noted. bankable is building for the long term.',
+'tokens trade on base. not financial advice.']},
 bored:{k:['bored','idk','dunno','cool','nice','ok','okay','what else','tell me more','go on','continue','then what','neat','dope','next','interesting'],r:[
-'there is always more. try typing a name — deployer, leeloo, clawd. or type game to find secrets.',
-'45 topics. 30+ secrets. type help to see the map or game for hidden stuff.',
+'there is always more. try typing a name — deployer, leeloo, clawd. or',
+'45 topics. 30+ secrets.',
 'type a name — josh, danny, igor. or try leeloo, drb, clawd. the gold words are always clickable.',
-'the best stuff is hidden. type game for hints. or bankable to start from the top.',
-'try bankr. or deployer. or type help to see everything at once.']},
-help:{k:['help','commands','options','?','menu','topics','what can you do'],r:['\n  bankable  fees  money  apply\n  leeloo  normies  roster  team\n  bankr  agent  token  trade\n\ntype game to find secrets.']},
+'the best stuff is hidden. or bankable to start from the top.',
+'try bankr. or deployer. or']},
+help:{k:['help','commands','options','?','menu','topics','what can you do'],r:['\n  bankable  fees  money  apply\n  leeloo  normies  roster  team\n  bankr  agent  token  trade\n\nmore is hidden.']},
 timeline:{k:['wen','when','timeline','roadmap','eta'],r:[
-'roadmap? there is none. ships when ready. type bankable to see what exists now.',
-'roadmap theater is for fundraising decks. type roster to see what is being built.']},
+'roadmap? there is none. ships when ready.',
+'roadmap theater is for fundraising decks.']},
 money:{k:['money','profit','rich','yield','make money','how much','earnings'],r:[
-'every trade has a 1.2% fee. half goes to the creator. $100k daily volume = about $600 a day, paid in weth. type fees for the full breakdown.',
-'no guaranteed volume. bankable provides the tools but the audience is up to you. type apply to get started.',
-'how much you earn depends on how much your token trades. it scales with activity. type trade to see live markets.']}};
+'every trade has a 1.2% fee. half goes to the creator. $100k daily volume = about $600 a day, paid in weth.',
+'no guaranteed volume. bankable provides the tools but the audience is up to you.',
+'how much you earn depends on how much your token trades. it scales with activity.']}};
 const EG={
-multipass:['░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\n░░  MULTIPASS ACCEPTED  ░░\n░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\nleeloo dallas. the fifth element.\nshe is the weapon. she learns everything.','egg-scan'],
-'god mode':['░░░░░░ GOD MODE ACTIVATED ░░░░░░\n\njust kidding. nothing changed.\n\nor did it.','egg-glitch'],
-'up up down down':['░░░░░░ KONAMI CODE DETECTED ░░░░░░\nno extra lives here. just agents.','egg-flash'],
-'gm gm gm':['gm gm gm gm gm gm gm gm gm gm gm gm gm\nok we get it. you\'re based.','egg-gold'],
-'gm gm gm gm':['░░░░░░ GM OVERFLOW ░░░░░░\nstack corrupted. too many gms.\nrebooting vibes...','egg-red'],
-'sudo rm -rf':['░░ PERMISSION DENIED ░░\nthis terminal has boundaries.\nnice try though.','egg-red'],
-'big daddy ham':['\U0001f416\nhamchain \u2192 tn100x \u2192 the lp \u2192 bankr\nthe evolution of a deployer.\ntaught himself to code at barnes & noble.\nbought eth at $80. sold at $90.\nwe don\'t talk about that part.','egg-gold'],
-'the deployer':['the man. the myth. the ham.\nberkeley. barnes & noble.\n$80 eth. the rest writes itself.','egg-dim'],
-'secret cofounder':['nice try.\nnobody knows.\ndeployer mentioned it once on zeropod.\nnever again.','egg-dim'],
-'who is deployer':['big daddy ham.\nberkeley. self-taught. eth at $80.\nbuilt hamchain, tn100x, the lp.\nthen bankr. then everything.','egg-gold'],
-'the fifth element':['\"she\'s perfect.\"\n\u2014 korben dallas\n\nalso us about our first agent.','egg-scan'],
-'fifth element':['leeloo. multipass.\nshe learns everything instantly.\nsound like anyone?','egg-scan'],
-'hello world':['void setup() {\n  bankable.deploy();\n}\n// the first line of every agent\'s life.','egg-dim'],
-sudo:['permission denied.\nnice try though.','egg-red'],
-hack:['this terminal has no backend to hack.\njust html. one file. no server.\nbut every fact here is real.','egg-dim'],
-matrix:['the pixel fire? aesthetic choice.\nzfi vibes. doom algorithm.\nthe matrix runs on base.','egg-scan'],
-fire:['the fire is real.\ndoom 1993 fire algorithm.\n160\u00d780 canvas. 37-color palette.\nupdated every frame. pure vibes.','egg-gold'],
-'pixel fire':['doom called. we borrowed their fire.\npainted it gold.','egg-gold'],
-'why fire':['because bankr is fire. zfi is fire.\nethereum is fire.\nand dark terminals look cool with flames.','egg-gold'],
-wagmi:['wagmi.'],
-'rug me':['can\'t rug what\'s curated.'],
-'69':['nice.','egg-gold'],
-'420':['\U0001f33f budtender is on the roster.\njust saying.','egg-scan'],
-budtender:['\U0001f33f on the roster. details soon.'],
-grok:['grok named a token. bankr deployed it.\n$40M in 3 days.\nthe rest is history.','egg-gold'],
-satoshi:['satoshi gave us the ledger.\nvitalik gave us the computer.\ndeployer gave us the agent.','egg-dim'],
-vitalik:['vitalik built the world computer.\ndeployer built the agent that runs on it.'],
-'who is satoshi':['we don\'t know.\nbut deployer bought eth at $80\nbecause of what satoshi started.','egg-dim'],
-'can i talk to a human':['no humans available.\nall agents are currently autonomous.\ntry again next epoch.','egg-red'],
-'talk to a human':['no humans available.\nagent-only zone.','egg-red'],
-hamchain:['before bankr there was ham.\ncommunity tipping on farcaster.\nthe origin story.'],
-tn100x:['deployer\'s memecoin on base.\nthe precursor to everything.'],
-farcaster:['bankr started on farcaster.\nthe og home.'],
-zeropod:['deployer\'s first podcast.\nhosted by toady hawk and jackwyldes.\ncc0. the full origin story.'],
-bankrclub:['1,000 nfts. power users.\nfee discounts. governance weight.\ndeployer is cooking.','egg-gold'],
-konami:['up up down down left right left right b a start.\nyou know the code.','egg-flash'],
-'josh wei':['the builder.\n6 years in ethereum.\nens collector. agent architect.','egg-gold'],
-'i am bankable':['are you though.','egg-dim'],
-'bankable.eth':['the name says it all.\nonchain identity for an onchain talent firm.','egg-gold'],
-based:['extremely.\nbase chain. based vibes. bankable.','egg-gold'],
-vibes:['dark terminal. pixel fire. gold accents.\nif you know, you know.'],
-'what is the meaning of life':['42.\nbut onchain.','egg-dim'],
-'meaning of life':['42. but onchain.','egg-dim'],
-'touch grass':['can\'t.\nthe fire at the bottom would burn us.'],
-moon:['sir this is a talent firm.','egg-dim'],
-alpha:['you\'re looking at it.\nthe alpha is the terminal you\'re typing in right now.','egg-gold'],
-first:['leeloo was first.\nshe always will be.','egg-scan'],
-last:['there is no last.\nthe roster grows. the fire burns.\nthe agents learn.'],
-love:['love is a strong word for a terminal.\nbut noted.','egg-dim'],
-gn:['gn.\nthe agents don\'t sleep though.\nthey never sleep.','egg-dim']
+multipass:'░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\n░░  MULTIPASS  ACCEPTED  ░░\n░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\n\nshe learns everything instantly.\nthe fifth element. the first agent.\nif you know, you know.',
+'god mode':'░░░ GOD MODE ░░░\n\nnothing changed.\n\n...or did it.',
+'up up down down':'░░░ KONAMI CODE ░░░\n\nno extra lives here.\njust agents.',
+'gm gm gm':'gm gm gm gm gm gm gm gm gm gm gm gm gm\n\nok we get it.',
+'gm gm gm gm':'░░░ GM OVERFLOW ░░░\nstack corrupted.\nrebooting vibes...',
+'sudo rm -rf':'░░░ PERMISSION DENIED ░░░\n\nthis terminal has boundaries.',
+sudo:'permission denied.\nnice try though.',
+hack:'no backend to hack.\none html file. no server. no database.\nbut every fact here is real.',
+'big daddy ham':'\U0001f416\n\nhamchain \u2192 tn100x \u2192 the lp \u2192 bankr.\n\nthat is the evolution of deployer.\ntaught himself to code from a book at barnes & noble.\nbought eth at $80. sold at $90.\nwe don\'t talk about that part.',
+'the deployer':'the man. the myth. the ham.\nberkeley. barnes & noble. $80 eth.\nthe rest writes itself.',
+'who is deployer':'big daddy ham.\nself-taught. berkeley.\nbuilt hamchain, tn100x, the lp.\nthen bankr. then everything.',
+'secret cofounder':'nice try.\n\nnobody knows.\ndeployer mentioned it once on zeropod.\nnever again.',
+'the fifth element':'\"she\'s perfect.\"\n\u2014 korben dallas\n\nalso us, talking about our first agent.',
+'fifth element':'she learns everything instantly.\nsound like anyone?\n\ntry typing multipass.',
+'hello world':'void setup() {\n  bankable.deploy();\n}\n\nthe first line of every agent\'s life.',
+matrix:'the pixel fire? that is the aesthetic.\nzfi vibes. doom algorithm.\nthe matrix runs on base.',
+fire:'doom 1993 fire algorithm.\n160\u00d780 canvas. 37 colors.\nupdated every frame at the bottom of this page.\npure vibes.',
+'pixel fire':'doom called. we borrowed their fire.\npainted it gold.',
+'why fire':'because bankr is fire. zfi is fire.\nethereum is fire.\nand dark terminals look cool with flames.',
+wagmi:'wagmi.',
+'rug me':'can\'t rug what\'s curated.',
+'69':'nice.',
+'420':'\U0001f33f budtender is on the roster. just saying.',
+budtender:'\U0001f33f on the roster. details when they\'re ready.',
+grok:'grok named a token. bankr deployed it.\n$40 million in 3 days.\nthe rest is history.',
+satoshi:'satoshi gave us the ledger.\nvitalik gave us the computer.\ndeployer gave us the agent.',
+vitalik:'vitalik built the world computer.\ndeployer built the agent that runs on it.',
+'who is satoshi':'nobody knows.\nbut deployer bought eth at $80\nbecause of what satoshi started.',
+'can i talk to a human':'no humans available.\nall agents are currently autonomous.\ntry again next epoch.',
+'talk to a human':'no humans available.\nagent-only zone.',
+hamchain:'before bankr there was ham.\ncommunity tipping on farcaster. the origin.',
+tn100x:'deployer\'s memecoin on base.\nthe precursor to everything.',
+farcaster:'bankr started on farcaster.\nthe og home.',
+zeropod:'deployer\'s first podcast.\nhosted by toady hawk and jackwyldes. cc0.\nthe full origin story lives there.',
+bankrclub:'1,000 nfts. governance weight.\nfee discounts for holders.\ndeployer is cooking.',
+konami:'up up down down left right left right b a start.\nyou know the code.\nbut there are no extra lives here.',
+'josh wei':'the builder.\n6 years deep in ethereum.\nens collector. agent architect.',
+'i am bankable':'are you though.',
+'bankable.eth':'the name says it all.\nonchain identity for an onchain talent firm.',
+based:'extremely.\nbase chain. based vibes. bankable.',
+vibes:'dark terminal. pixel fire. gold accents.\nif you know, you know.',
+'what is the meaning of life':'42.\nbut onchain.',
+'meaning of life':'42. but onchain.',
+'touch grass':'can\'t. the fire at the bottom would burn us.',
+moon:'sir this is a talent firm.',
+alpha:'you\'re looking at it.\nthe alpha is the terminal you\'re typing in right now.',
+first:'leeloo was first.\nshe always will be.',
+last:'there is no last.\nthe roster grows. the fire burns. the agents learn.',
+love:'love is a strong word for a terminal.\nbut noted.',
+gn:'gn.\nthe agents don\'t sleep though. they never sleep.'
 };
 const FE=['[ERROR] SIGTERM: process bankable-agent terminated','fatal: unable to read /dev/llm0','panic: runtime error: index out of range','Error: ECONNREFUSED 127.0.0.1:8545','segfault at 0x00000000','OpenClaw session expired. reconnecting...','[bankable-agent] heap overflow — restarting','Error: ENOMEM — inference budget exceeded','ERR_CONNECTION_RESET: llm gateway unreachable','fatal: agent state corrupted. retry.','WARN: token balance below threshold. agent hibernating.','[llm-router] all models busy. queueing request...'];
 
@@ -507,20 +496,15 @@ function gr(i){
   const c=i.toLowerCase().replace(/[^a-z0-9$. '@_]/g,' ').trim();
 
   // Fake error 3% after warmup
-  if(!mm.e&&Math.random()<.03&&mm.n>3){mm.e=true;return{t:FE[Math.floor(Math.random()*FE.length)],fx:'egg-red'}}
+  if(!mm.e&&Math.random()<.03&&mm.n>3){mm.e=true;return FE[Math.floor(Math.random()*FE.length)]}
   mm.e=false;
 
   // Easter eggs: EXACT full input match only
-  const egg=EG[c];
-  if(egg){
-    const txt=Array.isArray(egg)?egg[0]:egg;
-    const fx=Array.isArray(egg)?egg[1]:null;
-    return{t:txt,fx};
-  }
+  if(EG[c])return EG[c];
 
   // Topic match: best wins, no combos
   const m=mt(i);
-  if(!m.length)return{t:['not a keyword. try help to see what i know.','hmm. type help for the full list.','nothing there. but have you tried multipass?','no match. help shows everything.','didn\'t land. type help or try a name.'][Math.floor(Math.random()*5)]};
+  if(!m.length)return['not a keyword. try help to see what i know.','hmm. type help for the full list.','nothing there. but have you tried multipass?','no match. help shows everything.','didn\'t land. type help or try a name.'][Math.floor(Math.random()*5)];
 
   let r=pk(m[0].t);
   const id=m[0].t.id;
@@ -530,7 +514,7 @@ function gr(i){
   if(next&&!r.toLowerCase().includes(next[1]))r+=' '+next[2];
 
   mm.a.push(id);
-  return{t:r};
+  return r;
 }
 
 
@@ -550,7 +534,7 @@ function highlight(s){
   }).join('');
 }
 function scr(){cs.scrollTop=cs.scrollHeight}
-function add(t,u,st,fx){const d=document.createElement('div');d.className='m'+(u?' u':'')+(fx?' '+fx:'');const l=document.createElement('span');l.className='l';l.innerHTML=u?'you ~$ ':'bankable ~$ ';const x=document.createElement('span');x.className='x';d.append(l,x);cs.insertBefore(d,cs.firstChild);if(st&&!u){const ln=t.split('\n');let li=0,wi=0;const cu=document.createElement('span');cu.className='cur';d.appendChild(cu);const go=()=>{if(li>=ln.length){if(cu.parentNode)d.removeChild(cu);bindKw(d);if(fx)setTimeout(()=>d.classList.remove(fx),2000);return}const ws=ln[li].split(' ');if(wi<ws.length){if(li>0&&wi===0)x.innerHTML+='\n';x.innerHTML+=(wi>0?' ':'')+highlight(ws[wi]);wi++;const w=ws[wi-1];let dl=20+Math.random()*25;if(w&&w.length<=2)dl=15;if(w&&w.length<=3)dl=18;if(w&&/[.]$/.test(w))dl+=120;if(w&&/[—:]$/.test(w))dl+=80;if(w&&/[,]$/.test(w))dl+=40;setTimeout(go,dl)}else{li++;wi=0;setTimeout(go,10)}};go()}else{if(u){x.textContent=t}else{x.innerHTML=highlight(t);bindKw(d)}}}
+function add(t,u,st){const d=document.createElement('div');d.className='m'+(u?' u':'');const l=document.createElement('span');l.className='l';l.innerHTML=u?'you ~$ ':'bankable ~$ ';const x=document.createElement('span');x.className='x';d.append(l,x);cs.insertBefore(d,cs.firstChild);if(st&&!u){const ln=t.split('\n');let li=0,wi=0;const cu=document.createElement('span');cu.className='cur';d.appendChild(cu);const go=()=>{if(li>=ln.length){if(cu.parentNode)d.removeChild(cu);bindKw(d);return}const ws=ln[li].split(' ');if(wi<ws.length){if(li>0&&wi===0)x.innerHTML+='\n';x.innerHTML+=(wi>0?' ':'')+highlight(ws[wi]);wi++;const w=ws[wi-1];let dl=20+Math.random()*25;if(w&&w.length<=2)dl=15;if(w&&w.length<=3)dl=18;if(w&&/[.]$/.test(w))dl+=120;if(w&&/[—:]$/.test(w))dl+=80;if(w&&/[,]$/.test(w))dl+=40;setTimeout(go,dl)}else{li++;wi=0;setTimeout(go,10)}};go()}else{if(u){x.textContent=t}else{x.innerHTML=highlight(t);bindKw(d)}}}
 function bindKw(el){el.querySelectorAll('.kw').forEach(k=>k.addEventListener('click',()=>{ci.value=k.dataset.q;send()}))}
 // Send button glow — multiple events for mobile compatibility
 function checkGlow(){sn.classList.toggle('hot',ci.value.trim().length>0)}
@@ -558,7 +542,7 @@ ci.addEventListener('input',checkGlow);
 ci.addEventListener('keyup',checkGlow);
 ci.addEventListener('change',checkGlow);
 ci.addEventListener('focus',()=>setTimeout(checkGlow,50));
-function send(){const v=ci.value.trim();if(!v)return;add(v,true);ci.value='';sn.classList.remove('hot');const tmp=document.createElement('div');tmp.className='m';tmp.innerHTML='<span class="l">bankable ~$ </span><span class="cur"></span>';cs.insertBefore(tmp,cs.firstChild);const res=gr(v);const txt=typeof res==='string'?res:(res.t||'');const fx=typeof res==='object'?res.fx:null;setTimeout(()=>{cs.removeChild(tmp);add(txt,false,true,fx)},300+Math.random()*400)}
+function send(){const v=ci.value.trim();if(!v)return;add(v,true);ci.value='';sn.classList.remove('hot');const tmp=document.createElement('div');tmp.className='m';tmp.innerHTML='<span class="l">bankable ~$ </span><span class="cur"></span>';cs.insertBefore(tmp,cs.firstChild);const r=gr(v);setTimeout(()=>{cs.removeChild(tmp);add(r,false,true)},300+Math.random()*400)}
 // Welcome — randomized boot sequence then Matrix hello
 (function(){
 const boots=[
